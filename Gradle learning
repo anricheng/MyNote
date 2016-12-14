@@ -1,0 +1,12 @@
+1.获取所有的dependences
+gradle dependencies -- configuration runtime
+2.查看dependence的版本  --解决冲突很有用
+gradle dependencyInsighe --dependency commons-logging 
+3.add custom configuration
+ configurations{
+   custom
+ }
+
+ dependencies{
+   custom 'com.....'
+ }
