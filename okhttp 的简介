@@ -1,0 +1,64 @@
+1. 普通的get请求，在url 后面拼接参数：
+1.1创建一个url 的类并且将url 以及参数传进去；
+HttpUrl httpUrl =HttpUrl.parse("url").newBuilder().addQueryParams("key","value").build();
+1.2创建一个Request
+Request request = new Request.Builder().url(httpUrl).build();
+1.3将这个Request 放入到一个OKHttpclient 的实例去执行
+OKHttpClient client = new OkHttpClient();
+client.newCall(request).execute();
+
+2.使用FormBody的方式去实现post请求:-----//这个方式会将传递的body进行编码，其中会将空格替换为为”+“,特殊字符替换为ASCII码
+2.1 去创建一个FormBody
+FormBody formBody = new FormBody.Builder().add("key","value").build();
+2.2去创建一个Request
+Request request = new Request.Builder().url("url").post(formBody).build();
+2.3创建一个OkHttpClient 去执行这个request
+client.newCall(request).execute();
+
+3.使用MultiPart的方式去上传一个文件:
+3.1 第一步使用 RequestBody去创建一个带文件类型和文件路径body
+RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"),new File("FilePath"));---//第一个参数就是ContentType
+3.2 使用MutipartBody 将表单中的所有的数据项进行打包；
+MultipartBody multiBody = new MultipartBody.Builder().setType(MultipartBody.FORM).addFormDataPart("name","aric").addFormDataPart("file","filename",requestBody).build();
+3.3 去创建一个Request
+Request request = new Request.Builder().url("url").post(multiBody).build();
+3.4创建一个OkHttpClient 去执行这个request
+OKhttpClient client = new OKHttpClient();
+client.newCall(request).execute();
+
+4.指定请求的方式：在Request中：  new Request.Builder().url("url").method("GET",null).build();
+5.指定请求中的Header；在Request中：new Request.Builder().url("url").addHeader("key","value")其中对于多线程下载比较重要的header是：
+addHeader("Range","bytes=2-")//这个Range 字段对应的value bytes=开始的值-结束的值
+addHeader("Accept-Encoding","identity") 这个字段表明接受的编码方式；
+在response 中照样可以获取到contentLength and contentType
+Server : nginx
+Date : Mon, 12 Dec 2016 06:56:47 GMT
+Content-Type : application/javascript; charset=utf-8
+Content-Length : 6363
+Connection : keep-alive
+Last-Modified : Fri, 10 Apr 2015 11:47:06 GMT
+ETag : "5527b83a-18dd"
+Expires : Wed, 11 Jan 2017 06:56:48 GMT
+Cache-Control : max-age=2592000
+Content-Range : bytes 2-6364/6365
+
+6.在request中指定Cache的方式以及时长：
+1.使用Cache 类指定存储文件夹以及文件的大小；
+Cache cache = new Cache(new File("fiel path"),maxCacheSize);
+2.在clien中指定这个Cache
+new OkHttpClient.Builder().cache(cache).build();
+3.在每个request中指定这个request的cache方式，使用cache or 不使用，以及这个cache的时长是多少的问题；
+new Request.Builder().url("url").cacheContorl(new CacheControl.Builder().maStale(36,TimeUnit.Days)).build();
+4.在reponse 中可以判断当前获得的是 cache or network reponse 
+Response response 1= client.newCall(request).execute();
+4.1 首先得读取body中的 response。body().sting()
+
+response.networkResponse()
+response.cacheResponse();
+
+String body2 = response1.body().string();
+System.out.println("network response " + response1.networkResponse());
+System.out.println("cache response " + response1.cacheResponse());
+
+
+
