@@ -1,0 +1,2 @@
+
+Simply choose the Host-only Adapter for Adapter 1 and NAT for Adapter 2. Make sure the cable-connected is selected(ticked). Host-only can be used to create a network containing the host and a set of virtual machines, without the need for the host's physical network interface. Instead, a virtual network interface (similar to a loopback interface) is created on the host, providing connectivity among virtual machines and the host.
