@@ -1,0 +1,27 @@
+1. install node.js
+2.create a node server like: example.js with content below
+----------------------------------
+const http = require('http');
+
+const hostname = '0.0.0.0';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+   res.writeHead(200, {"Content-Type": "application/json"});
+  var json = JSON.stringify({ 
+    anObject: {item1:"zhou",item2:"Lemo"}, 
+    anArray: ["lemo","chou","Love"], 
+    another: "stringsample"
+  });
+  res.end(json);
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+-----------------------------------
+3.start the server :node example.js
+4.install localtunnel :$ npm install -g localtunnel
+5.open port: lt --port 3000
+6.get url:your url is: https://kohffstqmd.localtunnel.me
