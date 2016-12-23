@@ -1,0 +1,255 @@
+1. 编译merge的方式：product flavor 
+flavor1Compile project(':lib1')
+flavor2Compile project(':lib2')
+2.in mainfest file :
+
+main 中含有一个 manifest 文件，含有 lable and icon 并且在每个product flavor 中也是含有一个manifest文件，期望product flavor 可以替换 main 中的 label and icon
+
+<application 
+  label 
+  icon 
+  tools: replace="label icon">
+3.在product flavor 的manifest 文件的根标签的manifest文件是完全不会进行merge的只会应用在main 中的manifest文件.
+
+4.常用的一些功能链接：https://developer.android.com/studio/build/manifest-merge.html#merge_rule_markers
+
+5.如果在build.gradle 中没有default blcok 去定义一个applicationid的话那么会继续使用manifest文件主动的packagename去充当一个一个app的appid.
+6.如果在manifest 文件中的任何地方需要用到applicationid 可以直接用${applicationId}placeholder.
+7.使用一个单独的测试用的applicationId,可以在default block 中添加一个testApplicationId property or 在productFlavor 中添加一个这样的属性
+8.包名 可以跟applicationId 不匹配，但是必须要跟：
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+中的package property match.
+android build tools 用这个 package attribute 去做两件事情：
+  8.1：作为R.java的命名空间（package.R.XX）
+  8.2：<activity android:name=".MainActivity"> 用作这里缺省的namespace
+
+  9.一旦编译完成最终 app store 会用manifest 文件中的package property to identify an app,so 在最终编译完成的app打包文件中的manifest 中呈现的是applicationId. 此时manifest 已经完成了作为命名空间的任务，不用再管它的名字是否匹配了。
+
+  10.如果想为你的某个productFlavor 的variant 单独增加一个dependencies:(eg:free product flavor) 
+  10.1 增加一个远程依赖：dependencies {
+    freeCompile 'com.google.firebase:firebase-ads:9.8.0'
+}
+10.2 增加一个本地依赖：for freeDebug variants
+dependencies {
+    freeDebugApk fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+10.3
+dependencies {
+    // Adds a remote binary dependency only for local tests.
+    testCompile 'junit:junit:4.12'
+
+    // Adds a remote binary dependency only for the instrumented test APK.
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+}
+
+11. 当一个项目的依赖不在是本地的文件树或者本地lib 的时候他就去一个online的远程repo去获取，by default ,一个新的Android工程会使用jCenter,当然你一个可以添加mavenCentral() 或者mavenLocal() ,这个的定义是在顶层的 builde.gradle 中定义的
+
+allprojects{}
+repositories{
+	jCenter();
+	mavenCentral()
+	mavenLocal()
+}
+
+当然你也可以使用某个具体的仓库 like this；
+allprojects {
+    repositories {
+        maven {
+            url "https://repo.example.com/maven2"
+        }
+        maven {
+            url "file://local/repo/"
+        }
+        ivy {
+            url "https://repo.example.com/ivy"
+        }
+    }
+}
+
+12.来自谷歌或者anroid的默认仓库可以直接在dependencies block使用而不用在顶层的build.gradle 中添加任何的仓库的依赖，当使用sdk manager 去下载的时候这些lib 默认下载到  android_sdk/extras/的文件夹下 
+
+13.在dependencies 中添加lib 的顺序就是这些库的优先级。有时候有很多的依赖的时候必须考虑添加的依赖的顺序问题：like this:
+For example, if your project declares the following:
+
+Dependency on LIB_A and LIB_B (in that order)
+And LIB_A depends on LIB_C and LIB_D (in that order)
+And LIB_B also depends on LIB_C
+Then, the flat dependency order will be as follows:
+
+LIB_A
+LIB_D
+LIB_B
+LIB_C
+
+这样可以保证所有的库都得到一个正确的依赖
+
+14.可以使用指令直接去看这些依赖库的树：
+For Android, use this line
+
+ gradle app:dependencies
+or if you have a gradle wrapper:
+
+./gradlew app:dependencies
+14.构建类型：当你创建一个项目的时候 android studio 会默认在你的项目中创建一个debug 以及一个release 的buildType,当然你也可以创建属于你自己的构建类型 like this:
+android {
+    ...
+    defaultConfig {...}
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            applicationIdSuffix ".debug"
+        }
+
+        /**
+         * The 'initWith' property allows you to copy configurations from other build types,
+         * so you don't have to configure one from the beginning. You can then configure
+         * just the settings you want to change. The following line initializes
+         * 'jnidebug' using the debug build type, and changes only the
+         * applicationIdSuffix and versionNameSuffix settings.
+         */
+
+        jnidebug {
+
+            // This copies the debuggable attribute and debug signing configurations.
+            initWith debug
+
+            applicationIdSuffix ".jnidebug"
+            jniDebuggable true
+        }
+    }
+}
+
+buildType 中含有的属性link: http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.BuildType.html
+
+15.产品风味：跟buildTypes 类似，只需要将配置的代码放在productFlavor block 中就可以了。产品风味支持与defaultconfig 同样的property，从本质上来说defaultConfig 就是产品风味的默认值罢了。
+  productFlavors {
+        demo {
+            applicationId "com.example.myapp.demo"
+            versionName "1.0-demo"
+        }
+        full {
+            applicationId "com.example.myapp.full"
+            versionName "1.0-full"
+        }
+    }
+
+16.要想支持多apk 分发，可以在不同的风味中使用相同的 applicationId 而使用不同的 versionCode 
+17.可以在android studio 右侧的gradle pannel 面板中查看不同的product flavor 所使用的不同的sourceset
+18.当用户创建一个新的产品风味的时候 Android studio 并不会帮你创建sourceSet的目录，创建方式如下：
+18.1 在项目的src 目录上点击新建new  new folder java folder
+18.2 在target source set中 选择一个风味，点击finish 即创建成功；
+
+19.使用构建类型和产品风味时创建出来的不同的sourceset的优先级如下：
+src/demoDebug/ （构建变体源集）
+src/debug/ （构建类型源集）
+src/demo/ （产品风味源集）
+src/main/ （主源集）
+
+也就是main 文件中公共的部分优先级最低，产品风味次之 构建类型稍高  最终的variant 的文件夹的优先级的最高，在这个文件夹中的相同的configuration 会覆盖其它所有文件夹中的sourceset.
+注意在这所有文件夹中不能有 相同的java 文件。
+
+所有清单合并为单个清单文件。将按照上述列表中的相同顺序指定优先级。也就是说，某个构建类型的清单设置会替换某个产品风味的清单设置，依此类推。如需了解更多信息，请阅读合并清单。
+类似地，values/ 目录中的文件也会合并在一起。如果两个文件同名，例如存在两个 strings.xml 文件，将按照上述列表中的相同顺序指定优先级。也就是说，在构建类型源集中的文件中定义的值将会替换产品风味中同一文件中定义的值，依此类推。
+res/ 和 asset/ 目录中的资源均打包在一起。如果两个或两个以上的源集中定义有同名资源，将按照上述列表中的相同顺序指定优先级。
+最后，在构建 APK 时，Gradle 会为随库模块依赖项包含的资源和清单分配最低的优先级。
+
+20、往manifest 文件中注入variant 的变量：
+可以在defaultConfig 或者productflavor中添加一个 manifestPlaceholders=[key：“value”]
+在manifest文件中引用：“${key}”
+By default, the build tools also provide your app's application ID in the ${applicationId} placeholder. The value always matches the final application ID for the current build (including changes by build variants. 
+这种方式可以注入这个 applicationId
+<intent-filter ... >
+    <action android:name="${applicationId}.TRANSMOGRIFY" />
+    ...
+</intent-filter>
+
+21. configure apk splits 可以提供不同分辨率 不同 application binary interface （ABI）
+  configure:  add a splits{} block to module level build.gradle file,and provide a density{} block that specify how gradle generate per-density APKs  or an abi{} block that specify how gradle should generate  per-ABI apks,or you could provide both.
+
+第一种支持多种abi
+
+android {
+  ...
+  splits {
+
+    // Configures screen ABI split settings.
+    abi {
+
+      // Enables ABI APK splits.
+      enable true
+
+      // By default all ABIs are included, so use reset() and include to specify that we only
+      // want APKs for x86, armeabi-v7a, and mips.
+
+      // Resets the list of ABIs that Gradle should create APKs for to none.
+      reset()
+
+      // Specifies a list of ABIs that Gradle should create APKs for.
+      include "x86", "armeabi-v7a", "mips"
+
+      // Specifies that we do not want to also generate a universal APK that includes all ABIs.
+      universalApk false
+    }
+  }
+}
+
+第二种支持多种屏幕尺寸：
+
+android {
+  ...
+  splits {
+
+    // Configures screen density split settings.
+    density {
+
+      // Enables density APK splits.
+      enable true
+
+      // Specifies a list of screen densities Gradle should not create APK splits for.
+      exclude "ldpi", "xxhdpi", "xxxhdpi"
+
+      // Specifies a list of compatible screen size settings for the manifest.
+      compatibleScreens 'small', 'normal', 'large', 'xlarge'
+    }
+  }
+}
+
+22.输出的apk 的命名规则：modulename-screendensityABI-buildvariant.apk 
+modulename 比如app;
+
+23.关于manifest merge 相关事宜：
+1. lib 中的manifest < main< 风味<构建类型<最终构建类型中的
+2.同时在build.gradle 中的所有的对应的属性都会被merge Build configurations from the build.gradle file override any corresponding attributes in the merged manifest file.
+3.manifenst 的xml中的每个元素都能 一一对应起来，如果低优先级的manifest 文件中的元素不匹配所有的高优先级的元素，那么它就会被加到最终的manifest 文件中去，但是如果高优先级manifest 文件中有对应的元素，那么android studio 就会把这个元素的所有属性综合起来放在最终的manifest 文件中，如果两个manifest 文件中有相同的元素，并且有相同的额属性但是这两个属性的值是不一样的，此时会产生一个conflict error。
+3.在manifest文件中的<manifest> 元素从来都会merge ，最高优先级的manifest 文件中的<manifest> 元素会留在最终的manifest文件中。
+4.The <intent-filter> element is never matched between manifests. Each is treated as unique and is added to the common parent element in the merged manifest.
+5.最重要的一点就是在最高优先级的 manifest 中不要使用 default attribute value.否则 低优先级的manifest 文件中的属性将会被merge上来，发生不可预知的结果。
+
+24 merge规则标识：
+1.在manifest中添加一个tool 的namespace：
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapp"
+    xmlns:tools="http://schemas.android.com/tools">
+2.node marker
+
+a.tools:node="merge"  这就是一个default的设定。--只要没有冲突那么所有的属性都会被merge到最终的manifest的element 中
+
+b.tools:node="merge-only-attributes" 
+3.attribute marker
+4.marker selector
+
+25.查看merge 后的manifest 文件。
+打开manifest 文件 ----在打开的文件的编辑器的左下角有一个 “Merged manifest” 的tag,点击一下就能看到，同时在每一个元素的左侧点击在右侧也是能发现这个merge是来自哪个文件的，同时我们也能看到编译后在build/outputs/logs/manifest-merger-buildvariant-report.txt 中发现完整的merge log。
+
+
+
+
