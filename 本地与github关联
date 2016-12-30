@@ -1,0 +1,5 @@
+1.创建github仓库
+2.创建本地项目
+3.用terminal打开本地项目，在根项目中使用git init/git add remote (完整指令在github 创建好之后会有)
+4.打开sourceTree并添加本地项目
+5.在sourceTree 完成所有的操作
