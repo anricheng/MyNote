@@ -1,0 +1,3 @@
+$ adb shell pm uninstall com.lincoln.mlmchina
+$ adb shell pm install -r "/data/local/tmp/com.lincoln.mlmchina"
+	pkg: /data/local/tmp/com.lincoln.mlmchina
