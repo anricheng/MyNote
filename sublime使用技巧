@@ -20,12 +20,24 @@
 	shift+tab 在不同的页面直接进行切换
 	cmd+Q 退出sublime 
 	cmd+W 关闭说明文档
+	cmd + P 打开文件搜索
+		文件名：10 到文件的第十行
+		文件名@函数名  到指定文件的函数名
+	cmd+f/cmd+option+f  查找/替换 
+		enter /enter +shift 查找下一处  上一处
+		想要在这个点进行编辑 使用escape
+		想多进行多点编辑可以使用cmd + d 连续使用的时候可以进行多个选
+	option + delete 进行选中删除
 
+	find in folder
+		可以在左侧的文件夹导航面板选择一个文件夹右键选择find in folder 测试可以找出整个文件夹中对应的字符串
+		使用F4 不停的去切换不同的查找对象
+	ctrl + "-"  可以返回上一次编辑的地方
+	ctrl shift +"-" 返回后一次编辑的地方
+	option + cmd P 可以在编辑器的底布看到scope
+	ctrl+space 切换输入法
 
-
-
-
-2.打开命令面板之后的操作：
+2.使用命令面板(cmd + shift+P)：
 	sidebar 	打开左侧文件夹导航面板
 	keyBind		打开所有快捷键的map
 	css或者其它任何的语言  可以直接更改语法提示
@@ -33,12 +45,52 @@
 	setting  打开设置
 	install package  安装新的插件
 
-3.Package Control 
-	安装目录：  /Users/aric/Library/Application Support/Sublime Text3/Packages/User
-4.Package Control 
-advancedNewFile 安装完毕之后通过 cmd + option+N 可以输入完整的文件路径去创建一个文件
+3.Package Control
+安装目录：  /Users/aric/Library/Application Support/Sublime Text3/Packages/User 
+	advancedNewFile 
+		安装完毕之后通过 cmd + option+N 可以输入完整的文件路径去创建一个文件
 
-Git 安装完毕之后 可以通过cmd + shift +P 打开命令面板之后输入git弹出git的所有指令并可使用
+	Git 
+		安装完毕之后 可以通过cmd + shift +P 打开命令面板之后输入git弹出git的所有指令并可使用 :
+		git add 将文件添加到本次的版本
+		git commit commit本次的版本会进入一个文件在这个文件里面可以写入commit log在之后的使用cmd+w 退出这个文件并进行commit的操作 
+	syncedFile 安装完成之后每次打开一个文件都会在左侧的面板之中记录打开的文件
+
+4.代码补全：
+	html:5 + tab   标准的html 5 页面
+	link + tab   link 标签的自动补全
+	.class_name  直接创建一个使用这个class 的div
+	ul.class_name>li*5 直接创建：
+	<ul class="class_name">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	在不同的li的编辑位置之间进行跳转直接使用tap
+
+	wrapwithabbrevation: cmd+shift +<- 选择之后打开命令面板 输入wrap with abbreviation 之后输入 点可以命名 class 选择#号可以输入id
+
+
+	remove tag  鼠标停留在任意一行  打开命令面板 输入 removetag 可以直接去除本行的标签，使用cmd + 单引号 可以向上再删除一级别
+5.Snippets
+	可以节省需要反复使用的部分
+	1.选择需要反复使用的部分
+	2.Tools->developer->new snippet
+	3.粘贴刚才的片段并且在需要输入的地方插入占位符从1开始：$(1:default_value)
+	4.设置tabTrigger  :Test
+	5.设置scope option + cmd P 可以在编辑器的底布看到当前文件类型的scope
+	6.保存：使用.sublime-snippet作为文件名并且保存到User的目录下
+	7.打开命令面板 输入snippet 就可以找到刚刚保存的文件名
+	8.在编辑器中直接使用 Test + tab就可以使用了
+	9.使用tab 在不同的占位符之间进行切换
+6.代码自动补全++：
+默认情况下 代码型文件都有自动补全的功能，当你输入任何文字出现自动补全的列表时候你输入tab 或者enter 都会选择，如果只是单纯的想换行，可以在setting-user文件里面加入这样一句：
+"auto_complete_commit_on_tap":ture
+
+sublimeCodeIntel 
+
 
 
 
