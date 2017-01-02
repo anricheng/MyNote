@@ -1,1 +1,45 @@
-sublime 使用技巧
+1.常用的快捷键
+	cmd+N 	打开新文件   
+	cmd+ tab	切换不同的文件 
+	cmd + J 	合并不同的行 
+	cmd + } 	向右缩进一个级别 
+	cmd + {	向后退回一个级别 
+	cmd+L 	选择当前行  
+	tap		代码自动补全
+	cmd+shift+P  打开命令面板
+	cmd +/- 	增大或者缩小字体
+	cmd +enter 可以在行中的任何地方增加下一行进行编辑
+	cmd+shift+enter 可以在行中的任何地方增加上一行进行编辑
+	option + 鼠标左键滑动选取  可以直接选择区域删除所选区域之后会进入多点编辑
+	<-  	光标跳到本行之前的单个字母
+	option+<-  光标跳到本行之前整个单词
+	shift + option + <-  向前进行文本的选择
+	cmd + shift + 向上箭头  向上选择文件的全部
+	cmd + shift + 向上箭头  向下选择文件的全部
+	ctrl + tab键上面的反引号  打开控制台
+	shift+tab 在不同的页面直接进行切换
+	cmd+Q 退出sublime 
+	cmd+W 关闭说明文档
+
+
+
+
+
+2.打开命令面板之后的操作：
+	sidebar 	打开左侧文件夹导航面板
+	keyBind		打开所有快捷键的map
+	css或者其它任何的语言  可以直接更改语法提示
+	reindent  调整缩进css之类语言的缩进
+	setting  打开设置
+	install package  安装新的插件
+
+3.Package Control 
+	安装目录：  /Users/aric/Library/Application Support/Sublime Text3/Packages/User
+4.Package Control 
+advancedNewFile 安装完毕之后通过 cmd + option+N 可以输入完整的文件路径去创建一个文件
+
+Git 安装完毕之后 可以通过cmd + shift +P 打开命令面板之后输入git弹出git的所有指令并可使用
+
+
+
+
