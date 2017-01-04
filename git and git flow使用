@@ -1,0 +1,23 @@
+1.回到过去：
+ * git log ：查看所有的提交（带commit id）
+ *git reset --hard commit id
+
+2.查看之前的版本：
+git reflog :查看所有的操作
+找到之前的操作的commit id 使用 *git reset --hard commit id 回到未来
+
+3.建立里程碑：（版本号）
+*进入github 项目主页，点击release icon-->draf a new release
+
+4.git flow:
+	使用sourceTree git flow:
+	*创建一个repo
+	*点击gitFlow 产生一个标准的git flow,使用默认操作，此时出现一个develop的branch
+	*再次点击git flow :
+		建立新的功能：
+			每一次创建一个新的功能的时候回在features目录下创建相应的feature分支,当完成开发并点击git flow 会将这个feature 回归到developer branch
+		建立新的发布版本：
+			这个是根据最新的developer或者其它的commit 来做一个发布，一旦这个发布测试ok就可以直接点击完成此功能此时可以将developer 中的最新开发merge到master 分支中，所以一般这里会有一个tag,标定一个稳定的发布版本
+		建立新的修复版本:
+			这个会从最新的master 上克隆新的分支，一旦完成后就merge back to both master and develop branch
+
