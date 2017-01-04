@@ -20,4 +20,27 @@ git reflog :查看所有的操作
 			这个是根据最新的developer或者其它的commit 来做一个发布，一旦这个发布测试ok就可以直接点击完成此功能此时可以将developer 中的最新开发merge到master 分支中，所以一般这里会有一个tag,标定一个稳定的发布版本
 		建立新的修复版本:
 			这个会从最新的master 上克隆新的分支，一旦完成后就merge back to both master and develop branch
+5.撒销一个合并
+
+	如果你觉得你合并后的状态是一团乱麻，想把当前的修改都放弃，你可以用下面的命令回到合并之前的状态：
+
+	$ git reset --hard HEAD
+	或者你已经把合并后的代码提交，但还是想把它们撒销：
+
+	$ git reset --hard ORIG_HEAD
+
+6.修复未提交文件中的错误(重置)
+
+	如果你现在的工作目录(work tree)里搞的一团乱麻, 但是你现在还没有把它们提交; 你可以通过下面的命令, 让工作目录回到上次提交时的状态(last committed state):
+
+	$ git reset --hard HEAD
+	这条命令会把你工作目录中所有未提交的内容清空(当然这不包括未置于版控制下的文件 untracked files). 从另一种角度来说, 这会让"git diff" 和"git diff --cached"命令的显示法都变为空.
+
+	如果你只是要恢复一个文件,如"hello.rb", 你就要使用 git checkout
+
+	$ git checkout -- hello.rb
+	这条命令把hello.rb从HEAD中签出并且把它恢复成未修改时的样子.
+7.cherry pick up
+在sourcetrenn 的branch 1上进行修改修改，修改之后本地commit id1
+切换到branch2 上，在git文件树上选择branch1 上的commit id1 右击选择遴选即可
 
