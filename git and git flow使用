@@ -41,6 +41,8 @@ git reflog :查看所有的操作
 	$ git checkout -- hello.rb
 	这条命令把hello.rb从HEAD中签出并且把它恢复成未修改时的样子.
 7.cherry pick up
-在sourcetrenn 的branch 1上进行修改修改，修改之后本地commit id1
-切换到branch2 上，在git文件树上选择branch1 上的commit id1 右击选择遴选即可
-
+	在sourcetrenn 的branch 1上进行修改修改，修改之后本地commit id1
+	切换到branch2 上，在git文件树上选择branch1 上的commit id1 右击选择遴选即可
+8.合并两个分支：
+	首先在sourceTree上双击选中一个分支-1。
+	单击将光标定位到另外一个分支上，在这个分支上右击就可以选择将分支-1merge到光标所在的分支。
