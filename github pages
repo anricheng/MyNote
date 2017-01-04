@@ -1,1 +1,5 @@
-github pages
+参考网站：pages.github.com
+使用：
+	1.在github上创建分支： Create a gh-pages branch
+	2.在这个分支下面创建一个html页面
+	3.访问这个页面：github 用户名.github.io/项目名
