@@ -1,0 +1,9 @@
+#include<iostream>
+using namespace std;
+int main(int argc, char const *argv[])
+{
+	cout<<"Hello world!"<<endl;
+	return 0;
+}
+//使用g++ 编译器去编译一个cpp 程序的steps:
+//1.g++ -o 编译后的文件的名字  需要编译的文件的名字

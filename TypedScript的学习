@@ -1,0 +1,127 @@
+1. 多行字符串：var content =`aa
+bb`
+2.字符串模板：
+var myname="zhou hai feng "
+var getName=function(){
+	return "zhou hai feng";
+}
+console.log(`hello ${myname}`);
+console.log(`hello ${getNamw}`);
+console.log(`div`)
+3.自动拆分字符串：可以给一个函数传递模板：
+function test(template,name,age){
+	console.log(template)
+	console.log(name)
+	console.log(age)
+}
+var myname ="zhouhaifeng"
+var getAge=function(){
+	return 18;
+}
+使用：test`hello my name is ${myname},i am ${getAge()}`
+模板传递的过程中会根据其中占位符将模板分隔为三个部分，占位符：n 那么分成的部分为：n+1
+4.参数类型：
+var myname:string ="zhou"   必须是字符串
+var myage:number =12;
+var mygo:boolean=true;
+var myany:any=zou;
+function test(name:string): 返回值{}
+也就是所有类型都是在对应的名字后面加一个：再加一个类型
+5.参数默认值
+function(a:string,b:string,c:string="zhou"){} 带默认值在最后
+6.可选参数
+function(a:string,b？:string,c:string="zhou"){} 参数名后面加一个？即可并且在必填参数的后面，同时在代码里面得处理可选参数的逻辑、
+7.rest and spread:
+...args  任意的参数  agrs.forEach()
+8.babel 编译器
+9.generator
+10.析构表达式：
+对象的析构表达式：
+function getStorck(){
+	return:{
+	code:"IBM",
+	price:100
+	}
+}
+var code =getStock.code;
+var price=getStock.price;
+也可以直接用析构表达式：var {code,price}=getStock;   或者var{code:codex,price}=getStock(); 
+如果price 是一个对象：
+function getStock(){
+	return{
+	code : "IBM",
+	price:{
+	price1 : 100,
+	price2:20
+	}
+	//这多余的两个字段是不会影响这个析构表达式的
+	aaa:"zhou",
+	bbb:"haifeng"
+	}
+}
+此时我想获取price2的值：var {code,price:{price2}} :也即多套一层析构表达式即可
+数组的析构表达式：
+var array=[1,2,3,4]
+var[number1,number2]=array;
+如果想获取3和4的值可以这样：
+var[,,number1,number2]=array;用逗号跳过即可
+var[number1,number2,...others]=array;这样就可以将3和4放到others的数组里面
+11 箭头表达式：
+var sum=(arg1,arg2)=>console.log(arg1+arg2)//两个参数
+var sum=arg1=>cosole.log(arg1)//一个参数
+var nothing=()=>console.log()//没有参数
+var sum=arg1=>{
+	var a=5;
+	console.log(arg1)
+}
+使用场景：
+var myArray=[1,2,3,4]
+console.log(array.filer(value=>value%2==0)) 消除了js中this 关键字的问题；
+12.for each /for in /for of
+var myArray=[1,2,3,4]
+myArray.desc="含有四个属性"
+myArray.forEach(value=>console.log(value))//这里不能输出这个desc的属性值
+
+for（var  n in myArray）{console.log(n)}  n 打出的是值  myArray[n] 打出的是值  //这里可以打出desc
+for(var n of myArray){console.log(n)} {if(){break//这里可以break}} //这里的n 就是值//for of 可以用在字符串 和数组里面，是ts新增加的特性
+
+13.声明一个类：
+class Person{
+constructor(name:string){//  当给这个参数增加一个权限控制符的时候就相当于给类的字段赋值，并且这个字段的声明可以省略
+	console.log();
+}
+	name;//三个控制符  public private protect 
+	ear(){
+	console.log(name)
+	}
+}
+ts中类的继承 泛型 子类对父类的调用super关键字跟java都是一样的。
+ts 中的接口：
+1.用来对数据格式的限定：
+interface IPerson{
+	name:string,
+	age:number
+}
+
+clasee person{
+	constructor(public config:IPerson ){
+	}
+}
+2.使用implements
+interface Anim{
+	eat();
+}
+class ship implement Anim{
+	ear{
+
+	}
+}
+14 模块：在ts中一个文件就是一个模块：一个模块的中的东西如果需要向其他的模块暴露，则需要使用export 方法；
+export var prop1;
+export function fun(){}
+export class Class{}
+在另一个文件或者模块中需要使用的时候可以使用import 方法：
+import {prop1} from "模块的文件路径"
+15.注解：
+16.类型定义文件： 利用一有的js 第三方工具（Jquery） github typings里面有第三方已经定义好的可以直接使用的类型定义文件；
+
