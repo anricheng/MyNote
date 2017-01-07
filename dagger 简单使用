@@ -1,0 +1,122 @@
+#1.注入的三种方式（不使用框架）： 构造  setter 接口
+#2.使用的方法：
+ ## 在整个工程的build.gradle 文件中去添加一个apt插件
+	 buildscript{
+		 ...
+		 dependencies{
+		 classpath'com.android.tools.build:gradle:2.2.0'
+		 //添加Android-apt的插件
+		 classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+		 }
+	 }
+ ##在app 的build.gradle 文件中配置：
+   apply plugin:'com.android.application'
+   //应用插件
+   apply plugin:'com.needbedankt.android-apt'
+   dependencies{
+   //dagger 2 的配置
+   compile 'com.google.dagger:dagger:2.4'
+   apt 'com.google.dagger:dagger-complier:2.4'
+   compile'org.glassfish:javax.annotation:10.0-b28'
+   }
+
+   apt 是gradle 编译器的插件：
+   编译时使用这个工具，打包的apk中不会包含这个工具
+   根据设置的源路径，在编译时期生成相应的代码
+#3整个dagger的使用分为三个部分：
+##1实例化的部分：相当于一个容器将所有的类的实例生成后放在这里
+@Module//标识这是一个提供实例的容器
+public class SampleModule{
+	@Provides //这个关键字用来标识提供实例化的对象
+	Person providePerson(){
+	 return new Person();
+	}
+}
+##2用者：需要这些实例化对象的类
+public class MainActivity extends AppCompatActivity{
+	@Inject//标明需要注入的对象
+	Person person；
+
+	@Override
+	protected void onCreate(@Nullable Bundle saveInstance){
+	  super.onCreate(saveInstaceState)
+	  SampleComponent component = DaggerSampleComponent.builder().sampleModule(new SampleModule).build();
+	  //直接注入就可以了
+	  component.inject(this);
+	}
+}
+##3沟通的桥梁：利用dagger的一些API 将实例提供的容器和调用者之间产生关联
+@Component(modules=SampleModule.class)//这里将容器的class文件放在modules 中，如果有多个module 可以用逗号隔离，如果还依赖于其他的桥梁可以使用dependencies 关键字来关联
+public interface SampleComponent{
+	//定义一个注入的方法
+	void inject(Activity activity);
+}
+
+##4变通：在如上的example中如果将Module 中的providePerson的方法给注释掉，但是在Person 类的构造上面加入一个@Inject 依然有效：
+逻辑如下：如果在Module 中有提供这个实例，则返回这个实例，注入结束
+		如果在Module 中没有提供这个实例，则查找这个类的构造方法是否带有@Inject的annotaion,如果有就用这个构造去产生一个实例并返回
+#4 @singleton 单例注释：
+对于同一个Component 中它提供的是单例，不同的Component 中返回的实例不是单例的
+并且如果在Module 的provide方法中加上@Singleton的注解那么在Component d的接口中也是要添加一个@Singleton的annotation
+我们看看singleton是怎么定义的：
+@Scope
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Singleton{}
+
+所以可以简单的总结这个过程为：
+单例依托于component,只要是同一个component 提供的实例对象一定是一样的，能实现这样的功能是因为在component 和 provide 方法上都添加了singleton方法，而singleton方法的本质是有@Scope的annotation，所以只要这个scope的annotaion是一致的，那么提供的对象就是一致的：
+所以我们完全可以自己去定义这个annotation：
+1.定义一个全局单例的实例：
+@Scope
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+public @interface PerApp{
+	
+}
+之后在 appModule 的provide 方法以及AppComponent 中添加annotation @PerApp
+再在Application 中获得这个 DaggeerAppComponent 并将其定义为一个全局共享的静态变量即可，这样在任何一个Activity 中去使用这个component都是同一个，自然而然获得的实例对象在整个app中是单例的。
+对于具有依赖关系的component 不可使用同一个scope,应为在一个component 中的实例是单一的，现在被另外一个component 依赖，那么这个实例到另外一个component 中也跟本component中提供的单例是一样的么？这样会语义不明，导致在两个component中的实例是一样的，而不是根据component的不同提供的实例也不同；
+
+#5 需要传入参数的实例的创建：
+在provide 方法中加入需要的参数传递进来，这个参数需要使用其它的provide 方法去返回，而针对一般的context 方法可以使用new这个module 的时候传入；
+在Module中禁止使用传入的参数 和返回的值一样，否则会进入到死循环
+#6 通过Component 传递依赖：
+scenario: 一个module1 能够提供另外一个modele2 需要的对象
+首先在Component1中加入一个provide 的方法：context provideContext(); 不需要实现就可以了
+在Component中的的@Component中加入 dependencies = AppComponent.class的依赖就可以了
+在最后注入的地方builder里面加入AppComponent的依赖就可以了
+#7 Qualifier 自定义标记
+如果在一个module中有两个provide 的方法，它们返回的对象一样，但是构建这个对象传递的参数不一样，怎么去区分获得我需要的对象：
+例如Person 方法有两个构造：
+public class Person{
+	private Context mContext;
+	public Person(Context context){
+       mContext =context;
+       Log.i("dagger","context");
+	}
+	public Person(String name){
+	   Log.i("dagger",name);
+	}
+}
+这个时候在
+1.module 中的provide 方法中可以定义：@Name("标识符")
+2.在inject的地方使用同样的:@Name("标识符")
+有一个替换的方法就是：使用@Qualifier 去重新定义一个annotation
+@Qualifier
+@Retention(RetentionPolicy.RUNTIME)
+public @interface PersonForContext{
+	//使用context去产生的person对象的注解
+}
+
+@Qualifier
+@Retention(RetentionPolicy.RUNTIME)
+public @interface PersonForName{
+	//使用name去产生的person对象的注解
+}
+现在可以将module 的provide 方法以及inject 处的@Name annotaion 更改为新定义的annotation 即可；
+
+#8 懒加载和强制更新：
+不同只是在注入的时候使用Lazy 和 Provide 关键字来包裹注入的类型; Lazy<类型> 实例；  Provide<类型> 实例；
+使用的时候： 实例.get（）即可；针对Lazy，此时才去创建这个实例，以后每次得到的都是相同的实例；针对Provide也是此时采取创建一个实例，以后每次都去module中获取这个实例，至于是不是相同的实例是根据module中的实现，主要就是看是不是具有scope的annotation；
+
