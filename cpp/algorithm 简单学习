@@ -1,0 +1,56 @@
+1.最基本的算法（O（n^2））:
+ 选择排序算法：
+			#ifndef ZHOU_HAI_FENG
+			#define ZHOU_HAI_FENG
+			#include <iostream>
+			#include <algorithm>
+			#include <string>
+			using namespace std;
+			template<typename T>
+			void selectionSort(T arr[], int n){
+			//遍历整个数组
+			for (int i = 0; i < n; ++i){
+			//找出这个数组中的最小的值
+			//首先设定这个最小的值就是i
+			int miniIndex = i;
+			//将i之后的所有数据跟i比较，如果它比i小则将这个最小的
+			for (int j = i+1; j < n; ++j)
+			{
+			if(arr[j]<arr[i]){
+			miniIndex = j;
+			swap(arr[i],arr[miniIndex]);
+			}
+			}
+			}
+
+			}
+
+			int main(int argc, char const *argv[])
+			{
+			int a[10]={10,9,8,7,6,5,4,3,2,1};
+			selectionSort(a,10);
+			for (int i = 0; i < 10; ++i)
+			{
+			cout<<a[i]<<" ";
+			}
+			cout<<endl;
+
+			float b[10]={10.1,9.6,8.5,4.3,6.5,5.6,4.6,3.1,2.0,1.6};
+			selectionSort(b,10);
+			for (int i = 0; i < 10; ++i)
+			{
+			cout<<b[i]<<" ";
+			}
+			cout<<endl;
+
+			string c[5]={"c","aric","ZHOU","zhen","jia"};
+			selectionSort(c,5);
+			for (int i = 0; i < 5; ++i)
+			{
+			cout<<c[i]<<" ";
+			}
+			cout<<endl;
+			return 0;
+			}
+
+			#endif

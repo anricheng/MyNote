@@ -250,6 +250,27 @@ b.tools:node="merge-only-attributes"
 25.查看merge 后的manifest 文件。
 打开manifest 文件 ----在打开的文件的编辑器的左下角有一个 “Merged manifest” 的tag,点击一下就能看到，同时在每一个元素的左侧点击在右侧也是能发现这个merge是来自哪个文件的，同时我们也能看到编译后在build/outputs/logs/manifest-merger-buildvariant-report.txt 中发现完整的merge log。
 
+26.使用placeholer
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="${AUTO_NAVI_VALUE}" />
+在defultconfig中增加默认值：
+    defaultConfig {
+        manifestPlaceholders = [ AUTO_NAVI_VALUE:"a46d2052b1770c4ab28f26f7b50e3e97" ,QQ_DATA_SCHEME:"tencent101184016",WECHAT_ENTRY:"com.accenture.lincoln.mylincolnmobilecn.wxapi.WXEntryActivity"]
+    }
+
+在productFlavor 中可以更改：
+        pioneer{
+            manifestPlaceholders = [ AUTO_NAVI_VALUE:"a46d2052b1770c4ab28f26f7b50e3e97" ,QQ_DATA_SCHEME:"tencent101188243",WECHAT_ENTRY:"com.accenture.lincoln.mylincolnmobilecn.wxapi.WXEntryActivity"]
+            buildConfigField "boolean", "DEBUGGABLE", "false"
+            buildConfigField "boolean", "IS_QA_ENV", "false"
+        }
+
+
+
+
+
+
 
 
 
