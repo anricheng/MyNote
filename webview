@@ -1,0 +1,5 @@
+WebView webView = (WebView) findViewById(R.id.wv);
+        webView.loadUrl(("file:///android_asset/Complete_TermsandConditions_EN.html"));
+        webView.setWebViewClient(new WebViewClient());
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);

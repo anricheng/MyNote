@@ -1,0 +1,312 @@
+------------------day 01----------------------
+1.三个模块： UI service data  以横纵向切不同的extension
+	data 层：
+	1.定义type的作用：通过xml定义对象,自动生成对象；
+	2.domain driven design: 
+	电商主要领域model：用户  订单 购物车 商品 
+	hybris 自己定义了很多的model,这些model之间的关联已经binding
+	先弄清领域模型：core-items.xml
+	typs 本身也是用types 定义的
+	columnType 就是数据的列，指明database
+	types里面的属性如果没有设定长度都会有一个默认的属性，比如vchar 的长度是255
+	3.后端管理工具依据type构建；
+	4.参考资料：help.hybris.com
+	目标：创建types
+
+	高并发 高可用  高性能 
+2.extension:
+	1.可以竖着切或者横着切：
+	2.service 的扩展机制：
+	extension A <----extension B  B中的service可以覆盖A中(base spring alias)
+	每一个bean 只能有一个id 多个alias
+	spring : IOC container / AOP /abstractive 
+	extension (从内到外)：core  platform  b2c b2b extens(第三方扩展包)
+	hybris：可以通过覆盖的方式去定制自己的extension;
+	hybris 预配置推荐：静态文件配置
+	买了又买：用图的sql语句;
+	eventrackes:
+	jamp:服务器集群的通信方式；
+
+	spring 相关知识：
+3.accelerator(b2b b2c 带宽等等实例):   platform-->extensions-->accelarator: 
+4.安装工具：installer 里面有receipt(有预定义的也可自己扩展),里面每个receipt 有对应的extension。
+5.如何知道有多少个extension 在运行：去hac 的控制台查看   hybrid administration  console
+6.hac 配置属性的三个层级： 新版hac 允许重新客定；
+	例子：db.url   
+	local.properties 全局配置属性
+	project.properties  extension 属性
+	gradle 产生依赖，被依赖的project.properties会被覆盖；
+7.运行ant 脚本创建entension,使用预定义的模板；模板是以Y开头的
+你想扩展对应的entension,首先找到这个extension对应的y开头的模板；之后重新自定义一些功能；
+8、所有extension 定义的types 在back office中都能看到；
+ back office 能到靠所有的domain model
+这里可以runtime 修改type的一些属性：比如说密码；
+
+9.hmc backoffice 这些都是runtime type;  types 里面是是design type；
+从design type 到runtime type 就是初始化或者更新；
+
+10.根据权限进行功能的分组，不同权限账号的人可以看到不同的功能部分：
+两个层面的区分：1.新建一个work area,给一些这个人可以看到的功能
+
+11.hac 里面有个工具可以删除多余的字段  clear up
+12.有很多extension ,由localextension.xml 配置需要在某个案例中需要加载哪些extension
+13.extension 加载机制：
+		1.plateform :自动加载
+		2.被依赖的extension 自动加载
+		3.加载的时候byname 一个一个加载，或者是by directry，加载文件夹下面的所有的extension
+14.update 的方式：新添加一个types 或者属性，它会跟runtime 进行比较，没有就添加；
+15.jalo 就是在data 中有处理逻辑的代码；
+	渐渐剔除；jalo session 可以使用；在标准的java 代码中怎么管理session  .jalo session 跟http session 一一对应
+16.domain model 中含有jalo :比如促销
+17.定义某个属性为集合：collections and relations 定义一对多的关系；
+	collection ： 少量
+	relation: 大量
+	OR maping：
+	1.one table:
+	2.class table:
+	3.concrete table: 
+
+18.数据存储：如果本types 没有定义存储的表就是存储到父类中，有就定义在本表中：
+	types with deployment --有存储
+	types without deployments  --没有存储(一般是抽象类) 数据存储到generic 中去
+	deploy without types--只有两个表示非系统定义的
+
+19.table storge : 云存储  二维的key value;
+
+20.商品建模：
+pcm:
+catalog:container catalog:version 
+一个商品属于一个品类  一个商品属于多个品类 
+
+前后端分离： 后端一个商品属于一个品类   前端一个商品属于多个品类
+
+store    site  使用UML 图定义之后可以直接用types 去实现；
+
+CMS site 通过url pattern 去匹配；
+multisite  相当于是一个路由器；
+每个site 都有自己的homepage
+
+有内置的component:
+sync : 自动 手动 、 单个商品 或多个 同步
+
+hybis product cockpit : 
+
+back office 完全替代 hmc   hac是系统级别的
+
+PMS 每个商品都可以单独的通过UI 层面去拖拽设计；
+品类是一个树；
+back office 中catalogue 商品； 所有的属性可以定义；
+back office 包含 pcm 可以做审批，审批后的商品才可以显示；
+
+type base 权限：这个type 上的所有item 都可以访问
+
+permission management:
+1.定义在type 上面；然后通过filter Attributes 限定某些属性；
+继承关系：关系最近原则；
+2.从用户那边进去：employee：
+
+第一个实验就是书店：
+
+----------------day 02-----------------
+
+
+config/local property 数据库的基本配置；
+
+某一个页面执行哪些sql:
+bench marker 值；低代表hybris 到数据库有问题；
+
+pricefactory : 提供简单的功能，这是完全可以替换的,当加入第三方价格引擎的时候可以覆盖这个价格
+简单实现：europe1
+包含： 基本价格 税 折扣；
+逻辑：不同人不同价 不同人不同价  不同渠道不同价  零售与批发（priceEngine ）
+
+一个商品上面带有多个价格行，计算时选取一个(根据context 匹配算法)；
+匹配时有优先级，可以在配置优先级；
+
+安装集成的时候可以在backoffice 能看到；
+
+help.hybris.com 上面有sap integration ,可以集成extension;
+
+税的计算： 累加的
+discount: 累加的
+促销：6.3将旧的促销引擎移除了
+rule engine :使用jbox 开源
+使用condition and action   满一千 condition 减200 action
+进一步的condition:
+
+规则设定好之后是需要发布之后才可以生效
+
+促销的architecture:
+规则生效： 根据优先级找规则    如果前后的规则是同一个组的，根据这个规则是否可以叠加决定是否生效；
+同一个组中优先级最高的规则无论在何时都是生效的；
+potential promotion message:
+
+
+coupon:生成coupon  设置规则 前端生效；
+
+OMS / OM
+OMS是一个标准的extension;
+也可以使用第三方的OMS;
+安装：
+OMM 订单管理的引擎；基于流程引擎；
+OMS 对订单管理的增强；
+order 最终的使用xml 定义不同的流程  ，每个xml 定义一个节点 (节点有入度和出度)
+每一个节点的信息可以在hac 的system 中进行查看；
+每个节点中传递的上下文都是这个订单；
+订单上带有这个信息表明我启动的是哪个流程，这个启动的动作是基于事件启动的；
+
+事务处理：支持本地事务：声明式（xml/annotation）  编程式  ---hybris 的处理基于spring
+impex 的导入方式： 6.0以后使用 service layer direct 的方式将整个impex 文件导入，一次事务处理，但是如果失败的话回归到之前一行一个事务导入；
+UI :hac ---cosole--impex import
+
+scalability rules:
+scal up 向上扩展（单机性能提升）
+scal out 水平扩展（增加机器）
+高并发的单词：
+ACID BASE  CAP:Consistency  Availability  Partiion tolerance
+并发数 tps 平均响应时间 
+ 系统用户数  同时在线用户数  并发用户数
+ 一个cpu  50个线程 
+
+ 高并发策略： 堵（waf  限流 用户行为过滤） 疏（整个技术栈）
+ 前端：Yslow
+ CDN：动静分离  cdn 分流静态资源的加载；
+ media web: platform --->ext---mediaWeb--->非结构化的数据切出去
+ Hybris 优化策略：
+ SSL offfloading  从web server 到app server 的时候将HTTPS-->http 同时header 中添加标识https 的头
+
+ session sticky  从不同的web server 最终到同一个app server;{ngnix: ip hash(使用前三段); hash cockie;ssession_stickly}
+
+ Solr 优化：6.2增加了 solrCloud;
+ operation mode  indexer mode batch size threads distributed indexing
+ 同构配置：每个server的节点配置的一样；
+
+  --------------day 03-------------
+1.extensiobability: 也就是解耦
+基于事件(spring envent)，微服务
+一个jvm事件；
+model event dto 都是xml 生成；
+在hac的控制台中可以检查我用的 service的具体实现;
+hybris 的时间机制 默认是 同步的
+配置的方式： by configuring  PlatformClusterEventSender  
+直接使用的方式： ClusterawareEvents
+Transaction-Aware-Events: 可以整合多个transaction events 为一个events
+hybris 的事件很多： session 开始结束  order create  register ...都会发生事件；
+hybris Multi_tenant 可以虚拟出多个hybris;
+
+intercepeor:所有model 的生命周期（crud）可以用拦截器 添加功能； sync;
+enent:触发器
+
+系统管理 level:
+solr：两个节点，一个搜索 ？一个存储index?
+session 的高可用: 集中存储  session重用;
+catalogue 的管理：多国家 多渠道  多币种  多版本......
+
+media 存储的策略：
+图片url 生成机制：
+阿里云的cdn；
+spring scope :web application scope  /tenant scope/global scope 
+globle-spring   tenant-spring   
+spring 在hybris 中可以扩展；
+
+自定义不同的缓存的区域；local properties  ：定义不同缓存Region 的 容量 驱除策略；
+
+hac中可以查看不同的缓存的记录；
+type 的max 为0  代表没有限制；
+entityCacheRegion : item 的缓存 有容量的限制  缓存的命中率  evication驱除:
+图片使用LRU 策略；
+
+JGroups 使用udp 来实现 缓存共享；
+
+Cluser 配置：
+local properties  设置节点id
+集群通信问题debug:
+
+item 有任何变化则cache 失效；
+queryCache 失效： queryCache 的结果集产生了变化
+ 
+ spring cache ： 缓存瓶颈的部分数据；
+
+
+ Servicelayer:
+
+创建service  Flexsical server  /model service
+
+service 层的处理: input model /output model   dto? 
+service 最终发布出去的时候 是同一个上下文；
+spring 的容器用name 和 id 来区分不同的bean;
+每个service 都有alias;
+
+hybris 中的别名的作用？？？？？
+web服务器处理http请求
+
+runtime model
+
+modelService---加载   初始化  验证  删除  保存  都有对应的拦截器； hac 上可以禁止校验；
+继承的接口：loadInterceptor .......
+ 在一个model 上有多个拦截器：拦截器映射：在myextension-spring.xml  
+ 加一个order的属性，代表执行顺序，也可以增加一个replace 的属性，可以替换别人的拦截器；
+ item 是一个细粒度的bean
+ bean 是一个粗粒度的bean
+
+前台需要数据--controller---facade--convert--populate  
+
+使用convert 的好处，每次从后台得到的数据是一定的（也就是从http 请求来的数据是一样的），前台需要的数据是不定的
+当前台的数据需求有变化的时候，定义一个不同的convert;
+-----------day 04-------------------------
+数据库的查询通过flexiableSearch ,所有search 都会被缓存；
+文本搜索的性能比数据库强大；
+关系数据库： 数据模型复杂，扩展性不强
+非关系型数据库： 数据模型简单，扩展性强
+Facet search: 动态的建立字段来进行搜索，类似京东的多条件查询；---一层层过滤出自己需要的商品；
+商品建模的时候指定哪些属性是可以用来搜索的；
+
+
+facet	英[ˈfæsɪt]
+美[ˈfæsɪt]
+n.	小平面; 侧面，方面; （昆虫的） 小眼面; [建] 柱槽筋;
+vt.	在…上琢面;
+
+fiori 移动；
+
+WCMS: web content manager system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

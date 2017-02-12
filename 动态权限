@@ -1,0 +1,72 @@
+1.权限的检查一般放在baseActivity 中：
+    public boolean hasPermission(String... permissions) {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+2.权限的申请：
+   public void requestPermission(int code, String... permissions) {
+        ActivityCompat.requestPermissions(this, permissions, code);
+    }
+    //如果没有权限我们就去申请权限
+	if(Build.VERSION.SDK_INT >= 23&&(!hasPermission(Manifest.permission.CAMERA))){
+	    //如果申请权限的时候发现用户上次的时候已经拒绝过一次，那么本次申请的时候应该给用户一个提示框告诉用户我们为何要申请这个权限
+		if(ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission.READ_PHONE_STATE)){
+				showMessage("We need *** permission to ***,please grant this permission!", new DialogInterface.OnClickListener() {
+				@Override
+					public void onClick(DialogInterface dialog, int which) {
+						requestPermission(Constants.CAMERA_CODE, Manifest.permission.CAMERA);
+					}
+				});
+			}else{
+				requestPermission(Constants.CAMERA_CODE,Manifest.permission.CAMERA);
+
+			}
+		}else{
+			startActivity(new Intent(this, VinScannerActivity.class));
+		}
+
+
+		}
+ 	}
+
+3.权限的回调：
+//将这个权限甚至之后用户的操作回调在baseActivity中进行回调，回调之后
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Constants.CAMERA_CODE:
+               callback(grantResults)；
+        }
+    }
+    //在baseActivity中进行空实现，好让子Activity可以自己处理;
+    public void callback(int[] grantResults) {
+    }
+
+    在子Activity 中重写每个callback()并检查用户的接受/拒绝情况：
+ 	@Override
+ 	public void callback(int[] grantResults) {
+ 
+ 		if (grantResults.length > 0&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+			// permission was granted
+
+		} else {
+			// 用户勾选never ask again 之后直接提示用户去系统的setting里面去更改app的权限；
+			if (!ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission.READ_PHONE_STATE)){
+				showMessage("We need *** permission to **,please grant this permission in Settings->Apps->MyLincoln.", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						Intent intent = new Intent();
+						intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+						Uri uri = Uri.fromParts("package", Context.this.getPackageName(), null);
+						intent.setData(uri);
+						startActivity(intent);
+					}
+				});
+			}
+ 		}
+ 	}

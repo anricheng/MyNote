@@ -1,0 +1,14 @@
+运行过程：
+1.unzip hycom-dev2-OSX-6.0.0.zip to user root directroy
+2.cd 到platform 下 run . ./setantenv.sh 
+3.ant all
+4.运行server:./hybrisserver.sh
+5.https://localhost:9002/hac
+6.https://localhost:9002/?site=bookstore
+
+
+	<bean id="updateCustomerPointsAction"
+		class="my.bookstore.fulfilmentprocess.actions.order.UpdateCustomerPointsAction"
+		parent="AbstractProceduralAction">
+		<property name="eventService" ref="eventService" />
+	</bean>

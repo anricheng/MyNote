@@ -1,1 +1,20 @@
-泛型的使用
+1.泛型方法：
+public static <AnyType> getMax(AnyType[] arr){
+}
+2.泛型类
+public class Test<AnyType> {
+    AnyType zhou;
+
+    public AnyType getZhou() {
+        return zhou;
+    }
+
+    public void setZhou(AnyType zhou) {
+        this.zhou = zhou;
+    }
+}
+3.泛型接口：
+public interface IpmlTest<AnyType>{
+	void getMax(AnyType a){	
+	}
+}
