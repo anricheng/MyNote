@@ -7,23 +7,23 @@
 using namespace std;
 template<typename T>
 //这是一个选择排序
-		void selectionSort(T arr[], int n){
-			//遍历整个数组
-			for (int i = 0; i < n; ++i){
-				//找出这个数组中的最小的值
-				//首先设定这个最小的值就是i
-				int miniIndex = i;
-			    //将i之后的所有数据跟i比较，如果它比i小则将这个最小的
-				for (int j = i+1; j < n; ++j)
-				{
-					if(arr[j]<arr[i]){
-						miniIndex = j;
-						swap(arr[i],arr[miniIndex]);
-					}
-				}
-			}
+	void selectionSort(T arr[], int n){
+	//遍历整个数组
+	for (int i = 0; i < n; ++i){
+	//找出这个数组中的最小的值
+	//首先设定这个最小的值就是i
+	int miniIndex = i;
+	//将i之后的所有数据跟i比较，如果它比i小则将这个最小的
+	for (int j = i+1; j < n; ++j)
+	{
+	if(arr[j]<arr[i]){
+	miniIndex = j;
+	swap(arr[i],arr[miniIndex]);
+	}
+	}
+	}
 
-		}
+	}
 //这是插入排序: 第一个元素不动，第二个元素跟前面的元素比较并放在一个合适的位置
 		template<typename T>
 		void insertSort(T arr[], int n){
@@ -68,7 +68,7 @@ void sortTwoPartSortedArray(T arr[], int start,int middle,int end){
 	int i=0;
 	int k=0;
 	int j=middle;
-	for(;k<= end - middle + 1;k++){
+	for(;k< end - middle + 1;k++){
 		if (i > middle-1){
 			 arr[k]=auxArray[j];
 			j++;
@@ -102,16 +102,44 @@ void mergeSort(T arr[], int n){
 			sortTwoPartSortedArray(arr,st,st+sz-1,st+sz+sz-1);
 		}
 }
-
-
-//归并排序
+//用于将[start,middle] 以及[middle+1,end]这两个前后前闭后闭的区间进行合并；
 template<typename T>
-void mergeSortSecond(T arr[], int n){
-	//1.从上到下的归并排序
+void merged(T arr[], int start, int middle ,int end){
+ T aux[end - start + 1]；
 
-	//2.从下到上的归并排序
-	//首先分，一直分到底,这是一个递归的操作；
-	//递归的结束条件就是
+ for(int i=start;i<=end;i++)
+ 	aux[i-start]=arr[i];
+ int i=start,j=middle+1;
+ for(int k=start;k<=end;k++){
+ 	if(i>middle){
+		arr[k]=aux[j-start];
+		j++;
+ 	}else if(j>end){
+		arr[k]=aux[i-start];
+		i++;
+ 	}
+ 	else if (aux[i - start]<aux[j-start])
+ 	{
+ 		arr[k]=aux[i-start];
+ 		i++;
+ 	}else{
+ 		arr[k]=aux[j-start];
+ 		j++;
+ 	}
+ }
+}
+
+//用于对[start,end] 范围内的数据元素的进行排序；
+template<typename T>
+void __mergeSorted(T arr[], int start, int end){
+   //使用递归的方法去处理，首先得找到递归到底的情况,也就是最后start>=end 的时候；
+	if(start<=end)
+		return;
+	middle= (start + end)/2;
+	__mergeSorted(start,middle);
+	__mergeSorted(middle + 1,end);
+	merged(arr,start,middle,end);
+
 }
 
 //这是用来测试的主函数；

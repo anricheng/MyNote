@@ -1,0 +1,12 @@
+1 update FAQ Issue 11 and remove email register content
+
+2 add prompt for error code 581
+
+3 update Terms & Conditions
+commit:d2bab2c2d24d246360e8e60183a3a25c4e842a06 [d2bab2c]
+1.update vinscanner screen subtitle content;
+2.add read external storage permission request for baidu pusher;
+3.fix bug for register screen validation error ;
+4.update FAQ issue 11 content;
+5.add error handle message for code 581;
+6.update T&C content;

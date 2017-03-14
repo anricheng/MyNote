@@ -5,7 +5,7 @@
 	cmd + } 	向右缩进一个级别 
 	cmd + {	向后退回一个级别 
 	cmd+L 	选择当前行  
-	tap		代码自动补全
+	tap		代码自动补全g
 	cmd+shift+P  打开命令面板
 	cmd +/- 	增大或者缩小字体
 	cmd +enter 可以在行中的任何地方增加下一行进行编辑
@@ -89,7 +89,7 @@
 默认情况下 代码型文件都有自动补全的功能，当你输入任何文字出现自动补全的列表时候你输入tab 或者enter 都会选择，如果只是单纯的想换行，可以在setting-user文件里面加入这样一句：
 "auto_complete_commit_on_tap":ture
 
-sublimeCodeIntel 
+1000811203139
 
 
 

@@ -1,0 +1,4 @@
+1.GenerateFindViewById ： command + options + E
+2.Exynap: 自动生成代码： command + shift + D 
+3.解决错误：option + D
+4.生成测试类：command + shift + T 

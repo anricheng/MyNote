@@ -16,6 +16,8 @@ namespace SortTestHelper{
 		}
 		return arr;
 	}
+
+	int * generateNea 
 	template<typename T>
 	void printArray(T arr[],int n){
 		for (int i = 0; i < n; ++i)
