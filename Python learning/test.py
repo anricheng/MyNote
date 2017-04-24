@@ -475,8 +475,18 @@ Python 中内置的装饰器函数 用@表明是对装饰器的调用:
 def func(x):
 return x*2
 
+Python 内置的常用的装饰器：
+@log   --打印log  在需要打印日志的函数上直接加上这个annotation 即可打印出日志
+@transaction  --数据库事务
+@performance   --检测性能
+@post('/api)  --URL路由
+
 
 '''
 
 
+'''
+python 的装饰器针对多参数的支持:
+利用Python的 *args 和 **kw，保证任意个数的参数总是能正常调用：
+'''
 
