@@ -6,6 +6,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(SOURCE_FILES
     aric.cpp
     MergeSortBU.cpp
-    sortTestHelper.h)
+    sortTestHelper.h SelectSort.h)
 
 add_executable(cpp ${SOURCE_FILES})

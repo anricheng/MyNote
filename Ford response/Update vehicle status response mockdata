@@ -1,0 +1,137 @@
+1. 获取commandID
+		{
+			"$id": "1",
+			"commandId": "048e4079-c8a4-4280-8479-00cd19e48f7b",
+			"status": 200,
+			"version": "1.0.0"
+		}
+
+2.经纬度的mockdata:
+		"latitude": "31.3352",
+		"longitude": "121.5106",
+		"status": "CURRENT",
+		"timestamp": "06-01-2017 02:13:16"
+
+3.refresh vehicle data:
+		{
+		"status": 200, "vehiclestatus": {
+		"vin": "1FTSW20P46EA80124", "lockStatus": {
+		"value": "LOCKED",
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "alarm": {
+		"value": "NOTSET",
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "odometer": {
+		"value": 0,
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "fuel": {
+		"fuelLevel": 75, "distanceToEmpty": 230, "timeStamp": "7-4-2016 01:11:01", "status": "LAST_KNOWN"
+		}, "gps": {
+		"latitude": 42.2934,
+		"longitude": -83.231,
+		"timeStamp": "7-4-2016 01:11:01", "status": "LAST_KNOWN"
+		},
+		"gpsState": "SHIFTED", "remoteStart": {
+		"remoteStartDuration": 15,
+		"remoteStartTime": 7, "timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "remoteStartStatus": {
+		"value": 1,
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "battery": {
+		"batteryHealth": {
+		"value": "STATUS_GOOD", "timeStamp": "8-4-2016 11:01:01"
+		}, "batteryHealthActual": {
+		"value": 12,
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		} },
+		"oil": {
+		"oilLife": "STATUS_GOOD", "oilLifeActual": 75,
+		"timeStamp": "8-4-2016 11:01:01", "status": "LAST_KNOWN"
+		}, "tirePressure": {
+		"value": "STATUS_GOOD",
+		"timeStamp": "8-4-2016 11:01:01" },
+		"authorization": "AUTHORIZED", "TPMS": {
+		"tirePressureByLocation": {
+		"value": 1,
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "tirePressureSystemStatus": {
+		"value": "Low_Composite_Stat", "timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "dualRearWheel": {
+		"value": 0,
+		"timeStamp": "8-4-2016 11:01:01", "status": "LAST_KNOWN"
+		}, "leftFrontTireStatus": {
+		"value": "NORMAL",
+		"timeStamp": "8-4-2016 11:01:01",
+		"status": "CURRENT" },
+		"leftFrontTirePressure": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "rightFrontTireStatus": {
+		"value": "NORMAL",
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "rightFrontTirePressure": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "outerLeftRearTireStatus": {
+		"value": "NORMAL",
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "outerLeftRearTirePressure": {
+		"value": 35,
+		"timeStamp": "5-6-2016 09:06:23", "status": "CURRENT"
+		}, "outerRightRearTireStatus": {
+		"value": "NORMAL",
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "outerRightRearTirePressure": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "innerLeftRearTireStatus": {
+		"value": "NORMAL",
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "innerLeftRearTirePressure": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "innerRightRearTireStatus": {
+		"value": "NORMAL",
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "innerRightRearTirePressure": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "CURRENT"
+		}, "recommendedFrontTirePressure": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "LAST_KNOWN"
+		}, "recommendedRearTirePressure": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "LAST_KNOWN"
+		} },
+		"chargingStatus": {
+		"value": 4,
+		"timeStamp": "8-4-2016 11:01:01", "status": "LAST_KNOWN"
+		}, "batteryFillLevel": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "LAST_KNOWN"
+		}, "elVehDTE": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "LAST_KNOWN"
+		}, "hybridModeStatus": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01", "status": "LAST_KNOWN"
+		}, "chargeTime": {
+		"chargeStartTime": "8-4-2016 11:01:01", "chargeEndTime": "8-4-2016 13:01:01", "timeStamp": "8-4-2016 11:01:01", "status": "LAST_KNOWN"
+		}, "plugStatus": {
+		"value": 35,
+		"timeStamp": "8-4-2016 11:01:01",
+		"status": "LAST_KNOWN" },
+		"FirmwareUpgInProgress": {
+		"value": false,
+		"timeStamp": "8-4-2016 11:01:01"
+		}, "DeepSleepInProgress": {
+		"value": false,
+		"timeStamp": "8-4-2016 11:01:01" },
+		"ccsSettings": {
+		"vehicleData": -1,
+		"location": 0, "vehicleConnectivity": 1, "timeStamp": "8-4-2016 11:01:01"
+		},
+		"lastRefresh": "8-4-2016 11:04:01", "lastModifiedDate": "8-4-2016 11:04:01", "serverTime": "3-4-2017 11:04:01"
+		},
+		"version": "3.0.0" 
+		}

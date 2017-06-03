@@ -1,0 +1,57 @@
+1.LifeCycle as first class citizen
+2.lifeCycle aware observable
+3.lightweight viewmodels
+4.object mapping for sqlite--room
+
+		"cwareUrl": "http://elearning.chinaacc.com/xcware/video/videoList/videoList.shtm?cwareID=18941",
+
+
+		{
+	"$id": "1",
+	"vehiclestatus": {
+		"$id": "2",
+		"vin": null,
+		"longitude": "121.47",
+		"latitude": "31.23",
+		"remoteStartStatus": 0,
+		"remoteStartDuration": 0,
+		"remoteStartTime": 0,
+		"lockStatus": "LOCKED",
+		"alarm": "SET",
+		"batteryHealth": "STATUS_GOOD",
+		"odometer": 0,
+		"fuelLevel": 0,
+		"oilLife": "STATUS_GOOD",
+		"tirePressure": "STATUS_GOOD",
+		"authorization": "AUTHORIZED",
+		"gpsState": "SHIFTED",
+		"lastRefresh": null,
+		"lastModifiedDate": null,
+		"oilLifeActual": 0,
+		"batteryStatusActual": 0,
+		"serverTime": null,
+		"distanceToEmpty": null,
+		"tirePressureSystemStatus": null,
+		"recommendedFrontTirePressure": null,
+		"recommendedRearTirePressure": null,
+		"leftFrontTireStatus": null,
+		"leftFrontTirePressure": null,
+		"rightFrontTireStatus": null,
+		"rightFrontTirePressure": null,
+		"innerLeftRearTireStatus": null,
+		"innerLeftRearTirePressure": null,
+		"innerRightRearTireStatus": null,
+		"innerRightRearTirePressure": null,
+		"outerLeftRearTireStatus": null,
+		"outerLeftRearTirePressure": null,
+		"outerRightRearTireStatus": null,
+		"outerRightRearTirePressure": null,
+		"tirePressureByLocation": null,
+		"dualRearWheel": null,
+		"ccsSettings": null
+	},
+	"status": 200,
+	"version": "1.0.0"
+}
+
+sh
