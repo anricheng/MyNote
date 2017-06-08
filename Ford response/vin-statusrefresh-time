@@ -44,3 +44,57 @@
 	"status": 200,
 	"version": "1.0.0"
 }
+
+
+{
+	"$id": "1",
+	"vehiclestatus": {
+		"$id": "2",
+		"vin": null,
+		"longitude": "120.47",
+		"latitude": "32.23",
+		"remoteStartStatus": 0,
+		"remoteStartDuration": 0,
+		"remoteStartTime": 0,
+		"lockStatus": "LOCKED",
+		"alarm": "SET",
+		"batteryHealth": "STATUS_GOOD",
+		"odometer": 0,
+		"fuelLevel": 0,
+		"oilLife": "STATUS_GOOD",
+		"tirePressure": "STATUS_GOOD",
+		"authorization": "AUTHORIZED",
+		"gpsState": "SHIFTED",
+		"lastRefresh": null,
+		"lastModifiedDate": "06-01-2017 02:13:16",
+		"oilLifeActual": 0,
+		"batteryStatusActual": 0,
+		"serverTime": null,
+		"distanceToEmpty": null,
+		"tirePressureSystemStatus": null,
+		"recommendedFrontTirePressure": null,
+		"recommendedRearTirePressure": null,
+		"leftFrontTireStatus": null,
+		"leftFrontTirePressure": null,
+		"rightFrontTireStatus": null,
+		"rightFrontTirePressure": null,
+		"innerLeftRearTireStatus": null,
+		"innerLeftRearTirePressure": null,
+		"innerRightRearTireStatus": null,
+		"innerRightRearTirePressure": null,
+		"outerLeftRearTireStatus": null,
+		"outerLeftRearTirePressure": null,
+		"outerRightRearTireStatus": null,
+		"outerRightRearTirePressure": null,
+		"tirePressureByLocation": null,
+		"dualRearWheel": null,
+		"ccsSettings": null
+	},
+	"status": 200,
+	"version": "1.0.0"
+}
+
+1.update strings for LW is on the way;
+2.update strings and image for simplified version of take over instruction.
+3.remove V3 interface (getAllStatus,refreshStatus)
+4.social media login doesn't test after remove V3 code due to unstable of LighHouse environment.
