@@ -1,0 +1,8 @@
+1. homescreen update isssue:
+	1.轮询已授权的每辆车的v3 get vehicle status 获得 shift and location 信息
+	2.更新getAllVehicleStatus 返回的信息
+	question:
+	1.每次getAllVehiclleStatus时候都得去轮询？
+	2.在V3接口正确返回结果之前此时进图地图页面应该怎么应对？
+	3.是不是可以push微软更新getAllVehicleStatus的接口
+	4.
