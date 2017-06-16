@@ -1,0 +1,3 @@
+V3 与 deprecated 的区别:
+V3：只针对authorized 的车辆起作用并且即使车辆在低电平的模式下依然可以返回gps信息
+deprecated：可以返回不同授权模式下的车辆的信息；
