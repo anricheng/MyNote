@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mpchart">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/mpchart.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,11 @@
+1.三种方式：
+	1.原生的方式 VideoView :android 原生无定制
+	2.MediaPlayer（控制播放） + surfaceView （显示帧数据） :处理生命周期 可定制 不在在listView中正常的显示，不可使用属性动画 
+	3.MediaPlayer（控制播放） + TextureView（显示帧数据）  ：处理生命周期 可定制 可在listview等复杂控件中正常显示，同时Textture （SurfaceTextureListener 接口中包含的生命周期 available，changed, destroy）可以像普通的view一样添加属性动画
+2.mediaPlayer 的生命周期：
+ idle -->setDataSource()--->Initialized--->PrepareAysc()--->Preparing--->OnPrepareListener.onPrepared()--->Prepared--->start()--->started===>>>stoped/paused/completed
+3.MediaPlayer 常用的回调接口：
+	1.onPreparedListener  此时mp已经准备好了，可以调用start去播放视频了
+	2.onErrorListener  针对所有异常的回调
+	3.onCompletionListener  视频播放完毕的回调 
+	4.onBufferingUpdateListener  视频比较大的时候会分段缓存，告诉调用者缓存的状况

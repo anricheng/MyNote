@@ -34,7 +34,7 @@ import com.youdu.vuandroidadsdk.R;
 
 
 /**
- * @authour qndroid
+ * @authour aric
  * @function 负责广告播放，暂停，事件触发
  * @date 2016/6/18
  */
@@ -42,11 +42,13 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
         MediaPlayer.OnPreparedListener, MediaPlayer.OnInfoListener, MediaPlayer.OnErrorListener,
         MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener, TextureView.SurfaceTextureListener {
     /**
-     * Constant
+     * Constants
      */
-    private static final String TAG = "MraidVideoView";
+    private static final String TAG = "AricVideoView";
+    //使用handler 来实现定时器的效果
     private static final int TIME_MSG = 0x01;
     private static final int TIME_INVAL = 1000;
+    //播放器的生命状态以及播放次数的统计
     private static final int STATE_ERROR = -1;
     private static final int STATE_IDLE = 0;
     private static final int STATE_PLAYING = 1;
@@ -55,20 +57,20 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
     /**
      * UI
      */
-    private ViewGroup mParentContainer;
+    private ViewGroup mParentContainer;//容纳播放器的组件
     private RelativeLayout mPlayerView;
     private TextureView mVideoView;
     private Button mMiniPlayBtn;
     private ImageView mFullBtn;
     private ImageView mLoadingBar;
     private ImageView mFrameView;
-    private AudioManager audioManager;
-    private Surface videoSurface;
+    private AudioManager audioManager;//音量控制器
+    private Surface videoSurface;//真正显示帧数据的类
 
     /**
      * Data
      */
-    private String mUrl;
+    private String mUrl;//要播放的视频的url
     private String mFrameURI;
     private boolean isMute;
     private int mScreenWidth, mDestationHeight;
@@ -84,7 +86,7 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
 
     private MediaPlayer mediaPlayer;
     private ADVideoPlayerListener listener;
-    private ScreenEventReceiver mScreenReceiver;
+    private ScreenEventReceiver mScreenReceiver;//监听屏幕是否锁屏
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
@@ -157,7 +159,7 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
     public boolean isComplete() {
         return mIsComplete;
     }
-
+//这是所有的view都有的接口，用来表明当前的view的可见状态
     @Override
     protected void onVisibilityChanged(View changedView, int visibility) {
         LogUtils.e(TAG, "onVisibilityChanged" + visibility);
@@ -179,7 +181,7 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
         super.onDetachedFromWindow();
     }
 
-
+//只要touch事件在这个view中就由播放器来进行处理，防止与父容器中的touch时间产生任何的冲突。
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         return true;
