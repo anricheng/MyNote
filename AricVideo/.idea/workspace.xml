@@ -6,7 +6,419 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a00cd5e8-e0cc-401b-ab04-85acfcedb38b" name="Default" comment="" />
+    <list default="true" id="a00cd5e8-e0cc-401b-ab04-85acfcedb38b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/MobCommons-2016.0811.1207.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/MobTools-2016.0811.1207.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/ShareSDK-Core-2.7.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/ShareSDK-QQ-2.7.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/ShareSDK-QZone-2.7.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/ShareSDK-Wechat-2.7.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/ShareSDK-Wechat-Core-2.7.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/ShareSDK-Wechat-Moments-2.7.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/arm64-v8a/libjpush210.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/armeabi-v7a/libjpush210.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/armeabi/libjpush210.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/gson-2.3.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/jpush-android-2.1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/mina-core-2.0.13.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/mpchart.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/nineoldandroids-2.4.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/photoview-library-1.2.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/slf4j-android-1.6.1-RC1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/vuandroidadsdk.aar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/x86/libjpush210.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/x86_64/libjpush210.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/zxing.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_1_a_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_1_b_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_1_c_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_2_a_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_2_b_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_2_b_02.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_2_b_03.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_2_b_04.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_2_c_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_3_a_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_3_b_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_3_c_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_4_a_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_4_b_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/bg_4_c_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/arrow_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bar_code_scan_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bg_download.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bg_loading.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bg_recommend_mail_list.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/category.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comment_back_normal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_share_qq.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_share_qqzone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_share_weixin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_share_weixin_pengyou.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_tab_home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_tab_home_selected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_tab_message.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_tab_message_selected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_tab_person.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_tab_person_selected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_tab_pond.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/comui_tab_pond_selected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/default_user_avatar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/fas.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/fat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/flash_light.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/fle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/flf.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/flg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/flh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/fli.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/flj.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/flk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_alipay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_chats.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_follow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_gonggao.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_imooc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_jianpan.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_login.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_position.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_san_jiao.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_search_no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_share.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_splash.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/love_red.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/other_scan_text_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_02.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_03.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_04.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_05.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_06.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_07.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_08.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_09.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_11.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_12.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_13.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/page_loading_14.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/post_close_click_hl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_in_pond.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/qrcode_scan_line.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/setting_selected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/trade_share.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/beep.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/youdo.jks" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_ad_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_ad_mini.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_ad_mini_null.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00001.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00002.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00003.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00004.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00005.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00006.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00007.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00008.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00009.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00010.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00011.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00012.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00013.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00014.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00015.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00016.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00017.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00018.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00019.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00020.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00021.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00022.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00023.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00024.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00025.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00026.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00027.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00028.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_loading_v2_00029.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-nodpi/xadsdk_ad_loading.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-nodpi/xadsdk_ad_pause.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-nodpi/xadsdk_ad_play.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-nodpi/xadsdk_img_error.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/youdu/ApplicationTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/ShareSDK.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/CourseDetailActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/GuideActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/HomeActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/LoadingActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/LoginActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/MessageActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/PhotoViewActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/SearchActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/SettingActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/activity/base/BaseActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/adapter/CourseAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/adapter/CourseCommentAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/adapter/HotSalePagerAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/adapter/PhotoPagerAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/adapter/SearchAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/adapter/SystemMsgAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/application/ImoocApplication.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/constant/Constant.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/db/SPManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/db/database/DBDataHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/db/database/DBHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/jpush/JPushReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/jpush/PushMessageActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/manager/DialogManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/manager/UserManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/BaseModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/PushMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/course/BaseCourseModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/course/CourseCommentValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/course/CourseFooterDateValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/course/CourseFooterRecommandValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/course/CourseFooterValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/course/CourseHeaderValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/course/CourseModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/mina/MinaContent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/mina/MinaMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/mina/MinaModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/recommand/BaseRecommandModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/recommand/RecommandBodyValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/recommand/RecommandFooterValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/recommand/RecommandHeadValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/recommand/RecommandModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/search/BaseSearchModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/search/ProductModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/search/SearchModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/update/UpdateInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/update/UpdateModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/user/User.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/module/user/UserContent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/network/http/HttpConstants.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/network/http/RequestCenter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/network/mina/ConnectionConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/network/mina/ConnectionManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/network/mina/MinaReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/network/mina/MinaService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/network/mina/SessionManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/service/UpdateProductService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/service/update/UpdateDownloadListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/service/update/UpdateDownloadRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/service/update/UpdateManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/service/update/UpdateService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/share/ShareData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/share/ShareDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/share/ShareManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/util/DateFormatHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/util/ImageLoaderManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/util/StatusBarUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/util/Util.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/CenterTextView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/CommonDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/DragLayout.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/MyQrCodeDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/associatemail/MailBoxAssociateTokenizer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/associatemail/MailBoxAssociateView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/course/CourseDetailFooterView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/course/CourseDetailHeaderView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/fragment/BaseFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/fragment/guide/GuideFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/fragment/home/CommonFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/fragment/home/HomeFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/fragment/home/MessageFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/fragment/home/MineFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/home/HomeBottomItem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/home/HomeHeaderLayout.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/viewpagerindictor/CirclePageIndicator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/view/viewpagerindictor/PageIndicator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/wxapi/WXEntryActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/app/CaptureActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/app/PreferencesActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/camera/AutoFocusCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/camera/CameraConfigurationManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/camera/CameraManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/camera/FlashlightManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/camera/PreviewCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/BeepManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/CaptureActivityHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/Contents.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/DecodeFormatManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/DecodeHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/DecodeThread.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/FinishListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/InactivityTimer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/Intents.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/PlanarYUVLuminanceSource.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/decode/RGBLuminanceSource.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/encode/EncodeThread.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/encode/QRCodeEncoder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/util/Util.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/view/ViewfinderResultPointCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/youdu/zxing/view/ViewfinderView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/actionsheet_in.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/anim/actionsheet_out.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/color/vpi__dark_theme.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/color/vpi__light_theme.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_comment_owner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_home_edittext.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_message_imooc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_message_tip.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_message_unread.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_message_zan.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_time_text.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/flash_drawable_btn.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/item_search_drawable.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/loading_data_anim.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/mm_title_back_btn.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/photo_drawable_btn.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/qrcode_drawable_btn.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_course_detail_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_guide_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_jpush_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_loading_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_message_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_nfcard_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_photo_view_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_qrcode_capture_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_search_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_setting_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_common_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_mycode_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_share_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_message_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mine_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_welcome_five.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_welcome_four.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_welcome_one.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_welcome_three.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_welcome_two.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_associate_mail_list.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_comment_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_home_recommand_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_hot_product_pager_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_message_card_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_product_card_one_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_product_card_three_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_product_card_two_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_qrcode_footer.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_qrcode_title.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_search_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_send_comment_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_video_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_course_comment_footer_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_course_comment_head_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_home_head_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/course_detail.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/home_data.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/search.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/splash_ad_data.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/update.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/user_info.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-v19/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-v23/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/ids.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/vpi__attrs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/vpi__colors.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/vpi__defaults.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/xml/nfc_tech_filter.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/xml/preferences.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradle.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradlew" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradlew.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imooc_business.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/settings.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/proguard-rules.pro" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/androidTest/java/com/youdu/ApplicationTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/activity/AdBrowserActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/adutil/ImageLoaderUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/adutil/LogUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/adutil/ResponseEntityToModule.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/adutil/Utils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/constant/SDKConstant.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/core/AdContextInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/core/AdParameters.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/core/AdSDKManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/core/BaseRenderer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/core/display/DisplayAdContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/core/display/DisplayAdSlot.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/core/display/ImageAdRenderer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/core/video/VideoAdContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/core/video/VideoAdSlot.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/db/realm/RealmManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/module/AdInstance.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/module/AdValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/module/monitor/Monitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/module/monitor/emevent/EMEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/module/monitor/emevent/ExfuEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/module/monitor/emevent/FullEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/module/monitor/emevent/PauseEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/CommonOkHttpClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/HttpConstant.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/RequestCenter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/cookie/PersistentCookieStore.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/cookie/SerializableHttpCookie.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/cookie/SimpleCookieJar.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/exception/OkHttpException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/https/HttpsUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/listener/DisposeDataHandle.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/listener/DisposeDataListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/listener/DisposeDownloadListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/listener/DisposeHandleCookieListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/request/CommonRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/request/RequestParams.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/response/CommonFileCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/okhttp/response/CommonJsonCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/report/ReportManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/widget/CustomVideoView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/widget/VideoFullDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/widget/adbrowser/AdBrowserLayout.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/widget/adbrowser/AdBrowserWebViewClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/widget/adbrowser/Base64Drawables.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/widget/adbrowser/BrowserWebView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/anim/xadsdk_anim_ad_loading.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable/xadsdk_ad_loading_anim.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/layout/xadsdk_dialog_video_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/layout/xadsdk_video_player.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/layout/xadsdk_video_player_big_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/layout/xadsdk_video_player_small_layout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/values/color.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/values/ids.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/src/main/res/values/style.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vuandroidadsdk/vuandroidadsdk.iml" />
+    </list>
     <ignored path="AricVideo.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +442,11 @@
     <favorites_list name="AricVideo" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="GuideActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/youdu/activity/GuideActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="315">
               <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
               <folding />
             </state>
@@ -44,9 +456,16 @@
       <file leaf-file-name="CustomVideoView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/widget/CustomVideoView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="228" column="51" selection-start-line="228" selection-start-column="51" selection-end-line="228" selection-end-column="51" />
-              <folding />
+            <state relative-caret-position="430">
+              <caret line="204" column="58" selection-start-line="202" selection-start-column="0" selection-end-line="204" selection-end-column="58" />
+              <folding>
+                <element signature="e#11764#12070#0" expanded="true" />
+                <element signature="e#12069#12070#0" expanded="true" />
+                <element signature="e#12423#12734#0" expanded="true" />
+                <element signature="e#12733#12734#0" expanded="true" />
+                <element signature="e#17286#17821#0" expanded="true" />
+                <element signature="e#17820#17821#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,7 +483,7 @@
       <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/adutil/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
+            <state relative-caret-position="285">
               <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
               <folding />
             </state>
@@ -74,7 +493,7 @@
       <file leaf-file-name="ViewGroup.java" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Android/SDK/sources/android-23/android/view/ViewGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
+            <state relative-caret-position="62100">
               <caret line="4245" column="19" selection-start-line="4245" selection-start-column="19" selection-end-line="4245" selection-end-column="19" />
               <folding />
             </state>
@@ -98,7 +517,7 @@
       <file leaf-file-name="xadsdk_video_player.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/res/layout/xadsdk_video_player.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
+            <state relative-caret-position="615">
               <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
               <folding />
             </state>
@@ -111,7 +530,7 @@
       <file leaf-file-name="MediaPlayer.java" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Android/SDK/sources/android-23/android/media/MediaPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
+            <state relative-caret-position="7365">
               <caret line="566" column="13" selection-start-line="566" selection-start-column="13" selection-end-line="566" selection-end-column="13" />
               <folding />
             </state>
@@ -121,7 +540,7 @@
       <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Android/SDK/sources/android-23/android/view/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
+            <state relative-caret-position="140220">
               <caret line="9590" column="19" selection-start-line="9590" selection-start-column="19" selection-end-line="9590" selection-end-column="19" />
               <folding />
             </state>
@@ -129,6 +548,9 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -3216,8 +3638,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="28" />
+    <option name="y" value="23" />
+    <option name="width" value="1412" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -3245,6 +3669,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3383,11 +3808,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane />
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3396,7 +3820,6 @@
     <property name="android.sdk.path" value="$USER_HOME$/Android/SDK" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="device.picker.selection" value="192.168.57.101:5555" />
-    <property name="FullScreen" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -3693,6 +4116,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a00cd5e8-e0cc-401b-ab04-85acfcedb38b" name="Default" comment="" />
@@ -3704,43 +4130,51 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="28" y="23" width="1412" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="CodotaView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="CodotaView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22772278" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22772278" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2546495" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25985402" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -3750,17 +4184,24 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/youdu/activity/GuideActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/youdu/activity/CourseDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/youdu/activity/GuideActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="315">
           <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
           <folding />
         </state>
@@ -3774,31 +4215,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Android/SDK/sources/android-23/android/view/View.java">
+    <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/widget/CustomVideoView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="9590" column="19" selection-start-line="9590" selection-start-column="19" selection-end-line="9590" selection-end-column="19" />
+        <state relative-caret-position="430">
+          <caret line="204" column="58" selection-start-line="202" selection-start-column="0" selection-end-line="204" selection-end-column="58" />
+          <folding>
+            <element signature="e#11764#12070#0" expanded="true" />
+            <element signature="e#12069#12070#0" expanded="true" />
+            <element signature="e#12423#12734#0" expanded="true" />
+            <element signature="e#12733#12734#0" expanded="true" />
+            <element signature="e#17286#17821#0" expanded="true" />
+            <element signature="e#17820#17821#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/constant/SDKConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Android/SDK/sources/android-23/android/media/MediaPlayer.java">
+    <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/adutil/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="566" column="13" selection-start-line="566" selection-start-column="13" selection-end-line="566" selection-end-column="13" />
+        <state relative-caret-position="285">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/res/layout/xadsdk_video_player.xml">
+    <entry file="file://$USER_HOME$/Android/SDK/sources/android-23/android/view/ViewGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        <state relative-caret-position="62100">
+          <caret line="4245" column="19" selection-start-line="4245" selection-start-column="19" selection-end-line="4245" selection-end-column="19" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/res/drawable-hdpi/xadsdk_ad_mini.png">
@@ -3811,34 +4264,29 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Android/SDK/sources/android-23/android/view/ViewGroup.java">
+    <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/res/layout/xadsdk_video_player.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="4245" column="19" selection-start-line="4245" selection-start-column="19" selection-end-line="4245" selection-end-column="19" />
+        <state relative-caret-position="615">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Android/SDK/sources/android-23/android/media/MediaPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7365">
+          <caret line="566" column="13" selection-start-line="566" selection-start-column="13" selection-end-line="566" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/adutil/Utils.java">
+    <entry file="file://$USER_HOME$/Android/SDK/sources/android-23/android/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/constant/SDKConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vuandroidadsdk/src/main/java/com/youdu/widget/CustomVideoView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="228" column="51" selection-start-line="228" selection-start-column="51" selection-end-line="228" selection-end-column="51" />
+        <state relative-caret-position="140220">
+          <caret line="9590" column="19" selection-start-line="9590" selection-start-column="19" selection-end-line="9590" selection-end-column="19" />
           <folding />
         </state>
       </provider>

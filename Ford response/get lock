@@ -1,0 +1,59 @@
+Unlock
+{
+	"$id": "1",
+	"eventData": {
+		"$id": "2",
+		"warning": 0,
+		"DoorStatuses": {
+			"$id": "3",
+			"$values": []
+		}
+	},
+	"errorDetailCode": null,
+	"status": 200,
+	"version": "1.0.0"
+}
+
+lock 
+{
+	"$id": "1",
+	"eventData": {
+		"$id": "2",
+		"warning": 0,
+		"DoorStatuses": {
+			"$id": "3",
+			"$values": [{
+				"$id": "4",
+				"Door": "RR",
+				"Status": 0
+			}, {
+				"$id": "5",
+				"Door": "LR",
+				"Status": 0
+			}, {
+				"$id": "6",
+				"Door": "PF",
+				"Status": 0
+			}, {
+				"$id": "7",
+				"Door": "TR",
+				"Status": 0
+			}, {
+				"$id": "8",
+				"Door": "HO",
+				"Status": 0
+			}, {
+				"$id": "9",
+				"Door": "DF",
+				"Status": 0
+			}, {
+				"$id": "10",
+				"Door": "TG",
+				"Status": 0
+			}]
+		}
+	},
+	"errorDetailCode": null,
+	"status": 200,
+	"version": "1.0.0"
+}
