@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="20dp" >
+
+    <Button
+        android:id="@+id/image_depot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/photo_camera_selector"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:textColor="@color/main_color"
+        android:text="@string/photo_select_image"
+        android:textSize="16sp" />
+
+    <View 
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:background="@color/main_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        />
+    
+    <Button
+        android:id="@+id/photo_camre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/photo_camera_selector"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:text="@string/photo_select_camre"
+        android:textColor="@color/main_color"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/user_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/photo_camera_selector"
+        android:paddingBottom="10dip"
+        android:textColor="@color/main_color"
+        android:paddingTop="10dip"
+        android:text="@string/photo_select_cancle"
+        android:textSize="16sp" />
+
+</LinearLayout>

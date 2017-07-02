@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <!-- 头部颜色 -->
+    <color name="top_bg_color">#323a45</color>
+
+    <!-- 灰色 -->
+    <color name="main_gray"> #767676</color>
+
+    <!-- 主色 -->
+    <color name="main_color">#c0ae81</color>
+
+    <!-- 没有颜色 -->
+    <color name="no_color">#00000000</color>
+</resources>

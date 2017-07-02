@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Template</string>
+
+    <string name="photo_select_image">从手机选择</string>
+    <string name="photo_select_camre">拍照</string>
+    <string name="photo_select_cancle">取消</string>
+</resources>

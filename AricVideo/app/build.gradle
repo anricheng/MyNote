@@ -3,7 +3,7 @@ apply plugin: 'realm-android' //依赖Realm数据库，插件化依赖
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.youdu"
