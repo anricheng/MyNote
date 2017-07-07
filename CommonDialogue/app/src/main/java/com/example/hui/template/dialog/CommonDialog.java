@@ -14,9 +14,9 @@ import com.example.hui.template.R;
 /**
  * description：
  * <p>
- * Created by 曾辉 on 2016/6/30 22:35
- * QQ：240336124
- * Email: 240336124@qq.com
+ * Created by aric on 2016/6/30 22:35
+ * QQ：1048368664
+ * Email: 1048368664@qq.com
  * Version：1.0
  */
 public class CommonDialog extends Dialog {
