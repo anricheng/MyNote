@@ -1,0 +1,22 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lsn8_materialdesign_slidingmenu_navigationview.MainActivity" xmlns:app="http://schemas.android.com/apk/res/com.example.lsn8_materialdesign_slidingmenu_navigationview">
+	<!-- 内容部分 -->
+    <FrameLayout
+        android:id="@+id/fl"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+         />
+    <!-- 菜单部分 -->
+    <android.support.design.widget.NavigationView
+        android:layout_gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        app:menu="@menu/navigation_menu"
+        app:headerLayout="@layout/navigation_headerlayout"
+        android:background="@android:color/darker_gray"
+        />
+
+</android.support.v4.widget.DrawerLayout>

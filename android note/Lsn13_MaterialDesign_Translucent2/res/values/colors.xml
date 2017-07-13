@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--     <color name="background">#fff</color> -->
+    <color name="colorPrimary_pink">#F06292</color>
+<!--     <color name="colorPrimary_pinkDark">#001E63</color> -->
+    <color name="colorPrimary_pinkDark">#E91E63</color>
+    <color name="system_bottom_nav_color">#00ff63</color>
+    <color name="mytextcolor">#F8BBD0</color>
+</resources>
