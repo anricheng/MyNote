@@ -1,0 +1,50 @@
+------------------------------状态栏部分---------------------------------
+1.在style 中设置样式：
+	<item name = "android:windowTranslucentStatus">true</item>
+2.在代码activity中直接设置：
+	getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+	注意：需要在setContentView()之前
+3.前面两部有一个bug就是这样会使得状态栏变为透明的，透明我们定义的布局就会延伸到状态栏空间，状态栏会悬浮在我们的自定义布局之上，造成布局干扰。
+4.为了解决这个bug,可以在我们的根布局中加入一个属性：fitsSystemWindows="true"，此时系统会为你调整整个系统的布局，以便给状态栏流出单独的布局。
+5.此时跟根布局添加一个我们想要的状态栏的颜色即可。
+
+
+其他解决方法：
+1.找到自定义布局中最上面的那个布局，假设为Toolbar,设定Toolbar的高度为：Toolbar高度+System status bar 高度
+2.将tooar bar设置一个padding top 的高度，此时就可以将System status bar 保留在padding的区域而不会覆盖toolbar 要来的内容。
+
+
+-----------5.0+系统实现这种效果：--------------
+1.主题使用appcompat
+2.设置属性：androdi:statusBarColor   android:navigationBarColor--实现虚拟导航栏的沉浸式效果。
+
+或者：
+
+在代码中:getWindow.setStatusBarColor()
+       :getWindow.setNavigationBarColor()
+
+------------------------------虚拟导航栏部分---------------------------------
+1.在style 中设置样式：
+	<item name = "android:windowTranslucentStatus">true</item>
+2.在代码activity中直接设置：
+	getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION_BAR);
+	注意：需要在setContentView()之前
+3.前面两部有一个bug就是这样会使得状态栏变为透明的，透明我们定义的布局就会延伸到状态栏空间，状态栏会悬浮在我们的自定义布局之上，造成布局干扰。
+4.为了解决这个bug,可以在我们的根布局中加入一个属性：fitsSystemWindows="true"，此时系统会为你调整整个系统的布局，以便给状态栏流出单独的布局。
+5.此时跟根布局添加一个我们想要的状态栏的颜色即可。
+
+
+其他解决方法：
+1.找到自定义布局中最上面的那个布局，假设为Toolbar,设定Toolbar的高度为：Toolbar高度+System status bar 高度
+2.将tooar bar设置一个padding top 的高度，此时就可以将System status bar 保留在padding的区域而不会覆盖toolbar 要来的内容。
+
+
+-----------5.0+系统实现这种效果：--------------
+1.主题使用appcompat
+2.设置属性：androdi:statusBarColor   android:navigationBarColor--实现虚拟导航栏的沉浸式效果。
+
+或者：
+
+在代码中:getWindow.setStatusBarColor()
+       :getWindow.setNavigationBarColor()
+
