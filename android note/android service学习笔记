@@ -1,0 +1,87 @@
+1.生命周期的方法：onCreate()、onStartCommand(） onDestroy()
+启动service的方法： 像Activity 一样创建一个intent 之后直接调用startService 
+关闭service的方法:  创建一个intent 之后直接调用stopService 即可
+其中onCreate()方法只有在第一次调用startService的时候会调用，但是onStartCommand方法在每次调用startService的时候都会调用；
+
+note:这种启动service的方法只能通知一个service启动，并不能做更多的交互。
+
+2.与Activity之间的交互： bindService，通过在Activity 中构造一个ServiceConnection来将service中的Binder 通过onBind 方法传递给Activity，此时再在Activity的ServiceConnectiong的匿名内部类中实现对service所要进行的操作精细控制。
+
+    @Override  
+    public IBinder onBind(Intent intent) {  
+        return mBinder;  
+    } 
+
+bindService（）三个参数中：BIND_AUTO_CREATE表示在Activity和Service建立关联后自动创建Service，这会使得MyService中的onCreate()方法得到执行，但onStartCommand()方法不会执行。
+
+另外需要注意，任何一个Service在整个应用程序范围内都是通用的，即MyService不仅可以和MainActivity建立关联，还可以和任何一个Activity建立关联，而且在建立关联时它们都可以获取到相同的MyBinder实例。
+
+那么如果我们既点击了Start Service按钮，又点击了Bind Service按钮会怎么样呢？这个时候你会发现，不管你是单独点击Stop Service按钮还是Unbind Service按钮，Service都不会被销毁，必要将两个按钮都点击一下，Service才会被销毁。也就是说，点击Stop Service按钮只会让Service停止，点击Unbind Service按钮只会让Service和Activity解除关联，一个Service必须要在既没有和任何Activity关联又处理停止状态的时候才会被销毁。
+
+3.总结：startService只是启动一个service  而bind不但可以启动一个service并且同时可以关联一个service
+
+4.service 和Thread 之间的关联：没有关联，Service其实是运行在主线程里
+
+ 分别在Activity 和 Service 的onCreate(）方法中使用如下代码：Log.d("MyService", "MainActivity thread id is " + Thread.currentThread().getId());   可以发现线程的id其实是一样的。
+ 所以如果在service中进行耗时的操作也会使得整个程序产生ANR，所以耗时的操作应该在service中再创建一个子线程来进行操作。
+
+5.android 中的service的概念是指 service的运行完全不依赖UI,即使整个app已经关闭，这个app所关联的service也会存在的。
+
+6.既然在Service里也要创建一个子线程，那为什么不直接在Activity里创建呢？这是因为Activity很难对Thread进行控制，当Activity被销毁之后，就没有任何其它的办法可以再重新获取到之前创建的子线程的实例。而且在一个Activity中创建的子线程，另一个Activity无法对其进行操作。但是Service就不同了，所有的Activity都可以与Service进行关联，然后可以很方便地操作其中的方法，即使Activity被销毁了，之后只要重新与Service建立关联，就又能够获取到原有的Service中Binder的实例。因此，使用Service来处理后台任务，Activity就可以放心地finish，完全不需要担心无法对后台任务进行控制的情况。
+
+7.一个标准的service的写法：
+
+			@Override  
+			public int onStartCommand(Intent intent, int flags, int startId) {  
+			    new Thread(new Runnable() {  
+			        @Override  
+			        public void run() {  
+			            // 开始执行后台任务  
+			        }  
+			    }).start();  
+			    return super.onStartCommand(intent, flags, startId);  
+			}  
+			  
+			class MyBinder extends Binder {  
+			  
+			    public void startDownload() {  
+			        new Thread(new Runnable() {  
+			            @Override  
+			            public void run() {  
+			                // 执行具体的下载任务  
+			            }  
+			        }).start();  
+			    }  
+			  
+            }
+8.创建一个前台 service:
+创建前台Service
+
+Service几乎都是在后台运行的，一直以来它都是默默地做着辛苦的工作。但是Service的系统优先级还是比较低的，当系统出现内存不足情况时，就有可能会回收掉正在后台运行的Service。如果你希望Service可以一直保持运行状态，而不会由于系统内存不足的原因导致被回收，就可以考虑使用前台Service。前台Service和普通Service最大的区别就在于，它会一直有一个正在运行的图标在系统的状态栏显示，下拉状态栏后可以看到更加详细的信息，非常类似于通知的效果。当然有时候你也可能不仅仅是为了防止Service被回收才使用前台Service，有些项目由于特殊的需求会要求必须使用前台Service，比如说墨迹天气，它的Service在后台更新天气数据的同时，还会在系统状态栏一直显示当前天气的信息:
+public class MyService extends Service {  
+  
+    public static final String TAG = "MyService";  
+  
+    private MyBinder mBinder = new MyBinder();  
+  
+    @Override  
+    public void onCreate() {  
+        super.onCreate();  
+        Notification notification = new Notification(R.drawable.ic_launcher,  
+                "有通知到来", System.currentTimeMillis());  
+        Intent notificationIntent = new Intent(this, MainActivity.class);  
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,  
+                notificationIntent, 0);  
+        notification.setLatestEventInfo(this, "这是通知的标题", "这是通知的内容",  
+                pendingIntent);  
+        startForeground(1, notification);  
+        Log.d(TAG, "onCreate() executed");  
+    }  
+  
+    .........  
+  
+} 
+
+9.创建一个远程service的功能：只需要在manifest.xml文件中增加一个属性值即可：  android:process=":remote" 
+
+现在重新运行程序，并点击一下Start Service按钮，你会看到控制台立刻打印了onCreate() executed的信息，而且主界面并没有阻塞住，也不会出现ANR。大概过了一分钟后，又会看到onStartCommand() executed打印了出来。

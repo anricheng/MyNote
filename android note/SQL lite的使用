@@ -1,0 +1,95 @@
+1. 打开或者创建 database:
+ SQLiteDatabase db = openOrCreateDatabase("test.db", Context.MODE_PRIVATE, null);  
+        db.execSQL("DROP TABLE IF EXISTS person");  
+2.check the version of sqlite:
+If available, use the sqlite3 tool, for example: adb -e shell sqlite3 --version.
+
+3.create and query in-memory database:
+ String query = "select sqlite_version() AS sqlite_version";
+    SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(":memory:", null);
+    Cursor cursor = db.rawQuery(query, null);
+    String sqliteVersion = "";
+    if (cursor.moveToNext()) {
+        sqliteVersion = cursor.getString(0);
+    }
+
+4.create a table for db:
+
+CREATE TABLE ARIC( _id INTEGER PRIMARY KEY AUTOINCREMENT,name VACHAR,age INTEGER)
+
+5.contentValues cv= new ContentValues(); 使用key_value的方式去存储数据
+
+cv.put(key，value)
+
+db.insert(table name,null ,cv)
+
+6.数据库的增删改查：
+
+     db.insert(String table, String nullColumnHack, ContentValues values);  
+
+     insert中的第二个参数表  示如果插入的数据每一列都为空的话，需要指定此行中某一列的名称，系统将此列设置为NULL，不至于出现错误；insert中的第三个参数是ContentValues类型的变量，是键值对组成的Map，key代表列名，value代表该列要插入的值；
+
+     db.update(String table, Contentvalues values, String whereClause, String whereArgs);  
+
+     update的第二个参数也很类似，只不过它是更新该字段为key的value值为最新的value值，第三个参数whereClause表示WHERE表达式，比如“age > ? and age < ?”等，最后的whereArgs参数是占位符的实际参数值；
+
+
+     db.delete(String table, String whereClause, String whereArgs); 跟update差不多；
+
+     ------------db query-----------------
+
+     db.rawQuery(String sql, String[] selectionArgs);  
+     db.query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy);  
+     db.query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit);  
+     db.query(String distinct, String table, String[] columns, String selection, String[] selectionArgs, String groupBy, 
+
+     这些查询的api 最终都会返回一个Corsor的游标，这个游标中包含了所查询到的结果集
+     使用游标的方法如下：
+     c.move(int offset); //以当前位置为参考,移动到指定行  
+     c.moveToFirst();    //移动到第一行  
+c.moveToLast();     //移动到最后一行  
+c.moveToPosition(int position); //移动到指定行  
+c.moveToPrevious(); //移动到前一行  
+c.moveToNext();     //移动到下一行  
+c.isFirst();        //是否指向第一条  
+c.isLast();     //是否指向最后一条  
+c.isBeforeFirst();  //是否指向第一条之前  
+c.isAfterLast();    //是否指向最后一条之后  
+c.isNull(int columnIndex);  //指定列是否为空(列基数为0)  
+c.isClosed();       //游标是否已关闭  
+c.getCount();       //总数据项数  
+c.getPosition();    //返回当前游标所指向的行数  
+c.getColumnIndex(String columnName);//返回某列名对应的列索引值  
+c.getString(int columnIndex);   //返回当前行指定列的值
+
+
+7.创建的数据库存在的位置：在执行完上面的代码后，系统就会在/data/data/[PACKAGE_NAME]/databases目录下生成一个“aric.db”的数据库文件
+
+8.数据库的所有的操作都可以使用sql指令来进行：
+db.executeSQL(String sql);  写完整的sql语句
+db.executeSQL(String sql, Object[] bindArgs);//sql语句中使用占位符，然后第二个参数是实际的参数集
+
+9.为了更好的使用sqlite 一般的项目中会封装一个 sqliteHelper的功能类以方便我们的实际使用：
+public class DBHelper extends SQLiteOpenHelper {  
+  
+    private static final String DATABASE_NAME = "test.db";  
+    private static final int DATABASE_VERSION = 1;  
+      
+    public DBHelper(Context context) {  
+        //CursorFactory设置为null,使用默认值  
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);  
+    }  
+  
+    //数据库第一次被创建时onCreate会被调用  
+    @Override  
+    public void onCreate(SQLiteDatabase db) {  
+        db.execSQL("CREATE TABLE IF NOT EXISTS person" +  
+                "(_id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, age INTEGER, info TEXT)");  
+    }  
+  
+    //如果DATABASE_VERSION值被改为2,系统发现现有数据库版本不同,即会调用onUpgrade  
+    @Override  
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {  
+        db.execSQL("ALTER TABLE person ADD COLUMN other STRING");  
+    }  
+} 
