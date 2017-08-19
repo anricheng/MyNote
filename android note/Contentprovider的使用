@@ -1,0 +1,8 @@
+Content provider用于一个程序自己给别的程序提供数据，其根本是通过一个uri 去提供自己的数据，在这个uri中是通过scheme[android default:content://]  + authority[这个是在contentProvider类中自定义的，为确保这个是唯一的一般使用这个app的包名]+具体要操作的数据[这个数据可以是一个table 也可以是一个table中的某个字段]  去定义的；
+
+两方：
+1.提供数据的一方：
+继承自contentProvider 并重写其中的 insert update delete query方法[基本就是对sqlite数据的方法的重载]，并且每次对数据进行更新之后需要对需要获取这些数据的其他app 发送一个notifieddatasetchange的通知  并且定义唯一的uri。
+
+
+2.获取数据的一方：需要去获取一个contentResolver 再利用uri 这个唯一的标识符去获取数据提供方提供的数据。并且可以进行增删改查
