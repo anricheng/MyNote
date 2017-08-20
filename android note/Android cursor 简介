@@ -1,0 +1,61 @@
+1.cursor的作用：Android 使用的数据库是SQLite数据库，对于数据库记录的操作，可以使用Cursor（游标）来进行。
+
+2. 关于 Cursor
+
+在你理解和使用 Android Cursor 的时候你必须先知道关于 Cursor 的几件事情：
+Cursor 是每行的集合。
+使用 moveToFirst() 定位第一行。
+你必须知道每一列的名称。
+你必须知道每一列的数据类型。
+Cursor 是一个随机的数据源。
+所有的数据都是通过下标取得。
+Cursor 位于 android.database.Cursor类，可见出它的设计是基于数据库服务产生的。
+在Android 查询数据是通过Cursor 类来实现的。当我们使用 SQLiteDatabase.query()方法时，就会得到Cursor对象， Cursor所指向的就是每一条数据。
+
+
+3. 关于 Cursor 的重要方法：
+close() 
+关闭游标，释放资源
+
+copyStringToBuffer(int columnIndex, CharArrayBuffer buffer) 
+在缓冲区中检索请求的列的文本，将将其存储
+
+getColumnCount() 
+返回所有列的总数
+
+getColumnIndex(String columnName) 
+返回指定列的名称，如果不存在返回-1
+
+getColumnIndexOrThrow(String columnName) 
+从零开始返回指定列名称，如果不存在将抛出IllegalArgumentException 异常。
+
+getColumnName(int columnIndex) 
+从给定的索引返回列名
+
+getColumnNames() 
+返回一个字符串数组的列名
+
+getCount() 
+返回Cursor 中的行数
+
+moveToFirst() 
+移动光标到第一行
+
+moveToLast() 
+移动光标到最后一行
+
+moveToNext() 
+移动光标到下一行
+
+moveToPosition(int position) 
+移动光标到一个绝对的位置
+
+moveToPrevious() 
+移动光标到上一行
+
+4.如何判断cursor 结果集是否为空：
+cursor.movetofirst==false ----代表其中没有数据为空
+
+5.如何去循环遍历这个结果集：
+ 首先根据 字段名去获得这个字段的所在列数的index,之后根据这个index去获取对应的getString(index)/getInt(index)
+

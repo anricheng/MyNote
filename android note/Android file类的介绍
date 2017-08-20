@@ -1,0 +1,53 @@
+一.文件的读取
+
+ 
+FileInputStream in = null;  
+ByteArrayOutputStream bout = null;  
+byte[]buf = new byte[1024];  
+bout = new ByteArrayOutputStream();  
+int length = 0;  
+in = context.openFileInput(filename); //获得输入流  
+while((length=in.read(buf))!=-1){  
+    bout.write(buf,0,length);  
+}  
+byte[] content = bout.toByteArray();  
+filecontentEt.setText(new String(content,"UTF-8")); //设置文本框为读取的内容  
+in.close();  
+bout.close();
+注意：默认会读取/data/data/package/files的文件；
+
+二.文件的存储
+
+FileOutputStream out = null;  
+out = context.openFileOutput(filename, Context.MODE_***);  
+out.write(filecontent.getBytes("UTF-8"));  
+out.close(); 
+注意：文件默认会存储到/data/data/package/files中；
+
+三、文件模式介绍
+
+1.Context.MODE_PRIVATE：私有覆盖模式    
+-  rw-  rw-  ---
+只能被当前应用访问，并且如果写入，则覆盖；
+2.Context.MODE_APPEND：私有追加模式     
+-   rw-  rw-  ---
+只能被当前应用访问，并且如果写入，则追加；
+3.Context,MODE_WORLD_READABLE：公有只读模式      -  rw-  rw-   r--
+可以被其他应用读取；
+4.Context.MODE_WORLD_WRITEABLE：公有可写模式     - rw-   rw-  -w-
+可以被其他应用写入，但不能读取；
+
+注意，如果希望其他使得文件模式叠加，则可以使用加号连接；
+比如：Context.MODE_WORLD_READABLE + Context.MODE_WORLD_WRITEABLE 表示其他应用读写；
+
+四：几种获取文件目录的方式：
+1.context.getOutputStream and context.getInputStream and context.getFilesDir() 最终得到的文件目录都是在data/data/packagename/files 这个目录
+
+2.context.getCacheDir() 得到的目录是:data/data/packagename/cache 当手机的内存不够的时候会自动删除这个目录下面的内容 
+
+3.context.getDir(“Dirname”,MODE_PRIVATE)得到的目录是：data/data/packagename/app_Dirname [备注：PRIVATE 这种模式只能被当前的应用程序访问，并且新写入的数据会覆盖原有的数据 ]
+
+4.context.getExternalDir() context.getExternalCache()这两个方法得到的都是外部存储器的位置mnt/sdcard/Android/data/packagename，跟内部存储器一样使用，它的好处是当app卸载以后它里面的数据也是会被卸载掉的 
+
+5.如果你存储的位置不是在 mnt/sdcard/Android/data/packagename 或者 data/data/packagename 之下的话那么应用卸载之后这些东西是不会被卸载掉的
+
