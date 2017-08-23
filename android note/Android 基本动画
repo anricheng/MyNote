@@ -1,0 +1,26 @@
+1.AlphaAnimation(透明度动画)  fromAlpha   toAlpha
+
+2.ScaleAnimation(缩放动画) fromX toX  fromY toY pivotX pivotY  fillAfter duration interpolator
+
+3.translateAnimation(位移动画)fromXDelta fromYdelta  toXDelta toYDelta
+
+4.RotateAnimation（旋转动画） fromDegrees toDegrees pivotX pivotY 
+
+----------------------1.xml实现动画---------------
+res下面建立一个anim的文件夹 其中建立对应的动画即可。根标签是set,子标签可以是一个或者多个基本动画的标签（alpha,scale,translate,rotate）
+
+--------动画的监听---------------
+可以给一个动画设置监听器，然后在一个动画结束以后去开启另外一个动画，这样就可以实现动画的一次执行。当然也是可以是用animationset  其中给一个animation设置startoffset属性即可 
+
+当然也可以在xml的set中使用两个标签，在其中一个标签中使用startOffset 属性即可
+
+repeatMode repeatCount 可以实现动画的重复执行。
+
+-------activity的切换动画------------
+ overridePendingTranslate 设定一个activity 退出时候的动画以及第二个activity进入时候的动画
+
+-----layoutAnimation-------
+为viewGroup添加动画layoutAnimationController 这个主要用来给listView添加里面每个item 进入时候的动画 
+
+------frameAnimation-----
+需要在drawable 目录下弄一个xml文件  根标签是anlimation-list 子标签死item,在每个item里面设定图片以及要显示的时间 

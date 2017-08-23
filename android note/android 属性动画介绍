@@ -1,0 +1,115 @@
+1. 属性动画的简单使用：
+	1.1：针对单个属性逐一使用ObjectAnimator.of 属性；
+	objectAnimator.ofFloat(Object ob,String propertyName1,float... values).setDuration().start();
+
+	objectAnimator.ofFloat(Object ob,String propertyName2,float... values).setDuration().start();
+
+	objectAnimator.ofFloat(Object ob,String propertyName3,float... values).setDuration().start();
+
+	这种方式去执行的时候其实是三个propertyName的属性同时会执行，不分先后顺序；
+	一个view的某个属性propertyName可以被执行属性动画一定是因为这个propertyName有其对应的get set值；
+
+	1.2：首先设置PropertyValuesHolder.of属性去逐一设置属性，然后使用ObjectAnimator.ofPropertyValuesHolder()的api去设定和执行动画。
+
+	PropertyValusHoler.ofFloat(String propertyName1, float... valuse);
+
+	PropertyValusHoler.ofFloat(String propertyName2, float... valuse);
+
+	PropertyValusHoler.ofFloat(String propertyName3, float... valuse);
+
+	ObjectAnimator.ofPropertyValuesHolder(Object target, PropertyValuesHoler... holderValues);
+
+	1.3 为了能更好的控制多个动画执行的过程 使用AnimatorSet:
+
+	1.1中的三个动画都会返回一个Animator的对象，将这些对象与set有机的结合起来就可以实现多个动画的执行过程的精细控制：
+	set.playTogether(Animator... animator);
+
+	set.playsequentially(Animator... animator);
+
+	set.play(animator1).with(animator2)---将animator1 与animator2 同时执行；
+
+	set.play(animator3).after(animator1)---将animator1执行完毕后再执行animator3;
+
+2.给Animator 增加监听：
+           animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+           });
+
+           上面这个是需要实现所有的方法的，其实系统有自己提供一个实现类，在这个实现类中选择需要重写的方法即可：
+			animator.addListener(new AnimatorListenerAdapter() {
+			@Override
+			public void onAnimationCancel(Animator animation) {
+			super.onAnimationCancel(animation);
+			}
+			});
+
+3.实现一个Arch的效果：
+   第一步  将所有的icon都放在一个Framelayout中，其中将主菜单的额icon放在最下面（即icon在最上面）
+   第二步  然后当点击最上面的icon的时候一次用ObjectAnimator.ofFloat（)方法将下面的几个icon 一次移动出去，移动的时候每一个一次增加时间去设置animator.startDelay()即可。
+   第三步  当再次点击最上面的icon的时候做第二步中属性设置相反的值即可。
+
+4.ValuesAnimator <---ObjectAnimator   ValuesAnimator 不能作用于任何一个属性，但是ObjectAnimator可以作用于有个get/set方法的属性。
+
+-----------------------------------------------------------------------
+
+ValuesAnimator 的作用只是让某个valuse(不管是int 还是float)
+
+	ValueAnimator valueAnimator = new ValueAnimator();
+
+	valueAnimator.ofInt(Int... values);
+
+	valueAnimator.ofFloat(Float... values);
+----------------------------------------------------------------------
+
+5.ValuesAnimator实现一个案列，给出一个从0到100的变化值，变化时间是5秒钟：
+		ValueAnimator valueAnimator = ValueAnimator.ofInt(0,100);---anroid 提供的数值生成器。
+
+		valueAnimator.setDuration(5000);
+
+		valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+		@Override
+		public void onAnimationUpdate(ValueAnimator animation) {
+		//这个的返回是一个Object类型，所以要想进行类型转换就必须使用包装类Integer/Float
+		Integer animatedValue = (Integer)animation.getAnimatedValue();
+		view.set(animatedValue);
+		}
+		});
+
+6.使用自定义的数值生成器：使用ValuesObject.ofObject();
+
+
+		//这里的pointF是一个泛型
+		ValueAnimator valueAnimator1 = ValueAnimator.ofObject(new TypeEvaluator<PointF>() {
+		/**
+		*
+		* @param fraction  这是一个时间变化因子，从0到1变化。这个参数用于表示动画的完成度的，
+		*                  我们应该根据它来计算当前动画的值应该是多少
+		* @param startValue 这是开始的值
+		* @param endValue 这是结束的值
+		* @return 整个函数的作用就是根据时间变化因子 以及开始值和结束值去计算在时间变化到某个百分值的时候
+		* 此时这个动画的值应该是多少
+		*/
+		@Override
+		public PointF evaluate(float fraction, PointF startValue, PointF endValue) {
+		return null;
+		}
+		});
+
