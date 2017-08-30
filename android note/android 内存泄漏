@@ -1,0 +1,200 @@
+------------1.概念理解：
+内存泄漏：是指内存得不到GC的及时回收，从而造成内存占用过多，从而导致程序Crash，也就是常说的OOM
+
+------------2.简单示例1：activity等有有限生命周期的对象被全局引用
+
+public class DBHelper {
+
+    private static DBHelper db= null;
+
+    private DBHelper() {
+
+    }
+
+    public static DBHelper getInstance(Context context) {
+        if (bitmapUtils == null) {
+            synchronized (DBHelper.class) {
+                if (db== null) {
+                    db= new db(context,DBNAME);
+
+                }
+            }
+        }
+        return db;
+    }
+}
+
+在helper中持有了context的应用，而DBHelper是全局的，也就是说，当在一个Activity中使用了DBHelper，即使这个Activity退出了，这个Activity也没法被GC回收，从而造成Activity一直驻留在内存中。解决方案就是使用全局的上下文：
+
+db= new db(context.getApplicationContext(),DBNAME);
+
+--------------3.简单示例2：非静态内部类、Handler
+
+private Handler handler = new Handler(){
+        @Override
+        public void dispatchMessage(Message msg) {
+            // 消息处理
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                // 耗时操作
+                handler.sendEmptyMessage(1);
+            }
+        }).start();
+    }
+我们知道非静态内部类会持有外部类的引用，此时这里的Thread持有着外部Activity的引用，当我们在Activity的内部类中进行异步耗时操作时，我们的Activity如果此时被finish掉了，而异步任务没有执行结束，这就会导致我们的Activity对象不能及时的被GC回收，从而导致内存问题。
+这样的问题解决起来也很简单：
+
+1.不要在匿名内部类中进行异步操作
+2.使用静态匿名内部类
+
+public class MainActivity extends Activity {  
+   
+  @Override  
+  protected void onCreate(Bundle savedInstanceState) {  
+    super.onCreate(savedInstanceState);  
+    exampleTwo();  
+  }  
+   
+  private void exampleTwo() {  
+    new MyThread().start();  
+  }  
+   
+  private static class MyThread extends Thread {  
+    @Override  
+    public void run() {  
+      while(true) {  
+        SystemClock.sleep(1000);  
+      }  
+    }  
+  }  
+} 
+--------------4.Thread 的泄漏
+一旦一个新的Activity创建，那么就有一个Thread永远得不到清理回收，发生内存泄漏。Threads在Java中是GC roots;意味着 Dalvik Virtual Machine (DVM) 会为所有活跃的threads在运行时系统中保持一个硬引用，这会导致threads一直处于运行状态，垃圾收集器将永远不可能回收它。出于这个原因，我们应当为threads添加一个结束的逻辑，
+
+
+publicclass MainActivity extends Activity {  
+  privateMyThread mThread;  
+   
+  @Override  
+  protectedvoid onCreate(Bundle savedInstanceState) {  
+    super.onCreate(savedInstanceState);  
+    exampleThree();  
+  }  
+   
+  privatevoid exampleThree() {  
+    mThread = new MyThread();  
+    mThread.start();  
+  }  
+   
+  /** 
+   * Static inner classes don't hold implicit references to their 
+   * enclosing class, so the Activity instance won't be leaked across 
+   * configuration changes. 
+   */  
+  privatestatic class MyThread extends Thread {  
+    privateboolean mRunning = false;  
+   
+    @Override  
+    publicvoid run() {  
+      mRunning = true;  
+      while(mRunning) {  
+        SystemClock.sleep(1000);  
+      }  
+    }  
+   
+    publicvoid close() {  
+      mRunning = false;  
+    }  
+  }  
+   
+  @Override  
+  protectedvoid onDestroy() {  
+    super.onDestroy();  
+    mThread.close();  
+  }  
+}  
+
+-----------------5.错误的使用AsyncTask
+下面是错误的，因为内部类隐式的含有父类的引用，这种情况下，通常是Activity和Fragment的引用。
+
+class MyActivity extends Activity {
+  private AsyncTask<Void, Void, Void> myTask = new AsyncTask<Void, Void, Void>() {
+    //
+  }
+}
+这个问题的产生原因是因为AsyncTask的生命周期通常比Activity长，而使用的AsyncTask是一个非静态的内部类:
+AsyncTask变为静态内部类
+2.持有父类Activity或者Fragment的弱引用
+粗暴的代码
+
+class MyActivity extends Activity {
+  static class MyTask extends AsyncTask<Void, Void, Void> {
+    // 弱引用允许Activity被垃圾收集器清理
+    private final WeakReference<MyActivity> weakActivity;
+
+    MyTask(MyActivity myActivity) {
+      this.weakActivity = new WeakReference<>(myActivity);
+    }
+
+    @Override
+    public Void doInBackground(Void... params) {
+      // do async stuff here
+    }
+
+    @Override
+    public void onPostExecute(Void result) {
+      // 重新获取Actiity的强引用，并且判断是否存活
+      MyActivity activity = weakActivity.get();
+      if (activity == null
+          || activity.isFinishing()
+          || activity.isDestroyed()) {
+        // activity死亡了，不再做任何的事情
+        return;
+      }
+
+      // The activity is still valid, do main-thread stuff here
+-----------------6.使用adb 查看一个app的分配的内存已经运行时的信息；
+a.进入shell : adb shell
+b.查看进程：ps
+c.查看某个具体的进程的内存信息：dumpsys meminfo packagename
+
+---------------7.内存回收的基本概念
+1.一个app 在安卓系统中对应一个进程  一个进程就是一个虚拟机
+2.GC 机制只在Heap 堆内存不够的时候才出来回收内存
+3.GC出发时 所有的线程都会被暂停
+4.android 使用内存限制机制，不同的机型对单个app 分配的内存的大小因机器而异
+5.app 切换为后台时 当前app的信息会使用LRU cache的机制保存下来而不会立即清理，但是当内存不够的时候会清理这个app的内存，在清理这个app的内存之前会通过Acitivity中的一个回调函数 onTrimMemory（）来通知这个app,此时如果能及时减少这个app 占用的内存而腾出更多的空间出来的话，这个后台app 很有可能会被保存下来。
+
+---------------8.监控内存常用几个方法
+1.ActivityManager 可以直接获取内存的实时状况 
+2.使用Memory monitors
+3.使用android tools 选择进程之后打开上面的heap Icon 查看内存的分配情况：总共分配了多少  已经使用了多少   如果这个使用了的内存在一直增加的话那就代表可能有内存的泄漏
+---------------9.其他的几个常用的优化内存性能常用的几个小方法：
+1.频繁的字符串拼接使用：StringBuilder
+2.使用ArrayMap SparseArray 替代HashMap
+
+ArrayMap<K,V> 替代 HashMap<K,V>
+ArraySet<K,V> 替代 HashSet<K,V>
+SparseArray<V> 替代 HashMap<Integer,V>
+SparseBooleanArray 替代 HashMap<Integer,Boolean>
+SparseIntArray 替代 HashMap<Integer,Integer>
+SparseLongArray 替代 HashMap<Integer,Long>
+LongSparseArray<V> 替代 HashMap<Long,V>
+
+
+3.复用系统自带的资源
+4.listView 的使用viewHolder复用
+5.避免在onDraw 方法里面进行对象的复用
+
+
+
+
