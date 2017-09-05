@@ -1,0 +1,127 @@
+1.为什么要进行图片加载的优化：
+Android应用中常常有加载图片资源的操作，随着Android手机平板的分辨率越来越高，图片资源越来越大，在加载高清图片的时候，由于瞬间产生大量的内存消耗，有时java GC来不及进行垃圾回收，就很容易发生OOM现象。
+-----------------方法一：使用inPurgeable inNativeAlloc-------------------------
+BitmapFactory.Options的两个重要的参数:inPurgeable inNativeAlloc
+
+		public Bitmap decodeFile(String filePath) {
+		        Bitmap bitmap = null;
+		        BitmapFactory.Options options = new BitmapFactory.Options();
+		        options.inPurgeable = true;
+		        try {
+		            BitmapFactory.Options.class.getField("inNativeAlloc").setBoolean(
+		                    options, true);
+		        } catch (IllegalArgumentException e) {
+		            e.printStackTrace();
+		        } catch (SecurityException e) {
+		            e.printStackTrace();
+		        } catch (IllegalAccessException e) {
+		            e.printStackTrace();
+		        } catch (NoSuchFieldException e) {
+		            e.printStackTrace();
+		        }
+		        if (mFilePath != null) {
+		            bitmap = BitmapFactory.decodeFile(mFilePath, options);
+		        }
+		        return bitmap;
+		    }
+inPurgeable:
+
+　　处理过位图加载的人可能对BitmapFactory.Options的inPurgeable参数比较熟悉，当inPurgeable==true时，可以让java系统内存不足时先行回收部分的内存，这个方法其实已经解决大部分的问题了。
+
+inNativeAlloc
+
+　　那么try-catch里面做了什么呢？在看了source code 之后，我发现在BitmapFactory.Options里竟然有一个inNativeAlloc的public变量，可以直接不把使用的内存算到VM里，相应的，inPurgeable生出来的内存还是算在java 的VM里。需要注意的这个变量是个隐藏的变量，不能直接用，需要用反射将这个变量设成true。
+
+--------------------方法二：使用BitmapFactory.decodeStream-------------------------
+public Bitmap ReadBitMap(Context context, int resId){    
+       BitmapFactory.Options opt = new BitmapFactory.Options();    
+       opt.inPreferredConfig = Bitmap.Config.RGB_565;     
+       opt.inPurgeable = true;    
+       opt.inInputShareable = true;      
+　     InputStream is = context.getResources().openRawResource(resId);    
+       return BitmapFactory.decodeStream(is,null,opt);    
+}
+
+　当我们给view设置图片资源时，使用像 setBackgroundResource，setImageResource,或者 BitmapFactory.decodeResource 这样的方法来设置一张高清图片的时候，这些函数在完成decode后，最终都是通过java层的createBitmap来完成的，需要消耗更多内存。而改用先通过BitmapFactory.decodeStream方法，创建出一个bitmap，再将其设为ImageView的source。decodeStream的优势在于其直接调用JNI>>nativeDecodeAsset()来完成decode，无需再使用java层的createBitmap，从而节省了java层的空间。如果在读取时加上图片的Config参数，可以跟有效减少加载的内存，从而跟有效阻止抛out of Memory异常。
+
+　　另外，需要特别注意：decodeStream是直接读取图片资料的字节码了， 不会根据机器的各种分辨率来自动适应，使用了decodeStream之后，需要在hdpi和mdpi，ldpi中配置相应的图片资源，否则在不同分辨率机器上都是同样大小（像素点数量），显示出来的大小就不对了。
+
+-------------------方法三：使用内存缓存---------------------------------------------
+内存缓存很多人都用，但是内存缓存设置需要得当，太小了会导致缓存不够用，太大了会导致其他应用可用内存减小，也容易造成内存溢出。
+
+private LruCache<String, Bitmap> mMemoryCache;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ...
+    // 获取到虚拟机的可用最大内存
+    final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+
+    // 只使用1/8的空闲内存作为缓存空间.
+    final int cacheSize = maxMemory / 8;
+
+    mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
+        @Override
+        protected int sizeOf(String key, Bitmap bitmap) {
+            return bitmap.getByteCount() / 1024;
+        }
+    };
+    ...
+}
+
+public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
+    if (getBitmapFromMemCache(key) == null) {
+        mMemoryCache.put(key, bitmap);
+    }
+}
+
+public Bitmap getBitmapFromMemCache(String key) {
+    return mMemoryCache.get(key);
+}
+
+设置好内存缓存区，我们就可以在需要的时候从内存缓存区直接拿到图片了：
+
+public void loadBitmap(int resId, ImageView imageView) {
+    final String imageKey = String.valueOf(resId);
+
+    final Bitmap bitmap = getBitmapFromMemCache(imageKey);
+    if (bitmap != null) {
+        mImageView.setImageBitmap(bitmap);
+    } else {
+        mImageView.setImageResource(R.drawable.default_drawable);
+        BitmapWorkerTask task = new BitmapWorkerTask(mImageView);
+        task.execute(resId);
+    }
+}
+
+当然了，在bitmap是新的图片时，需要把图片放到缓存区中去：
+
+class BitmapWorkerTask extends AsyncTask {  
+    ...  
+    @Override  
+    protected Bitmap doInBackground(Integer... params) {  
+        final Bitmap bitmap = decodeSampledBitmapFromResource(  
+                getResources(), params[0], 100, 100));  
+        addBitmapToMemoryCache(String.valueOf(params[0]), bitmap);  
+        return bitmap;  
+    }  
+    ...  
+}
+
+-------------------方法四：对图片进行等比例缩小---------------------------------------------
+
+首先设置 读取的时候只读取图片的大小：
+
+BitmapFactory.Options options= new BitmapFactory.Options()；
+options.inJustDecodeBounds=true;
+BitmapFactory.decodeStream(new FileInputStream(new File(path)),null,options);
+bitmap_temp_width=options.outWidth  bitmap_temp_height=options.outHeight
+
+然后获取屏幕的大小，再将屏幕的宽高跟图片的宽高进行尺寸的对比  找出一个合适的尺寸 scale
+
+然后再重新设置一个options 去decode完整的图片：
+BitmapFactory.Options options2= new BitmapFactory.Options()；
+options2.inSampleSize=scale;
+BitmapFactory.decodeStream(new FileInputStream(new File(path)),null,options2);
+
+

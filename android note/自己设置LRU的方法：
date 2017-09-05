@@ -1,0 +1,6 @@
+自己设置LRU的方法：
+
+Map<String,Bitmap> cache = Collections.synchronizedMap( new LinkedHashMap<String, Bitmap>(8, 0.75f,true));
+
+
+这样设置以后当我再次使用 cache.getEntrySet().iterator 方法获得的entryset的迭代器去依次进行遍历的时候就会发现，iteration.next()函数每次拿出来的都是最近最少使用的那对对象；
