@@ -1,7 +1,7 @@
 1.API 16之前存在远程调用的安全漏洞：
 使用WebView.addJavaScriptInterface时导致远程的攻击者使用Java Reflection API 任意执行java API
 
-2.webView 在布局文件中的时候，当需要销毁一个Activity的时候不能仅仅销魂这个Webview，还需要将这个webView所在的布局容器销魂之后销毁webView，这样才能销毁整个WebView,不会导致安全泄漏。
+2.webView 在布局文件中的时候，当需要销毁一个Activity的时候不能仅仅销魂这个Webview，还需要将这个webView所在的布局容器销毁之后再销毁webView，这样才能销毁整个WebView,不会导致安全泄漏。
 
 3.jsBridge 
 

@@ -1,0 +1,88 @@
+1.关于JSX的简单介绍：
+
+jsx 其实就是使用HTML的语法来构建整个虚拟的DOM树，在打包的时候会被编译成js,所以JSX 语法不会带来任何的性能影响，它就是一个语法糖；
+
+2.View 就相当于div 
+
+3.flexBox 的简介：
+
+参考链接：https://mp.weixin.qq.com/s?__biz=MzIxNjEzNjUzOQ==&mid=402020148&idx=4&sn=1e54c10974c4efacd78d7fc3d0da60bd&chksm=058f590032f8d01672f3915426c29bc8ec9c06e421035c75acc61f9a7ea703f988135e1bfd0d&scene=18&key=3a3cac80f728ecaf69fe07d9cce7dbe39e60b404ae3ca81ccee1a164a22e87764e01497443c4ad169334ac28095f6c0595f181c080bbeb634736f077601cd735343e53d653375ca4ebd414163609c6ee&ascene=0&uin=NTc0MTk2NzM1&devicetype=iMac+MacBookPro11%2C4+OSX+OSX+10.12.6+build(16G29)&version=12010210&nettype=WIFI&fontScale=100&pass_ticket=z9zM9uyskXreJWgJhMqIgqOZ3%2B5QTrSH3kJLhlhSsyJFsZH1GZIW8%2BASE3rSDSy2
+
+flexible（形容词）：能够伸缩或者很容易变化，以适应外界条件的变化
+box（名词）：通用的矩形容器
+
+3.1 什么是Flexbox：
+
+	弹性盒模型（The Flexible Box Module）,又叫Flexbox，意为“弹性布局”，旨在通过弹性的方式来对齐和分布容器中内容的空间，使其能适应不同屏幕，为盒装模型提供最大的灵活性。
+	Flex布局主要思想是：让容器有能力让其子项目能够改变其宽度、高度（甚至是顺序），以最佳方式填充可用空间；
+	React native中的FlexBox是这个规范的一个子集。
+	用来处理FlexItem在FlexContainer中的位置和尺寸
+	在CSS中，常规的布局是基于块和内联流方向，而Flex布局是基于flex-flow流,
+	容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。
+	项目默认沿主轴排列，单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。
+3.2 Flexbox的常用的container的属性:
+
+   !. flexDirection: `row | row-reverse | column | column-reverse`---决定整个box的main axis,也就是主要的方向；
+
+    row：主轴为水平方向，起点在左端。
+    row-reverse：主轴为水平方向，起点在右端。
+    column(默认值)：主轴为垂直方向，起点在上沿。
+    column-reverse：主轴为垂直方向，起点在下沿。
+
+   !!. justifyContent:`flex-start | flex-end | center | space-between | space-around`
+
+    在已经决定排列方向的基础上，决定这些box在这个方向上的位置分配；
+     定义了伸缩项目在主轴线的对齐方式
+      flex-start(默认值)：伸缩项目向一行的起始位置靠齐。
+      flex-end：伸缩项目向一行的结束位置靠齐。
+      center：伸缩项目向一行的中间位置靠齐。
+      space-between：两端对齐，项目之间的间隔都相等。
+      space-around：伸缩项目会平均地分布在行里，两端保留一半的空
+
+   !!!. alignItems:  `flex-start | flex-end | center | baseline | stretch`
+   在已经排列方向的基础上，决定这些盒子的彼此的对齐方向
+
+   flex-start：交叉轴的起点对齐。
+      flex-end：交叉轴的终点对齐 。
+      center：交叉轴的中点对齐。
+      baseline：项目的第一行文字的基线对齐。
+      stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容
+
+   !!!!. flexWrap: `nowrap | wrap | wrap-reverse`
+
+    默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。
+    nowrap(默认值)：不换行。
+    wrap：换行，第一行在上方。
+    wrap-reverse：换行，第一行在下方。（和wrap相反）
+
+3.3 Flexbox的常用的子view的属性:
+
+flex
+       “flex-grow”、“flex-shrink”和“flex-basis”三个属性的缩写， 其中第二个和第三个参数（flex-shrink、flex-basis）是可选参数。
+   默认值为“0 1 auto”。
+   宽度 ＝ 弹性宽度 * ( flexGrow / sum( flexGorw ) )
+
+
+alignSelf:  “auto | flex-start | flex-end | center | baseline | stretch”
+       align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+
+3.4、在React Native中使用Flexbox
+4.1  获取当前屏幕的宽度、高度、分辨率
+
+var Dimension = require('Dimensions');
+var{width, height, scale}=Dimensions.get('window');
+
+
+4.  常用属性Demo演示-绝对定位和相对定位
+       与css定位不同，在React Native中定位不需要再父组件中设置position属性,但是如果在子view中设置了这个属性：
+
+       通常情况下设置position和absolute，定位的效果是一样的，但是如果父组件设置了内边距，position会做出相应的定位改变，而absolute则不会。
+
+       ---------------
+
+       css 中块级标签如果不设置flex的元素如果不设置宽度， 都会百分之百的占满父容器
+
+
+
+
+

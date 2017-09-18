@@ -1,1 +1,57 @@
-面试问题总结
+----------------------------1.fragment的面试问题-----------------------
+如何使用fragment:  静态使用：直接在xml文件中使用fragment标签  动态使用如下代码显示： 
+1.获取一个FragmentTraction的实例 ： FragmentManager managet = getFragmentManager();  traction = manager.begainFragmentTraction
+2.添加一个Fragment:traction.add(R.id.container,new fragment,"'TAG"); traction.addToBackStack("TAG");
+3.commit这个traction:traction.commit();
+
+fragmentPageAdapter 与 FragmentStatePageAdapter之间的区别：
+
+fragmentPageAdaper ： 用于ViewPage 页面较少的情况  这个类的destroyItem方法使用的是：traction.detach(fragment ); 只是将fragment 的UI 和 Activity的UI 脱离开来  也就是每次切换的时候并没有回收内存； 
+fragmentStatePageAdaper： 用于ViewPage 页面较多的情况 这个类的destroyItem方法使用的是：traction.remove(fragment );也就是每次切换的时候是回收内存的；
+
+---------------------------2.Fragment的生命周期-------------------------
+ onAttach ---->onCreate----->onCreateView------->onViewCreate------>Activity onCreate---->onActivityCreated()----> Activity onStart----> onStart-----> Activity onResume ------> onResume ------->
+
+ 有趣的是在Fragment 和 Activity的还没有创建的时候他们两个就已经指腹为婚了，这个attach的关系就已经存在了。
+ 之后在fragment 正式获取focuse 展现在用户面前 到 fragment销毁的整个过程当中都是fragment的生命周期走在前面，紧接着的是Activity的生命周期。也就是创建的时候Fragment作为子view得先创建好才能够将作为父的Activity创建好，销毁的时候fragment作为子View得先销毁掉以后才能将作为父的Activity销毁； 
+
+ 虽然fragment也有onCreate方法，但是与Activity 的onCreate 方法对等的是onCreateView  同时与Activity onDestroy方法对等的方法时 onDestroyView() 
+
+ ------------------------3.Fragment 与Activity的通信--------------------
+ 1.在Fragment中调用Activity的方法：Fragment中可以字节getActivity
+ 2.在Activity中调用Fragment的方法：Fragment中声明一个接口，Activity 中实现这个方法，之后在Fragment 中获取activity再调用实现的方法即可；
+ 3.在Fragment中调用fragment的方法： 通过Activity 中findFragmentById 方法
+ 4.replce add remove 方法： add 是将一个Fragment加到栈顶并显示出来  replce 是先remove一个fragment之后再将一个fragment add到栈顶，remove是直接移除一个fragment
+
+
+
+
+
+ ---------------------------1.service的面试问题-------------------------
+ service 是一个可以长时间在后台运行且可以没有UI的应用组件；可以在Activity 中或者broadCast中启动一个service. 不管是service activity 还是broadCastReceiver 都是运行在主线程中都不可以进行耗时的操作。
+
+ service 和 Thread的区别： 两者之间没有关系。
+
+ 为何使用service 而不使用Activity:  service 通过一个是一个不依赖于UI 界面的组件可以通过Binder 来向别人提供自己的实例，即使Activity 被消除了  即使app退出了 只要获取 到这个Binder 就仍然可以获取到这个实例。
+
+ 应用的场景：比如说去下载东西啊 比如说在后台播放音乐啊
+
+ ---------------------------2.两种启动service的方式  startService(stopService)  bindservice (unbindService)---------------------
+ Service 类中的方法有： onBind  
+ onCreate只在首次启动的时候被调用一次之后使用startService 或者bindService的时候不再调用
+ onStartCommand 每一次使用startService 或者 bindService的时候都会调用一次  这个方法有一个int 型的返回值：
+
+ 1.START_STICK : 这个返回值代表当一个service由于系统内存不足而造成的 回收会在系统内存空闲的时候重新创建这个service
+
+  1.startService（intent ）   首先这个一个类 继承自Service,在这个类中 onBind（)方法返回的是null,即不会返回一个IBinder. 这种方式创建的service 会一直运行，直到因为系统内存不足或者调用stopService方法时这个service才会被销魂。
+  2.bindService : 这中方式 onBinder 方法会返回一个IBinder接口的实现类，可以实现Activity 与 Service之间的通信，并且一个Service可以同时绑定多个Activity，当跟这个Service 绑定的所有Activity都解绑定的时候这个Service 可以被自动销毁而不用调用任何的方法；。  这种方法去启动一个service的时候需要传递一个serviceConnection接口的实现对象。主要提供两个方法一个onServiceConnected onServiceDisconnected ，其中onServiceConnected方法会传递一个IBinder的实现对象，binder.getService可以获取到对应的service
+
+  nServiceDisconnected 这个方法时在service 和 activity 之间出现意外中断的时候调用并不是解绑定的时候进行调用；
+
+
+
+  -----------------------1.broadcastReciver的面试问题------------------------
+  
+
+
+

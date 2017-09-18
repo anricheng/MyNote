@@ -1,1 +1,42 @@
-开源框架面试问题：
+1.okhttp 的简单实用：
+
+创建一个okhttpClient的单例，这样就可以全局复用
+
+创建一个request的对象，这个对象包含请求的所有信息，http请求的地址  请求的头信息  请求的方法  请求的标志位  请求体
+
+实用clien的new call 方法去获取一个call,一个call 就是连接request 与 response的纽带。
+
+实用call的execute的方法去同步执行一个方法，实用enqueue方法去执行一个异步的方法。两个方法的区别就是是不是会阻塞当前的线程，等到后台的返回。
+enqueue方法不会阻塞当前的线程，而是会传递出一个callback，在这个callback中的onSuccess 和  onfailure方法都是执行在当前的工作线程，所以不需要再次抛到主线程去以方便做UI线程的操作 
+
+源码的分析：
+
+Application------Application Intecerptor（请求时的request/返回时的response）-----------> OkHttp Core------- NetWork Intecerptor（请求时的request/返回时的response）----------->backend Service
+
+
+使用构建者模式：将一个对象的创建和一个对象的显示分开
+
+Interceptor的作用：在okhttp之中将所有的工作，网络请求  请求的压缩  缓存等等 都封装成一个个的Interceptor，之后这些Interceptor会形成一个Interceptor chain，我们发送请求之后也是在这个chain之中来获得response的 
+
+callServer Interceptor的分析：最终发送请求和解析请求的类
+
+
+
+2.Retrofit的简介;
+
+a.创建一个接口用来最终发送一个具体的请求  b.使用构建者模式去创建一个retrofit，之后传给这个regrofit我们刚刚创建的
+
+接口的.class 对象然后就可以创建出一个repo,这个repo就可以发送我们刚刚在接口中创建的每个方法的请求。
+
+
+retrofit中的动态代理：就是通过method 转换为servemethod,在通过servermethod args 获取到okhttpcall对象 ，再把okhttpcall 对象传给Adapter并最终返回一个call对象 
+
+
+
+3.butterKnife 注解使用的不是反射的机制，而是与dagger类似的方式，使用的是apt在编译为字节码文件的时候 之后将注解转换为代码
+
+
+https://www.linkedin.com/in/%E6%B5%B7%E5%B3%B0-%E5%91%A8-734013139/
+
+02161425555   27083
+

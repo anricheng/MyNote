@@ -95,4 +95,9 @@ public class DBHelper extends SQLiteOpenHelper {
 }
 
 
- 
+安卓默认的情况下每个app 都有一个自己的数据库，并且不需要账号与密码.
+
+
+使用内置函数进行数据库的增删改查的操作：
+
+主要是使用ContentValues ,这个里面存储了一行数据对应的键值对，然后将这一行数据直接插入数据库的表里面，之后可以将这个ContentValuse直接clear之后继续使用 
