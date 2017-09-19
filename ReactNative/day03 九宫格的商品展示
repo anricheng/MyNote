@@ -1,0 +1,137 @@
+1.抽离公共模块的注意点：
+
+1.1 新建一个js文件，在其中加入完成所有的代码编写如下：
+-----------------------------------------------------------
+
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, {Component} from 'react';
+import {
+    AppRegistry,//注册
+    StyleSheet,//样式
+    Text,//文本组件
+    View,//视图组件
+    Image,
+    TextInput
+} from 'react-native';
+
+var badgeData = require('./BadgeData.json');
+
+var Dimensions=require('Dimensions');
+
+var{width, height, scale}=Dimensions.get('window');
+
+var cols = 3;
+var boxWith = 100;
+var hMargin = ( width - boxWith * 3) / (cols + 1);
+var vMargin = 25;
+
+//针对组件 或者 api 直接输入首字母即可,但是记住组件一般是 首字母大写.
+export default class Mycomponent extends Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                {/* 这是个注释*/}
+                {this.returnAllBadge()}
+            </View>
+        );
+    }
+
+//这里必须写在这个component的里面;
+
+    returnAllBadge() {
+
+        var allBadge = [];
+        for (var i = 0; i < badgeData.data.length; i++) {
+            var badge = badgeData.data[i];
+            allBadge.push(
+                <View key={i} style={styles.outerViewStyle}>
+                    <Image source={{uri:badge.icon}} style={styles.imageStyle}/>
+
+                    <Text style={styles.subtitleStyle}>
+
+                        {badge.title}
+                    </Text>
+
+
+                </View>
+            )
+        }
+
+        return allBadge;
+    }
+}
+
+//属性的提示方式: 首先按下cmd + J 之后输入属性名字的首字母即可
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+
+        flexWrap: 'wrap',
+
+    },
+
+    outerViewStyle: {
+        alignItems: 'center',
+        height: boxWith,
+        width: boxWith,
+        marginLeft: hMargin,
+        marginTop: vMargin,
+
+    },
+    imageStyle: {
+        height: 80,
+        width: 80
+    },
+    subtitleStyle: {
+        marginTop:10,
+    }
+
+
+
+});
+
+module.exports=Mycomponent;----注意此处的书写;
+
+注意事项：1.1 module.exports=Mycomponent;-
+
+1.2 为了可以直接获取到图片： <Image source={{uri:badge.icon}} style={styles.imageStyle}/>
+ios 将图片的存储：
+ios---SecondDemo/ios/SecondDemo/Images.xcassets/img---里面的格式按照ios的格式放置就可以了；
+android---新建一个名字叫drawable的Drawable资源文件目录，之后直接将图片放进这个文件夹即可；
+
+1.3 正确的在 ios android 的目录中加入这个公共的component:
+
+
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from 'react';
+import {
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View
+} from 'react-native';
+//这里的名字一定得跟引入的js文件中需要使用的component的名字一致
+var Mycomponent = require('./demoJS');
+
+export default class SecondDemo extends Component {
+    render() {
+        return (
+                <Mycomponent/>
+        );
+    }
+}
+
+AppRegistry.registerComponent('SecondDemo', () => SecondDemo);
+
+
+-----------------------------------------------------------
