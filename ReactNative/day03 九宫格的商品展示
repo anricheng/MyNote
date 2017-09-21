@@ -99,7 +99,7 @@ module.exports=Mycomponent;----注意此处的书写;
 
 注意事项：1.1 module.exports=Mycomponent;-
 
-1.2 为了可以直接获取到图片： <Image source={{uri:badge.icon}} style={styles.imageStyle}/>
+1.2 为了可以直接获取到图片(使用直接放在app中的方式)： <Image source={{uri:badge.icon}} style={styles.imageStyle}/>
 ios 将图片的存储：
 ios---SecondDemo/ios/SecondDemo/Images.xcassets/img---里面的格式按照ios的格式放置就可以了；
 android---新建一个名字叫drawable的Drawable资源文件目录，之后直接将图片放进这个文件夹即可；

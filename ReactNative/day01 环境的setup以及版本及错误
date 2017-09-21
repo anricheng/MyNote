@@ -29,6 +29,8 @@ npm config set disturl https://npm.taobao.org/dist
 
 11.降级的方式:npm install --save react-native@versionNumber
 
+12.使用webStorm的语法提示：安装https://github.com/anricheng/ReactNative-LiveTemplate
+
 
 ------------项目的启动--------------------
 1.切换到aric文件夹下面--->react-native  init FirstDemo---> 切换到aric/FirstDemo--->启动项目：react-native  run-android
@@ -43,6 +45,8 @@ npm config set disturl https://npm.taobao.org/dist
 
 
 3.ios 刷新 cmd + R ---->运行以后根据模拟器上面的提示的组合键刷新就可以了
+
+4.ios 进入调试菜单： cmd + d Android 进入调试菜单： 菜单键
 
 
    
