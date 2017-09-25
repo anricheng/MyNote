@@ -94,7 +94,7 @@ public class TestActivity extends AppCompatActivity {
             public void onAnimationUpdate(ValueAnimator animation) {
                 //这个的返回是一个Object类型，所以要想进行类型转换就必须使用包装类Integer/Float
                 Integer animatedValue = (Integer)animation.getAnimatedValue();
-                view.set(animatedValue);
+
             }
         });
 
