@@ -1,7 +1,0 @@
-1.ArrayBolockingQueue ArrayBlockingQueue：规定大小的BlockingQueue,其构造函数必须带一个int参数来指明其大小.其所含的对象是以FIFO(先入先出)顺序排序的.当queue 满了之后无法再继续添加元素，当queue空的时候会阻塞线程；
-
-重点：进行put和take操作，共用同一个锁对象。也即是说，put和take无法并行执行！--所以效率比较低
-
-LinkedBlockingQueue：大小不定的BlockingQueue,若其构造函数带一个规定大小的参数,生成的BlockingQueue有大小限制,若不带大小参数,所生成的BlockingQueue的大小由Integer.MAX_VALUE来决定.其所含的对象是以FIFO(先入先出)顺序排序的
-
-重点：take和put操作各有一把锁，可并行读取。---所以效率比较高

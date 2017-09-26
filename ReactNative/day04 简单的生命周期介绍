@@ -1,0 +1,56 @@
+1.ES5 与 ES6写法的差别:
+
+ES6:
+
+export default class Mycomponent extends Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                {/* 这是个注释*/}
+                {this.returnAllBadge()}
+            </View>
+        );
+    }
+
+ES5: var Mycomponent = React.CreateClass(
+   render() {
+        return (
+            <View style={styles.container}>
+                {/* 这是个注释*/}
+                {this.returnAllBadge()}
+            </View>
+        );
+    }
+);
+
+
+
+
+2.ReactNative的生命周期简介:
+
+ React Native组件的生命周期大致上可以划分为实例化阶段、存在阶段和销毁阶段，其中最常用的为实例化阶段，该阶段就是组件的构建、展示时期，需要我们根据几个函数的调用过程，控制好组件的展示和逻辑的处理。
+
+ 2.1 实例化阶段的几个生命周期函数： 
+ getDefaultProps ----设置一些不会改变的数据值 this.props去获取值；
+
+ getInitialState-----设置一些可以更改的数据值  this.state 去获取值； this.setState({key: value}) 去设置值；
+ 注意：一旦调用了this.setState方法，组件一定会调用render方法，对组件进行再次的渲染，不过，如果React框架会自动根据DOM的状态来判断是否需要真正的渲染。
+
+ componentWillMount 这个函数没有什么具体的作用，一般不用；
+
+render是一个组件中必须有的方法，本质上是一个函数，并返回JSX或其他组件来构成DOM，和Android的XML布局类似，注意：只能返回一个顶级元素 ;此外，在render函数中，只可通过this.state和this.props来访问在之前函数中初始化的数据值 。
+
+componentDidMount
+在调用了render方法后，组件加载成功并被成功渲染出来以后，所要执行的后续操作，一般会在这个函数中处理网络请求等加载数据的操作；因为UI已经成功被渲染出来， 所以放在这个函数里进行请求操作，不会出现UI上的错误
+
+2.2 存在期阶段的几个重要的生命周期函数：
+
+componentWillReceiveProps    指父元素对组件的props或state进行了修改
+
+shouldComponentUpdate    一般用于优化，可以返回false或true来控制是否进行渲染
+
+componentWillUpdate组件刷新前调用，类似componentWillMount
+
+componentDidUpdate更新后的hook
+
+2.3 销毁阶段的生命周期函数：componentWillUnmount 

@@ -1,8 +1,0 @@
-1.Executor
-	Exector 是一个抽象层面的核心接口，将任务本身和任务执行进行了分离
-2.ExecutorService  
-	对Executor 的接口进行了扩展，提供了返回Future对象。当调用shutDown方法时线程池会停止接受新的任务，但会完成在pending中的任务。
-	ExecutorService.submit方法返回的Future方法还可以取消执行 pending 中的任务，cancel()
-3.Executors 
-	是一个工具类，类似于Collections.提供工厂方法来创建不同的线程池。
-4.也可以使用ExecutorService 的实现类ThreadpoolExecutor 对象来自定义一个线程池

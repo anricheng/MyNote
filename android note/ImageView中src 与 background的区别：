@@ -1,0 +1,8 @@
+ImageView中src 与 background的区别：
+
+background会根据ImageView组件给定的长宽进行拉伸，而src就存放的是原图的大小，不会进行拉伸。src是图片内容（前景），bg是背景，可以同时使用。
+
+此外：scaleType只对src起作用；bg可设置透明度，比如在ImageButton中就可以用Android:scaleType控制图片的缩放方式，示例代码如下：
+
+
+注意：控制的图片为资源而不是背景，即android:src=”@drawable/splash_bg”，而非android:background=”@drawable/splash_bg”。程序中动态加载图片也类似，如：应该imgView.setImageResource(R.drawable.);而非imgView.setBackgroundResource(R.drawable.);

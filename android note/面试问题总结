@@ -19,7 +19,9 @@ fragmentStatePageAdaper： 用于ViewPage 页面较多的情况 这个类的dest
 
  ------------------------3.Fragment 与Activity的通信--------------------
  1.在Fragment中调用Activity的方法：Fragment中可以字节getActivity
- 2.在Activity中调用Fragment的方法：Fragment中声明一个接口，Activity 中实现这个方法，之后在Fragment 中获取activity再调用实现的方法即可；
+ 2.在Activity中调用Fragment的方法：Fragment中声明一个接口，Activity 中实现这个方法，之后在Fragment 
+    fragment中有一个方法 之后这个方法在fragment中进行调用，但是这个调用的实现是在activity中，相当于是调用activity中的方法
+ 中获取activity再调用实现的方法即可；
  3.在Fragment中调用fragment的方法： 通过Activity 中findFragmentById 方法
  4.replce add remove 方法： add 是将一个Fragment加到栈顶并显示出来  replce 是先remove一个fragment之后再将一个fragment add到栈顶，remove是直接移除一个fragment
 
