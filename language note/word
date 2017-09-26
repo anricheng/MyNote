@@ -32,3 +32,11 @@ fire engine	n.	消防车;
 terror 恐怖袭击
 
 madden 使发狂
+
+
+slab	英[slæb]
+美[slæb]
+n.	厚板，平板，厚片; 混凝土路面;
+v.	把…分成厚片; 用石板铺;
+
+当一个queue 已经满的时候再往里面添加数据的时候就会报出illegalslabException 异常；
