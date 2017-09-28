@@ -7,10 +7,6 @@
 2.提高响应速度：任务到达时不需要等待线程创建就可以立即执行。
 3.提高线程的可管理性：线程池可以统一管理、分配、调优和监控。
 
-作者：一只小哈
-链接：http://www.jianshu.com/p/ade771d2c9c0
-來源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 1.Executor
 	1.1Exector 线程池的管理类的一个抽象层面的核心接口，将任务本身和任务执行进行了分离（意思就是说我们不用再一个 new Thread(new(RunnableTask())).start()的方式去启动一个Runnable）。
@@ -67,10 +63,32 @@
              executor.execute(active);
          }
      }
- }
+ }----其实没有看懂这里是什么意思；
 
 
-2.ExecutorService
+2.ExecutorService---其实还是个接口,就是在Excutor接口的基础上增加了一个执行子线程的方法而已；同时也更加方便的去管理整个线程的生命周期；
+
+public interface ExecutorService extends Executor {
+
+    List<Runnable> shutdownNow();
+    boolean isShutdown();
+    boolean isTerminated();
+    boolean awaitTermination(long timeout, TimeUnit unit)
+        throws InterruptedException;
+    <T> Future<T> submit(Callable<T> task);
+    <T> Future<T> submit(Runnable task, T result);
+    Future<?> submit(Runnable task);
+    <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)
+        throws InterruptedException;
+    <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks,
+                                  long timeout, TimeUnit unit)
+        throws InterruptedException;
+    <T> T invokeAny(Collection<? extends Callable<T>> tasks)
+        throws InterruptedException, ExecutionException;
+    <T> T invokeAny(Collection<? extends Callable<T>> tasks,
+                    long timeout, TimeUnit unit)
+        throws InterruptedException, ExecutionException, TimeoutException;
+}
 
     提供了两个管理终止的方法：当不再需要这个管理类的时候应该将其进行关闭，否则它会阻止整个JVM的虚拟机进行关闭;
 
@@ -80,7 +98,7 @@
 
 	对Executor 的接口进行了扩展，但是也是一个接口，每次使用submit方法(这个方法时对Executor中de execute方法的扩展)提交一个task的时候可以返回一个Future对象。当调用这个Future对象的get方法时，可以阻塞当前线程直到Future对象所持有的线程执行完毕。
 
-	它只有一个实现类ThreadPoolExecutor和间接实现类ScheduledThreadPoolExecutor。
+	它的其中两个实现类：ThreadPoolExecutor 以及 ScheduledThreadPoolExecutor
 
 	关于ExecutorService的创建:可以使用根据自己的需求利用实现类去创建也可以使用Excutors工具类来进行创建，
 
@@ -89,7 +107,7 @@
 	ExecutorService executorService3 = Executors.newScheduledThreadPool(10);
     
     提供几个方法可以将自己的任务托付给ExecutorService:
-	execute(Runnable)  
+	execute(Runnable)  ---这里的方法参数是不对的，请参考jdk
 	submit(Runnable)  
 	submit(Callable)  
 	invokeAny(...)  

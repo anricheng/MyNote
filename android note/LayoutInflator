@@ -1,1 +1,10 @@
-LayoutInflator
+1.有两种方法去获取一个 LayoutInflator的实例，一种方式的是通过  Activity.getInflator方法去获取，另一种是从context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)来获取,至于使用LayoutInflator.from(context).inflator()方法也是系统对第二种方法的一个封装；
+
+所以简单点来说 一般有四种方法来体冲xml文件：
+a.在Activity中就直接使用 getInflatorj； 在Fragment的onCreateView中会直接传递进来；在ListView的Adapter中可以直接使用LayoutInflator.from(convertView.getContext).inflator();在其他地方直接使用context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)；
+
+2.在android build的过程中会将所有的XML 转换为R文件，layoutInflator其实只能处理 R文件，其中R文件是通过XmlPullParser来进行解析的；
+
+3.每个Activity内包含的LayoutInflater是一个单例。
+
+Activity创建LayoutInflater时，是先使用最原始的BaseContext创建，然后在将Activity的父类ContextThemeWrapper的信息通过cloneInContext()方法与其绑定。

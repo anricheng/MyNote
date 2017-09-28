@@ -3,7 +3,7 @@
 	2.MediaPlayer（控制播放） + surfaceView （显示帧数据） :处理生命周期 可定制 不能在listView中正常的显示，不可使用属性动画 
 	3.MediaPlayer（控制播放） + TextureView（显示帧数据）  ：处理生命周期 可定制 可在listview等复杂控件中正常显示，同时Textture （SurfaceTextureListener 接口中包含的生命周期 available，changed, destroy）可以像普通的view一样添加属性动画
 2.mediaPlayer 的生命周期：
- idle -->setDataSource()--->Initialized--->PrepareAysc()--->Preparing--->OnPrepareListener.onPrepared()--->Prepared--->start()--->started===>>>stoped/paused/completed
+ idle -->setDataSource()--->Initialized--->PrepareAysc()--->Preparing--->OnPrepareListener.onPrepared()--->Prepared--->start()--->started------>stoped/paused/completed
 3.MediaPlayer 常用的回调接口：
 	1.onPreparedListener  此时mp已经准备好了，可以调用start去播放视频了
 	2.onErrorListener  针对所有异常的回调

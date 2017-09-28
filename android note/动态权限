@@ -1,3 +1,7 @@
+一句话记住动态权限：23也就是6.0以后才需要申请动态权限，使用ContextCompat去checkperimission 使用ActivityCompat去requestPermission,在onRequestPermissionResult中去check用户是不是已经授权。
+
+
+
 1.权限的检查一般放在baseActivity 中：
     public boolean hasPermission(String... permissions) {
         for (String permission : permissions) {
@@ -12,7 +16,7 @@
    public void requestPermission(int code, String... permissions) {
         ActivityCompat.requestPermissions(this, permissions, code);
     }
-    //如果没有权限我们就去申请权限
+    //如果没有权限我们就去申请权限 
 	if(Build.VERSION.SDK_INT >= 23&&(!hasPermission(Manifest.permission.CAMERA))){
 	    //如果申请权限的时候发现用户上次的时候已经拒绝过一次，那么本次申请的时候应该给用户一个提示框告诉用户我们为何要申请这个权限
 		if(ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission.READ_PHONE_STATE)){
