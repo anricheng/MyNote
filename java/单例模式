@@ -19,3 +19,37 @@ public class Singleton {
         }
     }
 }
+
+
+dcl失效的原因：
+
+ private static volatile Singleton sSingleton;------加上volatile关键字
+
+public static getInstance(){
+	if(instance==null){----------(A)
+	    sychorized(当前类.class){
+	      if (instance ==null){
+	         instance=new Instance();---------------(B)
+	      }
+	    }
+	    return instance;
+	}
+
+	return instance;
+}
+
+当线程1 运行到(B)的位置的时候，已经让这个对象不为null了，但是这个对象的创建还没有完成，此时线程2运行到(A)的位置，发现instance不为null直接返回这个instance,但是此时这个instance并灭有创建完成所以会出现空指针异常；
+
+具体原因如下：  instance=new Instance(); 这一步可以分为三个小的步骤，并非是一个原子性的操作；
+
+1.  为instance分配一个堆内存；
+2.  调用instance的构造方法进行初始化
+3.  将栈区的instance指向堆内存；
+
+但是这三步操作在不同的jvm上执行的顺序是不一样的，如果是132的操作步骤的话，那么instace已经指向堆内存了，但是没有进行初始化，所以还是为空指针；
+
+
+
+volatile关键字的作用：1.防止java字节码的重排序 以及  变量的可见性---即修改变量的值能够得到即时的同步；
+
+在dcl上加上volatile关键字以后就可以让执行顺序保持为123，不会出现失效的情况；   jdk---1.5才有volatile
