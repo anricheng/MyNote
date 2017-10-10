@@ -66,7 +66,7 @@
  }----其实没有看懂这里是什么意思；
 
 
-2.ExecutorService---其实还是个接口,就是在Excutor接口的基础上增加了一个执行子线程的方法而已；同时也更加方便的去管理整个线程的生命周期；
+2.ExecutorService---其实还是个接口,就是在Excutor接口的基础上增加一些执行线程的以及线程生命周期管理的方法；
 
 public interface ExecutorService extends Executor {
 
@@ -184,6 +184,21 @@ System.out.println("future.get() = " + future.get());
 	4.当提交任务数超过maximumPoolSize时，新提交任务由RejectedExecutionHandler处理 
 	5.当线程池中超过corePoolSize线程，空闲时间达到keepAliveTime时，关闭空闲线程 
 	6.当设置allowCoreThreadTimeOut(true)时，线程池中corePoolSize线程空闲时间达到keepAliveTime也将关闭 
+
+    一次性只能提交 maximumPoolSize+workQueue的长度，唱过这个数就会使用RejectedExecutionHandler 来进行处理，如果没有进行处理，那么就会直接报错；
+
+    这里的workQueue 如果使用linkedBlockqueue,因为linkedBlockqueue容量不限，所以永远不会创建max的线程数，就只有core的线程数；
+
+4.如何终止一个线程：
+
+为了试验这个使用一个while 死循环的方式：
+
+while(flag)：使用自定义的MyRunable 实现系统的Runnable， run里的代码块执行之前加一个while(flag)的阀门，然后去通过去更改这个阀门的值去控制线程的执行；
+
+while(!Thread.interrupted): 
+然后去Thread.interupt()方法，不能使得一个线程终止执行，而是只能中断执行，但是之后还是会继续执行的；这是因为这个中断只能中断一次，下一次进入这个while循环的时候 Thread.interrupted已经是false了；要想终止这个线程就必须在catch 里面进行return，这样就可以了
+
+
 
 
 

@@ -1,0 +1,21 @@
+1.静态内部类
+2.懒汉式 饿汉式
+3.dcl
+4.枚举
+
+
+其中静态内部类的方式如下：就是将原先的懒汉式的实例化一个对象以及提供单例的方法放到一个静态内部类当中，这样才这个类进行加载的时候就不会创建这个内部类，而是在调用方法：Singleton.InstanceHolder.getInstance（）才会创建这个实例对象。
+
+public class Singleton {
+
+    private Singleton(){
+
+    }
+
+    static class InstanceHolder{
+        private static Singleton sSingleton = new Singleton();
+        public static Singleton getInstance(){
+            return sSingleton;
+        }
+    }
+}
