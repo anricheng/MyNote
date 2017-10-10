@@ -1,8 +1,8 @@
-Collection  其中list因为可以知道索引的原因增加了很多跟索引有关的方法，而set的中的方法时完全跟Collection一致的没有进行扩展；
+Collection 是整个集合的抽象类，其中list因为有索引的原因增加了很多跟索引有关的方法，而set的中的方法时完全跟Collection一致的没有进行扩展；
 
 ---------------list ArrayList 数组  LinkedList双向链表   Vector线程安全-----------------
 
-	List  有序的所以可以使用索引访问 可重复可多个null,所以不用要求存储的对象的 class 实现hashcode 方法;
+	List  有序的所以可以使用索引访问 可重复可多个null,所以不用要求存储的对象的class实现hashcode 方法;
 		ArrayList 如果之前开辟的容量少于6个的话则直接开辟12个，多于6个的话直接double一下自己的容量，线程不安全
 		Vector  跟ArrayList差不多，只是它是线程安全的
 		LinkedList  同时实现了list 和 queue接口;

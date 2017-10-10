@@ -1,3 +1,6 @@
+一句话总结就是排序查找 找最大最小  打乱顺序等等......
+
+
 1.排序：
 
 第一种是list中的对象实现Comparable接口；
@@ -160,5 +163,7 @@ public static void shuffle(List<?> list, Random rnd)
     System.out.println(list);
   }
 }
+
+
 
 
