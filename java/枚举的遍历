@@ -1,0 +1,31 @@
+
+
+public enum Suits
+
+
+    {
+
+    public int mCode;
+    public String mMessage;
+
+    public Suits(int mCode,String mMessage){
+       this.mCode=mCode;
+       this.mMessage=mMessage;
+    }
+
+
+        Spades(1),
+        Hearts(2),
+        Clubs(3),
+        Diamonds(4),
+        NumSuits(5)
+
+        public Suits getSuits(int key){// 这个方法可以根据 int值返回对应的枚举类型；
+          for(Suits suits:values()){
+             if (suits.mCode==key) return suit;
+          }
+
+          return null;
+        }
+    }
+
