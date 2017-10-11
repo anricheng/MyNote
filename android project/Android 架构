@@ -1,3 +1,39 @@
 针对一个网络请求：
 1.header 应该是一个map集合，  用跟一个map的装饰类来增强每个header字段的get set；----这是因为header是多个键值对
 2.针对状态码：使用枚举类型；----状态码只可能是一种状态；
+
+３.定义一个header 的接口 有一个getheader的方法，response 和 request 对对它进行封装；
+4.reponse 接口：继承header closable ：getStatus  getStatusMessage  getBody  close
+
+   通常的http 封装：最外层都是 200 ，或者timeout ,最终的一些状态码都是内层的， 所以定义这个response 的时候可以定义两个status Code：一个内层的httpstatuscode  一个statusCode；
+
+5.定义一个httpResponse 对okhttp 的reponse 进行二次封装；封装的时候增加：
+
+
+    HttpStatus getStatus();//状态体；
+
+    String getStatusMsg();
+
+    InputStream getBody() throws IOException;//响应体
+
+    void close();
+
+    long getContentLength();//响应体中国的内容的长度
+
+二次封装步骤：
+
+第一步：最上层定义一个接口，最高层级的抽象，包含所有的自定义的方法；
+
+第二步：定义一个抽象类，这个抽象类作为一部分子类的公共父亲，可以有自己的成员变量，可以有部分方法的实现；
+
+第三步：针对不同的reponse 进行不同的封装；
+
+
+6.一些通用的定义接口的需要的方法：类似于closeable 之类的；
+
+7.针对二次封装 可以直接提供get方法，直接从传进来的封装的类中去获得值，而不需要设置对应的set方法已经成员变量的赋值
+
+
+8.对reposne 的封装是将第三方的对象，传递进来获得我们需要的一个对象；
+  对request 的封装是自己封装出来的对象，再去传递给第三房的对象，以实现第三方的请求；
+
