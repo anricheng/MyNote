@@ -1,0 +1,46 @@
+如果你的应用程序有很多Activity，而你又不在MainActivity上，要退出主界面，你需要连续多次按Back键才行。按Home键只是挂起，并没有退出程序。
+解决办法：只需要一个专门的集合类对所有的活动进行管理就可以了。在活动管理器中，使用一个List来暂存活动，然后提供一个addActivity()方法用于向List中添加一个活动，使用removeActivity方法用于从List中移除活动，最后提供了一个finishAll()方法用于将List中所有的活动都全部销毁。
+
+
+public class ActivityCollector {  
+    public static List<Activity> activities=new ArrayList<Activity>();  
+    public static void addActivity(Activity activity)  
+    {  
+        activities.add(activity);  
+    }  
+    public static void removeActivity(Activity activity)  
+    {  
+        activities.remove(activity);  
+    }  
+    public static void finishAll()//退出所有的Activity  
+    {  
+        for(Activity activity:activities)  
+        {  
+            if(!activity.isFinishing())  
+            {  
+                activity.finish();//退出Activity  
+            }  
+        }  
+    }  
+} 
+
+写一个基类，让所有的Activity都继承自这个基类；
+
+public class BaseActivity extends Activity {  
+    @Override  
+    public void onCreate(Bundle savedInstanceState) {  
+        super.onCreate(savedInstanceState);  
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏  
+        ActivityCollector.addActivity(this);  
+    }  
+  
+    @Override  
+    protected void onDestroy() {  
+        super.onDestroy();  
+        ActivityCollector.removeActivity(this);  
+    }  
+} 
+
+
+程序中一般有退出按钮。只要在点击按钮的时候，调用ActivityCollector.finishAll()方法，即可直接退出程序。
+所以标题的答案就是：单一的Activity调用finish()方法即可。如果是多个Activity，我们可以定义一个活动集合类，对所有的活动进行管理。实现创建的时候将Activity缓存在List中，销毁的时候从List中移除。按退出按钮，则遍历整个List将Activity一一销毁。

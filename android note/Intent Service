@@ -1,0 +1,72 @@
+Android中的Service是用于后台服务的，当应用程序被挂到后台的时候，问了保证应用某些组件仍然可以工作而引入了Service这个概念，那么这里面要强调的是Service不是独立的进程，也不是独立的线程，它是依赖于应用程序的主线程的，也就是说，在更多时候不建议在Service中编写耗时的逻辑和操作，否则会引起ANR。
+
+那么我们当我们编写的耗时逻辑，不得不被service来管理的时候，就需要引入IntentService，IntentService是继承Service的，那么它包含了Service的全部特性，当然也包含service的生命周期，那么与service不同的是，IntentService在执行onCreate操作的时候，内部开了一个线程，去你执行你的耗时操作。
+
+service 中提供了一个onStartCommand(Intent intent, int flags, int startId) 使得在启动一个服务的时候调用
+
+但是在intentService中会增加一个 onCreate的方法，在这个方法中会新开启一个handlerThread.
+
+public void onCreate() {
+        // TODO: It would be nice to have an option to hold a partial wakelock
+        // during processing, and to have a static startService(Context, Intent)
+        // method that would launch the service & hand off a wakelock.
+
+        super.onCreate();
+        HandlerThread thread = new HandlerThread("IntentService[" + mName + "]");
+        thread.start(); //开启一个工作线程
+
+        mServiceLooper = thread.getLooper(); //单独的消息队列
+        mServiceHandler = new ServiceHandler(mServiceLooper); 
+ }
+
+
+ 一个IntentService的实例：
+ public class MIntentService extends IntentService {
+
+    public MIntentService(){
+        super("MIntentService");
+    }
+
+    /**
+     * Creates an IntentService.  Invoked by your subclass's constructor.
+     * @param name Used to name the worker thread, important only for debugging.
+     */
+    public MIntentService(String name) {
+        super(name);
+    }
+
+    @Override
+    public void onCreate() {
+        Log.e("MIntentService--", "onCreate");
+        super.onCreate();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.e("MIntentService--", "onStartCommand");
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    protected void onHandleIntent(Intent intent) {
+        Log.e("MIntentService--", Thread.currentThread().getName() + "--" + intent.getStringExtra("info") );
+        for(int i = 0; i < 100; i++){ //耗时操作
+            Log.i("onHandleIntent--",  i + "--" + Thread.currentThread().getName());
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.e("MIntentService--", "onDestroy");
+        super.onDestroy();
+    }
+}
+
+
+如何去开启一个线程：
+
+ public void intentClick(View v){
+        Intent intent = new Intent(this, MIntentService.class);
+        intent.putExtra("info", "good good study");
+        startService(intent);
+ }

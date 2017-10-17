@@ -1,0 +1,25 @@
+一、启动android默认浏览器
+在Android程序中我们可以通过发送隐式Intent来启动系统默认的浏览器。如果手机本身安装了多个浏览器而又没有设置默认浏览器的话，系统将让用户选择使用哪个浏览器来打开连接。
+        Intent intent =newIntent();
+        intent.setAction("android.intent.action.VIEW");
+        Uri content_url =Uri.parse("http://www.163.com");
+        intent.setData(content_url);
+        startActivity(intent);
+这样子，android就可以调用起手机默认的浏览器访问。
+
+二、启动指定浏览器
+在Android程序中我们可以通过发送显式Intent来启动指定的浏览器。
+启动Android原生浏览器
+         Intent intent =newIntent();        
+         intent.setAction("android.intent.action.VIEW");    
+         Uri content_url =Uri.parse("http://www.163.com");   
+         intent.setData(content_url);           
+         intent.setClassName("com.android.browser","com.android.browser.BrowserActivity");   
+         startActivity(intent);
+只要修改以intent.setClassName("com.android.browser","com.android.browser.BrowserActivity");
+
+
+中相应的应用程序packagename 和要启动的activity即可启动其他浏览器来
+uc浏览器"："com.uc.browser", "com.uc.browser.ActivityUpdate“
+opera浏览器："com.opera.mini.android", "com.opera.mini.android.Browser"
+qq浏览器："com.tencent.mtt", "com.tencent.mtt.MainActivity"
