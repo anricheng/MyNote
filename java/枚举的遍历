@@ -20,7 +20,7 @@ public enum Suits
         Diamonds(4),
         NumSuits(5)
 
-        public Suits getSuits(int key){// 这个方法可以根据 int值返回对应的枚举类型；
+        public static Suits getSuits(int key){// 这个方法可以根据 int值返回对应的枚举类型；z这个必须使用static的方式；
           for(Suits suits:values()){
              if (suits.mCode==key) return suit;
           }

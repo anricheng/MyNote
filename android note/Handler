@@ -1,0 +1,220 @@
+1.定义：handler 是android 提供的一套更新UI及消息处理机制，我们可以利用它发送消息或者处理消息；
+
+	Activity的生命周期----> ActivityThread 发送handler消息<-------Framework层的AMS交互；
+
+
+	简而言之：一个handler 它一定关联了一个线程 以及这个线程的MQ,默认的你在哪个线程里面创建的handler就会跟哪个线程以及这个线程中的handler进行关联，比如说你在UI线程中创建一个handler,那么默认情况下这个handler就会跟这个UI线程以及UI线程中的MQ产生关联；可以往这个MQ中发送消息，并且当MQ中的消息出queue,也会被这个handler进行处理；
+
+
+	handler 有两个重要的作用：1.定时发送并处理消息；    2.将一个行为动作从一个线程转交另一个线程处理；
+
+
+2.handler 中常用的方法：
+	  2.1 使用Message: a.handler.sendMessage()---发送消息    b.重写handleMessage()方法----处理消息
+
+
+	  2.2 使用post: handler.post(Runnable(--这里填写更新UI等操作---)) ----直接发送处理消息；
+	  ---这里得注意这个handler的定义必须在主线程中，这个handler.psot的调用可以在子线程中或其它任意的线程之中；
+
+	  2.3移除一个消息：handler.removeCallBack(runnable)--可以将post发送的runnable给移除；
+
+3.使用post方法定义一个循环定时执行的任务：
+
+
+	3.1.new 一个Runnable: MyRunnable runnable = new MyRunnable();
+
+	3.2.定义这个Runnable:
+
+	class MyRunnable implements Runnable{
+
+	@Override
+	public void run(){
+
+	//do something and then post the runnable again;
+
+	handler.postDelayed(runnabel,100);
+	}
+	}
+
+	3.3当然也可以使用handler.removeCallBack去移除这个Runnable 从而终止这个循环；
+
+4.小技巧： 
+
+    使用handler.obtainMessage()来获取message---这种方式去发送message可以直接使用message.sendToTarget();
+    发送消息的第二种方式：handler.sendMessage   
+
+5.定义一个handler的时候可以指定callback 以及Looper.这个callback可以拦截 handler   发送过来的消息，这样可以过滤最终handlerMessage 方法需要处理的信息；
+
+		例如：  Handler handler = new Handler(
+		new Callback(){
+		public boolean handleMessage(){
+		//这里是callback中的handleMessage 方法，如果返回true则这个消息不会传递给下面这个handleMessage
+
+		}}){
+		public void handleMessage(){
+
+		//这里是handler中重写的方法；
+		}	}
+6.handler 与Looper 以及 MessageQueue之间的联系；
+ 
+ 首先为什么需要这种机制：最根本是为了解决多线程并发的问题，假设在一个Activity中，有多个线程去更新UI线程，并且都没有加锁，那么整个的界面会产生混乱。但是如果加锁，优惠影响性能。所以Android提供了handler这种机制，使得我们不用去关心多线程的问题，更新UI的操作都在主线程的消息队列中去轮询处理；
+
+ handler:封装了消息的发送（包括发送给谁）和 消息的处理；
+ Looper:内部包含一个MQ,Looper.loop是以个死循环不断的从MQ当中去消息，如果有消息就交给handler 处理，没有就算了
+ MQ:就是一个消息队列；
+
+ 在handler的构造方法中就会跟一个looper 进行关联，looper中有MQ,所以handler发送消息就是向looper中的MQ发送消息
+
+
+7.源码解析：
+app 启动会首先走ActivityThread----->main(){//创建一个Looper，调用Looper.prepare（）}
+
+
+
+   public static void prepare() {
+        prepare(true);
+    }
+
+    private static void prepare(boolean quitAllowed) {
+        if (sThreadLocal.get() != null) { //如果当前线程的共享变量已经有值了就不能再创建了
+            throw new RuntimeException("Only one Looper may be created per thread");
+        }
+        sThreadLocal.set(new Looper(quitAllowed));//这里给当前线程共享变量设置值。
+    }
+
+
+     private Looper(boolean quitAllowed) {
+        mQueue = new MessageQueue(quitAllowed);
+        mThread = Thread.currentThread();
+    }
+
+  从上面可以看出，直接调用Looper.prepare()方法会检查这个线程是否已经有looper,否则就创建一个looper对象跟这个线程关联。
+
+
+  Looper.mylooper{
+
+  return sThreadlocal.get()// 这个就是从当前的threadLocal中来获取一个looper。
+  }
+
+
+  Looper.loop（)方法里面有一个死循环不停的在messageQueue中进行轮询，当有消息的时候就会调用handler 的dispatchMessage方法去分发消息，在分发消息的时候首先会看有没有callback，当有callback的时候会根据callback的返回值来决定是都要继续分发这个消息。
+
+总结：
+1.创建：
+android 使用一个localThread 来为一个线程中存储一个Looper,实现的方式就是当我们调用Looper.prepare方法的时候，就会判断sLocalThread当中是否有Looper变量，没有的话就会创建这个looper变量，并且存储进sLocalThread中。在这个looper的的构造中会同时创建MQ.
+
+2.发送：当我们使用handler发送消息的时候其实最终就是向这个MQ中发送消息；
+
+3.处理：之后当我们调用Looper.loop的时候就会通过Looper.mylooper从sLocalThread 中获取之前创建的looper变量，继而获得MQ，然后对这个MQ进行死循环，一旦发现里面有消息就会调用handler的dispatchMessage方法，这个方法会首先判断是没有callBack,如果有callBack 就根据callBack来判断是否分发某个消息；
+
+
+8.创建一个子线程的handler
+
+MyThread extends Thread{
+
+    Hander handler;//将handler设置为成员变量方便后续调用；
+
+    Looper mLooper;
+	
+	@Override
+	public void run(){
+
+	Looper.prepare()；//调用这个方法之后就为这个线程创建了一个looper对象以及一个mq,并将这个looper存储到sThreadLocal对象中；此时创建一个handler就会默认的与这个线程中的looper产生了关联；
+
+	mLooper =Looper.myLooper();//当调用完Looper.prepare（)方法之后就可以通过Looper.myLooper来获取这个looper对象了；
+
+	handler=new Handler(){
+	  public void handMessage(){
+	    //一些处理
+	  }
+	};
+
+	Looper.loop();
+
+	}
+}
+
+9.在主线程中创建一个handler但是使用的是上面8的子线程中创建的looper.
+
+	MyThread mythread = new Mythread();
+	mythread.start();
+
+	Handler handler = new Handler(mythread.mLooper)//这里需要特别注意因为当这个我们调用mythread.mLooper的时候这个looper可能在子线程中还没有创建；会导致空指针异常。这时候可以使用handlerThread类
+
+10.HandlerThread:
+
+	这个跟使用8的方法创建的子线程中的handler差不多：
+	HandlerThread handlerThread = new HandlerThreadler("这是一个handlerThread");
+
+	handlerThread.start();
+
+	Handler handler = new Handler(handlerThread.getLooper()){
+		@Override 
+		public void handleMessage(){
+
+		}
+	}
+此时就不会出现空指针异常；
+
+总结：一个handler是跟线程无关的，但是一个Looper是跟线程有关的，并且一个线程只能拥有一个Looper. 当一个handler又跟一个Looper关联，所以handler又会跟线程关联，当handler跟线程关联以后，这个handler的handleMessage（）方法就执行在这个线程；
+
+
+10.主线程和子线程互相发送消息；
+
+   1.定义一个主线程的Handler:Handler handler = new Handler(){
+        @Override
+        public void handleMessage(){
+           //在这个主线程中调用子线程的handler来给子线程发送消息；
+           threadhandler.sendMessage();
+        }
+     };
+   2.定义一个子线程的Handler:   HandlerThread handlerThread = new HandlerThread("子线程的handler");
+     handlerThread.start();
+
+     Handler threadHandler = new Handler(handlerThread.getLooper()){
+        //在这个子线程中调用主线程的handler来给主线程发送消息；
+     };
+
+
+11. Android 中更新UI的几种方式：  
+
+    1.handler.post(runnable)
+    ---通过将runnable 封装成一个Message. 也就是Message.callback=runnable来将runnabel封装到Message中。
+
+
+    2.handler.sendMessage()
+    3.runOnUiThread()
+    ---判断当前线程是否是UI线程，如果是UI线程的话直接调用自己的run方法，如果不是还是通过post方法抛到主线程；之后跟方法1是一样的；
+
+
+
+    4.View.post()
+    --textView.post(new Runnable(){
+       textView.setText("new Text")
+    });
+
+    --首先判断是否有AttachInfo这个实例，要是有的话就直接调用这个AttachInfo的handler 的post方法抛到主线程，要是没有的话就使用ViewrootImpl。getRunQueue().post()方法抛到主线程；
+
+12.非UI线程是否不能更新UI？
+
+在Oncreate()方法中创建一个子线程，
+如果在子线程中不作任何事情而直接更新UI没有问题，而在子线程中进行休眠两秒钟的时间则会出现在非主线程中更新UI的异常。
+
+原因：View.setXXX这种更新UI的方法中会调用 checkForRelayout方法 最终会调用invalidate---ViewRootImpl的invalidateChildInParent()方法会调用一个叫checkThread方法，这个方法会抛出这个异常；
+
+出现上述的原因是因为在OnCreate方法中这个ViewRootImpl还没有创建成功，它是在onResume方法中创建成功；
+
+
+在ActivityThread中是通过  handlerResumeActivity去创建整个的View树的。
+
+
+
+
+
+
+
+
+
+
+
+
