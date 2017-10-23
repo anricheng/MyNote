@@ -1,0 +1,6 @@
+1.在源代码*.Java中可以进入如下方式引用：
+myMenuItem.setIcon(android.R.drawable.ic_menu_save);
+
+
+2.在*.XML文件中的<resource>可以进行如下引用：
+android:icon="@android:drawable/ic_menu_save"

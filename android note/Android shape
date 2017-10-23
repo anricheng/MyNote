@@ -1,0 +1,38 @@
+在Android程序开发中，我们经常会去用到Shape这个东西去定义各种各样的形状，首先我们了解一下Shape下面有哪些标签，都代表什么意思：
+
+
+solid：填充
+android:color指定填充的颜色
+
+
+gradient：渐变
+android:startColor和android:endColor分别为起始和结束颜色，
+android:angle是渐变角度，必须为45的整数倍。
+另外渐变默认的模式为android:type="linear"，即线性渐变，
+可以指定渐变为径向渐变，android:type="radial"，径向渐变需要指定半径android:gradientRadius="50"。
+angle值对应的位置如图
+
+
+stroke：描边
+android:width="2dp" 描边的宽度，android:color 描边的颜色。
+我们还可以把描边弄成虚线的形式，设置方式为：
+android:dashWidth="5dp" 
+android:dashGap="3dp"
+其中android:dashWidth表示'-'这样一个横线的宽度，android:dashGap表示之间隔开的距离
+
+
+corners：圆角
+android:radius为角的弧度，值越大角越圆。
+我们还可以把四个角设定成不同的角度，
+同时设置五个属性，则Radius属性无效
+
+android:Radius="20dp"                           设置四个角的半径
+
+android:topLeftRadius="20dp"              设置左上角的半径 
+android:topRightRadius="20dp"           设置右上角的半径 
+android:bottomLeftRadius="20dp"      设置右下角的半径 
+android:bottomRightRadius="20dp"    设置左下角的半径
+
+
+padding：间隔
+可以设置上下左右四个方向的间隔
