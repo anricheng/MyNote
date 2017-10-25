@@ -1,1 +1,5 @@
-ImageView
+ImageView 常用的方法:
+
+1.设定Resource：imageView.serImageResource(R.id.imageId);
+
+2.
