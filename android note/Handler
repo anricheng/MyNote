@@ -7,10 +7,18 @@
 
 
 	handler 有两个重要的作用：1.定时发送并处理消息；    2.将一个行为动作从一个线程转交另一个线程处理；
+	
 
 
 2.handler 中常用的方法：
-	  2.1 使用Message: a.handler.sendMessage()---发送消息    b.重写handleMessage()方法----处理消息
+	  2.1 使用Message: 
+	  a.handler.sendMessage()---发送消息
+
+	  b.重写handleMessage()方法----处理消息
+
+	  c.handler.removeMessages()--取消消息
+
+	  小技巧：Message 也可以通过handler.obtainMessage（）的方式去获取Message，发送的时候直接handler.sendToTarget()即可；
 
 
 	  2.2 使用post: handler.post(Runnable(--这里填写更新UI等操作---)) ----直接发送处理消息；
@@ -41,7 +49,7 @@
 4.小技巧： 
 
     使用handler.obtainMessage()来获取message---这种方式去发送message可以直接使用message.sendToTarget();
-    发送消息的第二种方式：handler.sendMessage   
+  
 
 5.定义一个handler的时候可以指定callback 以及Looper.这个callback可以拦截 handler   发送过来的消息，这样可以过滤最终handlerMessage 方法需要处理的信息；
 
