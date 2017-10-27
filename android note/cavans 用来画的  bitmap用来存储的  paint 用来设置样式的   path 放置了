@@ -1,0 +1,10 @@
+cavans 用来画的  bitmap用来存储的  paint 用来设置样式的   path 放置了这个路径    
+
+
+lockCavans 获取当前的Activity的cavans
+
+surfaceView 中使用 surfaceHolder 方法来获取Canvas   
+
+
+绘制直方图：
+Acharengine 
