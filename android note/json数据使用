@@ -1,0 +1,6 @@
+
+InputStream is = getResources().getAssets().open("listview_multitype_data.json");
+InputStreamReader isr = new InputStreamReader(is);
+Gson gson = new GsonBuilder().serializeNulls().create();
+ data = gson.fromJson(isr, JsonListData.class);
+       
