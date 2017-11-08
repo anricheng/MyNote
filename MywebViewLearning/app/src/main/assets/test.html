@@ -15,12 +15,19 @@
 
 <button type="button" id="button1" onclick="callAndroid()">调用android原生</button>
 
+<p><a href="file:///android_asset/test1.html" rel="external" data-transition = "flip" data-role = "button" data-inline="true">跳转到另一个画面</a></p>
+
 </body>
 
 <script>
 
    function callJS(msg){
       alert(msg.name);
+   }
+
+
+    function navigateTo(){
+      window.location
    }
 
     function callAndroid(){

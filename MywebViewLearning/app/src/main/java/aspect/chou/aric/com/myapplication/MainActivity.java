@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
@@ -62,6 +64,26 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        mWebView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+
+                if(request.getUrl().toString()!=""){
+                    view.loadUrl(request.getUrl().toString());   //在当前的webview中跳转到新的url
+                }
+                return true;
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if(url!=""){
+                    view.loadUrl(url);   //在当前的webview中跳转到新的url
+                    System.out.println("url:"+url);
+                }
+                return true;
+            }
+        });
 
         mWebView.addJavascriptInterface(new AndroidToJS(this.getApplication(), jsonObject), "android");
 
@@ -88,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+
+
 
 
     }
@@ -125,13 +150,14 @@ public class MainActivity extends AppCompatActivity {
 
                         }
 
-                        // 注意调用的JS方法名要对应上
-                        // 调用javascript的callJS()方法
                         mWebView.loadUrl("javascript:callJS("+studentgson+")");
                     }
                 });
 
             }
+
+    private void callJS(){
+    }
 
 
     @Override
@@ -171,6 +197,16 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    @Override
+    public void onBackPressed() {
+
+        if (mWebView.canGoBack()){
+            mWebView.goBack();
+        }else {
+            super.onBackPressed();
+        }
+
+    }
 
 
 }
