@@ -1,3 +1,7 @@
-1.加载图片： imageGetter
+1.textview 中可以从网络中加载图片加载图片： imageGetter
 
 2.设置图片布局： drawabletop drawablepadding
+
+
+3.textColor中可以设置一个selector,这样在选择、非选择状态下的 字体的颜色不一样
+

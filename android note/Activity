@@ -1,0 +1,19 @@
+* 完整生命周期
+> oncreate-->onstart-->onresume-->onpause-->onstop-->ondestry
+
+* 可视生命周期
+> onstart-->onresume-->onpause-->onstop
+
+* 前台生命周期
+> onresume-->onpause
+
+
+* 默认横竖屏切换Activity被销毁又重新创建，有2中解决方案：
+
+1、 可以把屏幕的朝向写死
+		android:screenOrientation="landscape" 横屏
+		android:screenOrientation="portrait" 竖屏
+2、 让操作系统忽略掉屏幕切换的变化
+		 android:configChanges="orientation|keyboardHidden|screenSize"
+		 
+

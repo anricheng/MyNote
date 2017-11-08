@@ -1,1 +1,96 @@
-rxjava
+ http://blog.csdn.net/aiynmimi/article/details/53382567 参考博客
+
+ rxjava 参考博客：http://www.jianshu.com/u/c50b715ccaeb
+
+1.rxjava 2.0 依赖： 
+
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+2.创建性操作：
+Observable :
+
+create  just from defer empty/never/throw  interval range repeat start timer
+
+empty 直接调用 observer 的onComplete
+
+never 不发射任何的事件，包括complete事件
+
+throw 直接发射 error事件
+
+defer  只有当调用subscribe 这个方法的时候才去真正的创建这个Observable 对象；
+
+interval  在指定的间隔事件内进行发射
+
+range 创建一个在整型范围内的observable 对象；rang(1,5) 就会发送 12345；
+
+repeat 多次的发送同一个对象；
+
+
+3.转换型操作：
+
+将一个observable 转换为另一个 Observable:
+
+map :  将一个映射为另外一个
+
+flatmap  
+
+groupby   对数据进行分组  在groupby中进行分组  同时定义一个跟分组有关的observer
+
+buffer(一次发送的事件的个数)  
+
+scan 累加  每次将之前的数据进行累加发射；  比如说 12345 这样的数据流发射的时候就变成 1 3 6 10 15
+
+window  将数据项分组之后按照指定的时间间隔进行发送
+
+4.过滤型操作符；
+
+debounce : observable产生一个数据之后在规定的时间里面没有产生新的数据则将这个数据进行发射，如果在规定的时间里面有新的数据产生则不发射这个数据；
+
+distinct: 这是个去重复的操作符
+
+elementat: 取其中的某一个数据
+
+Fliter:  过滤数据，比如大于某个数据 或者是小于某个数据
+
+first: 数据第一项
+
+ignoreElements 直接调用completed
+
+Last 数据项的最后一项
+
+Sample  定时采样
+
+skip 跳过前面几项
+
+skipLast 跳过后面几项
+
+Take 获取前面几项
+
+TakeLast  获取后面几项
+
+
+
+
+
+
+5.组合操作符：
+zip:  假设有两个数据源  数据源1： 1，2，3  数据源2：A,B,C
+
+   最后可以得到 1A  2B  3C
+
+merge: 仅仅是按照时间顺序将两个数据源进行组合变成一个发送给observer 
+
+startwith : 在原先的数据源之前插入数据 
+
+combineLates： 数据源2的数据  跟数据源1发出的最新的数据进行组合 
+
+
+
+
+
+
+
+
+
+

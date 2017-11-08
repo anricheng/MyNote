@@ -3,3 +3,11 @@ WebView webView = (WebView) findViewById(R.id.wv);
         webView.setWebViewClient(new WebViewClient());
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+
+         removeJavascriptInterface("searchBoxJavaBridge_") 
+      2014年香港理工大学的研究人员Daoyuan Wu和Rocky Chang发现了两个新的攻击向量存在于android/webkit/AccessibilityInjector.java中，分别是"accessibility" 和"accessibilityTraversal" ，调用了此组件的应用在开启辅助功能选项中第三方服务的安卓系统中会造成远程代码执行漏洞。该漏洞公布于CVE-2014-7224, 此漏洞原理与searchBoxJavaBridge_接口远程代码执行相似，均为未移除不安全的默认接口，建议开发者通过以下方式移除该JavaScript接口：
+removeJavascriptInterface("accessibility")；
+ removeJavascriptInterface("accessibilityTraversal")；
+
+ 1.安全问题：
+ http://jaq.alibaba.com/blog.htm?id=48

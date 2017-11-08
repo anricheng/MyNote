@@ -1,3 +1,22 @@
+快捷键：http://blog.csdn.net/huningjun/article/details/52450465
+
 1.快速修复错误的快捷键：
 
 option + enter/alt + enter
+
+2.提取方法： option + command + M
+
+3.提取参数  option + command + P
+
+4.提取变量  option + command + v
+
+5.上移或者下移行   option + shift + up/down
+
+6.上移或者下移方法  option + command + up/down
+
+7.包裹 ： command + option + T
+
+8.修改名字 shift + f6
+
+9.使用临时断点：option + 鼠标左键单击代码处即可；
+
