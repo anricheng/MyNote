@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+<body>
+
+<h1>第二个HTML页面</h1>
+
+<h4 id="VehicleNumber"></h4>
+
+<h4 id="vehicleselect"></h4>
+
+</body>
+
+</head>
+
+
+<script>
+
+window.onload=function(){
+
+var string = window.location.search;
+var start=string.indexOf("=");
+var end=string.indexOf("&");
+var endcode= string.substring(start+1,end)
+ document.getElementById("VehicleNumber").innerHTML="车牌号："+getvalue("buttonparams");
+
+ document.getElementById("vehicleselect").innerHTML="选择的车辆："+getvalue("radio");
+}
+
+
+
+function getvalue(name)
+{
+var str=window.location.search;
+if (str.indexOf(name)!=-1)
+{
+var pos_start=str.indexOf(name)+name.length+1;
+var pos_end=str.indexOf("&",pos_start);
+if (pos_end==-1)
+{
+return str.substring(pos_start);
+}
+else
+{
+return str.substring(pos_start,pos_end)
+}
+}
+else
+{
+return "没有这个name值";
+}
+}
+
+
+
+
+</script>
+
+</html>

@@ -1,21 +1,18 @@
 package aspect.chou.aric.com.myapplication;
 
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.webkit.JsResult;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
-
-import com.google.gson.Gson;
-
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,19 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mLinearLayoutContainer= ((LinearLayout) findViewById(R.id.ll_container));
-
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
-
-
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
         mWebView = new WebView(this.getApplication());
-
-        layoutParams.weight=1.0f;
-
-
         mWebView.setLayoutParams(layoutParams);
         mLinearLayoutContainer.removeView(mLinearLayoutContainer);
-
-
         mLinearLayoutContainer.addView(mWebView);
 
 
@@ -50,19 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
         webSettings.setJavaScriptEnabled(true);
 
+        String name = getIntent().getStringExtra(SplashActivity.NAME);
+
+        String vinCode=getIntent().getStringExtra(SplashActivity.MVINCODE);
+
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-        Student student = new Student("zhou","12");
+        UserInfo userInfo = new UserInfo(name,vinCode);
 
-        Gson gson = new Gson();
 
-        JSONObject jsonObject=null;
 
-        String studentgson = gson.toJson(student);
-        try {
-             jsonObject = new JSONObject(studentgson);
-        }catch (Exception e){
-
-        }
 
         mWebView.setWebViewClient(new WebViewClient(){
 
@@ -83,12 +67,30 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return true;
             }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                if (Build.VERSION.SDK_INT<=18){
+                    mWebView.loadUrl("javascript:callJS()");
+                }else {
+
+                    mWebView.evaluateJavascript("javascript:callJS()", new ValueCallback<String>() {
+                        @Override
+                        public void onReceiveValue(String value) {
+
+                        }
+                    });
+
+                }
+            }
         });
 
-        mWebView.addJavascriptInterface(new AndroidToJS(this.getApplication(), jsonObject), "android");
 
 
-        mWebView.loadUrl("file:///android_asset/test.html");
+        mWebView.addJavascriptInterface(userInfo, "android");
+        mWebView.loadUrl("file:///android_asset/html/test.html");
+
 
 
 
@@ -116,49 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-    public  void callJs(View view){
-
-        mWebView.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-//                        // Android版本变量
-//                        final int version = Build.VERSION.SDK_INT;
-//// 因为该方法在 Android 4.4 版本才可使用，所以使用时需进行版本判断
-//                        if (version < 18) {
-//                            mWebView.loadUrl("javascript:callJS()");
-//                        } else {
-//                            mWebView.evaluateJavascript（"javascript:callJS()", new ValueCallback<String>() {
-//                                @Override
-//                                public void onReceiveValue(String value) {
-//                                    //此处为 js 返回的结果
-//                                }
-//                            });
-//                        }
-
-                        Student student = new Student("zhou","12");
-
-                        Gson gson = new Gson();
-
-                        JSONObject jsonObject=null;
-
-                        String studentgson = gson.toJson(student);
-                        try {
-                            jsonObject = new JSONObject(studentgson);
-                        }catch (Exception e){
-
-                        }
-
-                        mWebView.loadUrl("javascript:callJS("+studentgson+")");
-                    }
-                });
-
-            }
-
-    private void callJS(){
-    }
-
 
     @Override
     protected void onPause() {

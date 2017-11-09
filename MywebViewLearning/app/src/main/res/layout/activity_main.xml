@@ -9,10 +9,5 @@
     android:layout_height="match_parent"
     tools:context="aspect.chou.aric.com.myapplication.MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="callJs"
-        android:text="callJs"/>
 
 </LinearLayout>

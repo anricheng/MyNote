@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+
+    <script type="text/javascript" src="js/test.js"></script>
+    <link href="css/test.css" rel="stylesheet" style="text/css"/>
+</head>
+
+<body>
+
+<h1>第一个HTML页面</h1>
+
+<h4 id="age"></h4>
+
+<h4 id="name"></h4>
+
+请输入车牌号：<input  id="buttonData" type="text">
+
+<form>
+    vehicle1：
+    <input type="radio" checked="checked" name="radio" value="vehicle1" />
+    <br />
+    vehicle2：
+    <input type="radio" name="radio" value="vehicle2" />
+</form>
+
+
+<button onclick="callAndroid()">下一个页面</button>
+
+
+
+
+</body>
+
+<script>
+
+     function callJS(student){
+    document.getElementById("age").innerHTML="用户名："+android.getUsername();
+    document.getElementById("name").innerHTML="VinCode:"+android.getVincode();
+
+   }
+
+
+  function get(){
+        var value='';
+        var radio = document.getElementsByName("radio");
+        for(var i = 0;i<radio.length;i++)
+        {
+            if(radio[i].checked==true)
+            {value = radio[i].value;
+            break;}
+        }
+
+        return value;
+    }
+
+    function callAndroid(){
+      var buttonvalue=document.getElementById("buttonData").value;
+      window.location.href="file:///android_asset/html/test1.html?"+"buttonparams="+buttonvalue+"&radio="+get();
+    }
+
+</script>
+
+
+</html>
