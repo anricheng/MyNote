@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.webkit.JsResult;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -70,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
+
+
+                Log.e("onPageFinished","onPageFinished");
+
                 super.onPageFinished(view, url);
                 if (Build.VERSION.SDK_INT<=18){
                     mWebView.loadUrl("javascript:callJS()");
@@ -154,6 +159,32 @@ public class MainActivity extends AppCompatActivity {
         }
 
         super.onDestroy();
+
+//
+//        @Override
+//        protected void onDestroy() {
+//            if( mWebView!=null) {
+//
+//                // 如果先调用destroy()方法，则会命中if (isDestroyed()) return;这一行代码，需要先onDetachedFromWindow()，再
+//                // destory()
+//                ViewParent parent = mWebView.getParent();
+//                if (parent != null) {
+//                    ((ViewGroup) parent).removeView(mWebView);
+//                }
+//
+//                mWebView.stopLoading();
+//                // 退出时调用此方法，移除绑定的服务，否则某些特定系统会报错
+//                mWebView.getSettings().setJavaScriptEnabled(false);
+//                mWebView.clearHistory();
+//                mWebView.clearView();
+//                mWebView.removeAllViews();
+//                mWebView.destroy();
+//
+//            }
+//            super.on Destroy();
+//        }
+
+
     }
 
     @Override

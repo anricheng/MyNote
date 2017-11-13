@@ -36,8 +36,16 @@
 
 <script>
 
+window.onbeforeunload=function(){
+  document.getElementById("age").innerHTML="用户名："+"unload";
+}
+
+
+window.onload=function(){
+   document.getElementById("age").innerHTML="用户名："+"load";
+}
+
      function callJS(student){
-    document.getElementById("age").innerHTML="用户名："+android.getUsername();
     document.getElementById("name").innerHTML="VinCode:"+android.getVincode();
 
    }
@@ -57,7 +65,7 @@
     }
 
     function callAndroid(){
-      var buttonvalue=document.getElementById("buttonData").value;
+      var buttonvalue=document.getElementById("age").value;
       window.location.href="file:///android_asset/html/test1.html?"+"buttonparams="+buttonvalue+"&radio="+get();
     }
 

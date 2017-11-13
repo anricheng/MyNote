@@ -1,0 +1,5 @@
+命令： gradlew lint
+
+1.java 代码的lint 
+
+2.xml 文件的额lint
