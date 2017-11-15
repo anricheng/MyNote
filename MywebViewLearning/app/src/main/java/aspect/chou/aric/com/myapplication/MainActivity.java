@@ -91,13 +91,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         mWebView.addJavascriptInterface(userInfo, "android");
         mWebView.loadUrl("file:///android_asset/html/test.html");
-
-
-
 
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
