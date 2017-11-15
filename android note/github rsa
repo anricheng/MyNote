@@ -1,0 +1,4 @@
+ cd ~/.ssh
+
+
+ more id_rsa.pub
