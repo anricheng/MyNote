@@ -75,12 +75,16 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.e("onPageFinished","onPageFinished");
 
+                Student object = new Student("zhou", "haifeng");
+                mWebView.addJavascriptInterface(object, "student");
+
                 super.onPageFinished(view, url);
                 if (Build.VERSION.SDK_INT<=18){
-                    mWebView.loadUrl("javascript:callJS()");
+
+                    mWebView.loadUrl("javascript:callJS(zhou)");
                 }else {
 
-                    mWebView.evaluateJavascript("javascript:callJS()", new ValueCallback<String>() {
+                    mWebView.evaluateJavascript("javascript:callJS('"+"zhouhaifengceshi"+"')", new ValueCallback<String>() {
                         @Override
                         public void onReceiveValue(String value) {
 

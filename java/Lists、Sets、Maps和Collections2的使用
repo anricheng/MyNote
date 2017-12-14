@@ -1,0 +1,77 @@
+//Lists  
+System.out.println("### Lists ###");  
+ArrayList<String> arrayList = Lists.newArrayList();  
+arrayList.add("A");  
+arrayList.add("B");  
+arrayList.add("C");  
+System.out.println(arrayList);  
+  
+LinkedList<String> linkedList = Lists.newLinkedList();  
+linkedList.add("A");  
+linkedList.add("B");  
+linkedList.add("C");  
+System.out.println(linkedList);  
+  
+System.out.println(Lists.reverse(arrayList));   //翻转集合元素的顺序  
+System.out.println(Lists.reverse(linkedList));  
+  
+System.out.println(Lists.partition(arrayList, 2)); //一个集合内再分成n个子集
+
+
+
+
+//Sets  
+System.out.println("### Sets ###");  
+HashSet<String> set1 = Sets.newHashSet();  
+set1.add("A");  
+set1.add("B");  
+set1.add("C");  
+  
+LinkedHashSet<String> set2 = Sets.newLinkedHashSet();  
+set2.add("B");  
+set2.add("C");  
+set2.add("D");  
+set2.add("E");  
+  
+//Sets.newTreeSet();  
+//Sets.newConcurrentHashSet();  
+  
+System.out.println(Sets.union(set1, set2)); //返回两个集合的并集  >> [A, B, C, D, E]  
+System.out.println(Sets.difference(set1, set2)); //返回set1中不存在于set2的元素集合  >> [A]  
+System.out.println(Sets.intersection(set1, set2)); //返回两个集合的交集  >> [B, C]  
+  
+Set<String> resultSet = Sets.filter(set2, new Predicate<String>() {  
+    @Override  
+    public boolean apply(String value) {  
+        return !"D".equals(value); //过滤掉值为D的元素  >> [B, C, E]  
+    }  
+});  
+System.out.println(resultSet);  
+
+
+
+//Maps  
+System.out.println("### Maps ###");  
+Maps.newHashMap();  
+Maps.newLinkedHashMap();  
+Maps.newTreeMap();  
+Maps.newConcurrentMap(); 
+
+
+//Collections2  
+System.out.println("### Collections2 ###");  
+Collection<String> linkedList2 = Collections2.filter(linkedList, new Predicate<String>() {  
+    @Override  
+    public boolean apply(String value) {  
+        return !"B".equals(value); //过滤器：过滤掉值为B的元素  >> [A, C]  
+    }  
+});  
+System.out.println(linkedList2);  
+  
+Collection<String> linkedList3 = Collections2.transform(linkedList, new Function<String, String>() {  
+    @Override  
+    public String apply(String value) {  
+        return value + "_"; //转换器：元素值做特殊处理后返回  >> [A_, B_, C_]  
+    }  
+});  
+System.out.println(linkedList3); 

@@ -27,6 +27,9 @@
 </form>
 
 
+<button onclick="callJS()">default</button>
+
+
 <button onclick="callAndroid()">下一个页面</button>
 
 
@@ -45,8 +48,8 @@ window.onload=function(){
    document.getElementById("age").innerHTML="用户名："+"load";
 }
 
-     function callJS(student){
-    document.getElementById("name").innerHTML="VinCode:"+android.getVincode();
+     function callJS(string1){
+    document.getElementById("name").innerHTML=string1;
 
    }
 

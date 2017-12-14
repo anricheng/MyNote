@@ -1,0 +1,8 @@
+1.mkdir webser;
+
+2.touch index.html;
+
+3.vim index.ht
+
+4.php -S 192.168.8.119:8080 -t ./
+
