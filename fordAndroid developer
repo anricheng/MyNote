@@ -1,0 +1,52 @@
+AndroidManifest androidManifest = new AndroidManifest(manifest, res, assets, packageName);
+        List<BroadcastReceiverData> broadcastReceivers = androidManifest.getBroadcastReceivers();
+        List<BroadcastReceiverData> removeReceivers = new ArrayList<>();
+        for(BroadcastReceiverData receiverData: broadcastReceivers){
+            removeReceivers.add(receiverData);
+        }
+        broadcastReceivers.removeAll(removeReceivers);
+        return androidManifest;
+
+1. module 注册到regionmodule
+2.mockmodule  注册到 mockregionmodule
+
+3.Test running failed: Unable to find instrumentation info for: ComponentInfo{com.ford.oa.ap.test/com.ford.espresso.utils.FordTestRunner}
+
+没有切换virant 到espresso测试
+
+13818825311
+
+Ford@2
+
+1.webview 使用注入加测试
+2.webview传递数据测试
+3.na 测试
+
+
+git stash 
+git reset --hard
+git stash pop
+
+
+http-server swagger-editor
+https://swagger.io/docs/swagger-tools/#swagger-editor
+  http://127.0.0.1:8080
+  http://19.230.125.240:8080
+
+快捷方法：
+1.lifecycle sorter cmd + alt +k   可以直接对生命周期进行排序
+2.android code generator 布局文件中右键点击 generate android code
+3.android styler 直接生成styler
+
+Usage:
+a. copy lines with future style from your layout.xml file
+b. paste it to styles.xml file with Ctrl+Shift+D (or context menu)
+c. enter name of new style in the modal window
+d. your style is prepared!
+
+
+
+{
+    "message": "saveToCalendar","data": {"startDate": "2017-12-20 10:00:00","endDate": "2017-12-20 12:00:00","title": "title","content": "content"}}
+
+CalendarMessage calendarMessage= new CalendarMessage(); CalendarMessage.DataBean dataBean = new CalendarMessage.DataBean(); Calendar beginTime = Calendar.getInstance(); beginTime.add(Calendar.SECOND, 70); Calendar endTime = Calendar.getInstance(); endTime.add(Calendar.SECOND, 1200); dataBean.setContent("This is a test for ford pass"); dataBean.setStartDate(beginTime.getTime()); dataBean.setEndDate(endTime.getTime()); dataBean.setTitle("日历提醒"); calendarMessage.setData(dataBean); calendarMessage.setMessage(ServiceBookingJSMessageConstant.SAVE_TO_CALENDAR); String saveToCalendarMessage = mGson.toJson(calendarMessage); CalendarMessage realCalendarMessage = mGson.fromJson(saveToCalendarMessage, CalendarMessage.class);
